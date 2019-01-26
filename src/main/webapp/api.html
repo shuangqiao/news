@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>YOUDE TEST PAGE</title>
+  <!-- CSS goes in the document HEAD or added to your external stylesheet -->
+  <style type="text/css">
+    table.gridtable {
+      font-family: verdana, arial, sans-serif;
+      font-size: 11px;
+      color: #333333;
+      border-width: 1px;
+      border-color: #666666;
+      border-collapse: collapse;
+    }
+
+    table.gridtable th {
+      border-width: 1px;
+      padding: 8px;
+      border-style: solid;
+      border-color: #666666;
+      background-color: #dedede;
+    }
+
+    table.gridtable td {
+      border-width: 1px;
+      padding: 8px;
+      border-style: solid;
+      border-color: #666666;
+      background-color: #ffffff;
+    }
+  </style>
+
+  <script>
+    function S2SPOST(urlvalue, params) {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("POST", urlvalue, true);
+      xmlhttp.setRequestHeader("X-Auth-Token", "test-110")
+      //xmlhttp.setRequestHeader("cache-control", "no-cache");
+      xmlhttp.setRequestHeader("contentType", "text/html;charset=uft-8") //指定发送的编码
+      //var parm = "act=" + act + "&cityname=" + cityname + "&antique=" + antique;//构造URL参数
+      xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");  //设置请求头信息
+      xmlhttp.setRequestHeader("Accept",
+          "text/html, application/xhtml+xml, application/xml;version=1.4;");// */*;q=0.8
+      //判断URL调用的状态值并处理
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          document.getElementById("test").innerHTML = xmlhttp.responseText;
+        }
+      }
+      xmlhttp.send(params);//设置为发送给服务器数据
+      document.getElementById("oplog").innerHTML = "当前操作时间" + new Date();
+    }
+
+    function S2SGET(urlvalue, params) {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("GET", urlvalue + "?" + params, true);
+      xmlhttp.setRequestHeader("X-Auth-Token", "test-110")
+      xmlhttp.setRequestHeader("contentType", "text/html;charset=uft-8") //指定发送的编码
+      xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");  //设置请求头信息
+      //判断URL调用的状态值并处理
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          document.getElementById("test").innerHTML = xmlhttp.responseText;
+        }
+      }
+      xmlhttp.send();//设置为发送给服务器数据
+      document.getElementById("oplog").innerHTML = "当前操作时间" + new Date();
+    }
+
+    function S2SPUT(urlvalue, params) {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("PUT", urlvalue, true);
+      xmlhttp.setRequestHeader("X-Auth-Token", "test-110")
+      xmlhttp.setRequestHeader("contentType", "text/html;charset=uft-8") //指定发送的编码
+      xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");  //设置请求头信息
+      //判断URL调用的状态值并处理
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          document.getElementById("test").innerHTML = xmlhttp.responseText;
+        }
+      }
+      xmlhttp.send(params);//设置为发送给服务器数据
+      document.getElementById("oplog").innerHTML = "当前操作时间" + new Date();
+    }
+  </script>
+</head>
+<body>
+<div style="z-index: 9999; position: fixed ! important; right: 0px; top: 0px;">
+    <textarea id="oplog"
+              style="width: 100px; height: 200px; font-family: 'Courier New'; font-size: 12px; line-height: 1.5;"></textarea>
+</div>
+<div id="dg" style="z-index: 9999; position: fixed ! important; left: 0px; top: 0px;">
+  <textarea id="test"
+            style="width: 1024px; height: 200px; font-family: 'Courier New'; font-size: 12px; line-height: 1.5;">
+  Hello Minders!
+</textarea>
+</div>
+
+<!-- Table goes in the document BODY -->
+<div style="height: 200px;">head</div>
+<table class="gridtable">
+  <tr>
+    <th>分类</th>
+    <th>请求方法</th>
+    <th>URL值</th>
+    <th>参数值</th>
+    <th>测试按钮</th>
+    <th>能过测试</th>
+  </tr>
+  <script>
+    function listlogin() {
+      S2SPOST("user/login",
+          "userName=13585830008&userPassword=dc483e80a7a0bd9ef71d8cf973673924&device=myPhone");
+    }
+
+    function register() {
+      S2SPOST("user/register",
+          "phoneNumber=17828787812&userPassword=25d55ad283aa400af464c76d713c07ad&verificationCode=977271");
+    }
+  </script>
+  <tr>
+    <td> 1、 用户登录</td>
+    <td>POST</td>
+    <td>user/login</td>
+    <td>
+      PS：除了登陆接口和注册接口不用带 tokenid【X-Auth-Token]】<br>
+      其他POST接口都需要带入。
+      * @param userName 登录名（手机号码）<br>
+      * @param userPassword 登录密码<br>
+      * @param device 登录设备<br>
+    </td>
+    <td>
+      <button type="button" onclick="listlogin()">测试</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <tr>
+    <td> 2、 用户注册</td>
+    <td>POST</td>
+    <td>user/register</td>
+    <td>* @param phoneNumber 手机号码 <br>
+      * @param userPassword 登录密码 <br>
+      * @param verificationCode 极光推送验证码<br>
+      * @param recommendCode 推荐人编码4位字符限制<br>
+    </td>
+    <td>
+      <button type="button" onclick="register()">测试</button>
+    </td>
+    <td>pass</td>
+  </tr>
+
+  <script>
+    function getUserInfo() {
+      S2SPOST("user/getUserInfo", "");
+    }
+  </script>
+  <tr>
+    <td> 3、 用户个人信息 </td>
+    <td>POST</td>
+    <td>user/getUserInfo</td>
+    <td>带上 tokenid 后无需要传入userid</td>
+    <td>
+      <button type="button" onclick="getUserInfo()">测试</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  `
+  <script>
+    function editperson() {
+      S2SPUT("user/edit", "name=张三&birthday=2000-10-02&thirdId=1&sex=1");
+    }
+  </script>
+  <tr>
+    <td> 4、 用户个人信息修改<br>
+      （昵称、性别、生日，微信）<br>
+    </td>
+    <td>PUT</td>
+    <td>user/edit</td>
+    <td>
+      <p>TOKEN<br/>name=newName<br>
+        sex=1<br>
+        birthday=2000-10-02<br>
+        thirdId=Wechat<br></p>
+      <p>注：参数根据实际需要改哪一项才传入，
+        不做修改的不要传入</p>
+      <br>生日的格式需为：yyyy-MM-dd
+    </td>
+    <td>
+      <button type="button" onclick="editperson()">测试</button>
+    </td>
+    <th>pass</th>
+  </tr>
+  <tr>
+    <td> 修改密码
+    </td>
+    <td>PUT</td>
+    <td>user/resetPassword</td>
+    <td>
+      * @param tokenR the token r 为登陆后的 token<br>
+      * @param userPassword the user password<br>
+      * @param verificationCode the verification code<br>
+      * @param phoneNumber the 发送短信的手机 <br>
+      注意：在修改前，手机端需要重新做一次登录，再做密码修改，
+      再用新密码重新登陆。
+    </td>
+    <td>
+      <button type="button" onclick="edit()">测试</button>
+    </td>
+    <th>pass</th>
+  </tr>
+  <script>
+    function forget() {
+//      S2SPOST("user/forgetPassword", "verificationCode=aa&userPassword=123456&phoneNumber=13487672311&currentToken=1");
+      S2SPOST("user/forgetPassword",
+          "currentToken=6E81539AD0037C250A2F1DB270D5F628&phoneNumber=15219502234&userPassword=E10ADC3949BA59ABBE56E057F20F883E&verificationCode=095402");
+    }
+  </script>
+  <tr>
+    <td>找回密码
+    </td>
+    <td>POST</td>
+    <td>user/forgetPassword</td>
+    <td>
+      * @param userPassword the user password <br>
+      * @param verificationCode the verification code<br>
+      * @param phoneNumber the phone number<br>
+      * @param currentToken the current token 发送短信时，生成的 TOKEN<br>
+    </td>
+    <td>
+      <button type="button" onclick="forget()">测试</button>
+    </td>
+    <th>pass</th>
+  </tr>
+  <tr>
+    <td>上传用户头像
+    </td>
+    <td>POST</td>
+    <td>user/uploadHead</td>
+    <td>
+      * @param tokenR the token r<br>
+      使用multipart方式上传文件，限制为JPG/PNG格式，大小不超过800K
+    </td>
+    <td>
+      <button type="button" onclick="edit()">测试</button>
+    </td>
+    <th>pass</th>
+  </tr>
+  <tr>
+    <td> 5、 用户的消费汇总<br>（代金券、会员卡、积分、消息总数）</td>
+    <td>POST</td>
+    <td></td>
+    <td>暂无实现，前端实现。</td>
+    <td></td>
+    <th>no test</th>
+  </tr>
+  <tr>
+    <td> 6、 发送短信（验证码）</td>
+    <td>POST</td>
+    <td></td>
+    <td>暂无实现，前端实现。<br>验证码分到各个<br>需要调用的接口。</td>
+    <td></td>
+    <th>no test</th>
+  </tr>
+  <script>
+    function voucherList() {
+      S2SPOST("order/voucherList", "pageNum=1&status=1");
+    }
+  </script>
+  <tr>
+    <td> 7、 代金券订单列表</td>
+    <td>POST</td>
+    <td>order/voucherList</td>
+    <td>
+      TOKEN<br>
+      * @param pageNum 分页序号<br>
+      * @param status '订单状态 1，待付款 ，2，已付款 ， 3，已经取消 '
+      pageNum=1&amp;<br>status=1，不需要区分状态则status不需要传值，多个状态用英文逗号间隔，如 1,3
+    </td>
+    <td>
+      <button type="button" onclick="voucherList()">测试</button>
+    </td>
+    <td>pass</td>
+  </tr>
+
+  <script>
+    function vipCardList() {
+      S2SPOST("order/vipCardList", "pageNum=1&status=1");
+    }
+  </script>
+  <tr>
+    <td> 8、 会员卡订单列表</td>
+    <td>POST</td>
+    <td>order/vipCardList</td>
+    <td>
+      TOKEN<br>
+      userId=1&amp;pageNum=1&amp;<br>
+      status=1，不需要区分状态则status不需要传值，多个状态用英文逗号间隔，如 1,3
+    </td>
+    <td>
+      <button type="button" onclick="vipCardList()">测试</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <script>
+    function consumeList() {
+      S2SPOST("order/consumeList", "pageNum=1&status=1");
+    }
+  </script>
+  <tr>
+    <td> 9、 优惠买单记录列表</td>
+    <td>POST</td>
+    <td>order/consumeList</td>
+    <td>TOKEN<br>
+      userId=1&amp;pageNum=1&amp;<br>
+      status=1，不需要区分状态则status不需要传值，多个状态用英文逗号间隔，如 1,3
+    </td>
+    <td>
+      <button type="button" onclick="consumeList()">测试</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <script>
+    function more() {
+      S2SPOST("goods/more", "excludeId=2&vendorId=1&pageNum=1");
+    }
+  </script>
+  <tr>
+    <td> 10、 取单个商家的<br>其它优惠（更多优惠）</td>
+    <td>POST</td>
+    <td>goods/more</td>
+    <td>TOKEN<br/>excludeId=2&amp;vendorId=1&amp;<br>pageNum=1，excludeId：要排除的商品id</td>
+    <td>
+      <button type="button" onclick="more()">测试</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <script>
+    function gooddetail() {
+      S2SPOST("goods/detail", "id=13");
+    }
+  </script>
+  <tr>
+    <td> 10.1 单个商品详情</td>
+    <td>POST</td>
+    <td>goods/detail</td>
+    <td>TOKEN<br/>id：商品id</td>
+    <td>
+      <button type="button" onclick="gooddetail()">测试</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <script>
+    function addGoodsOrder() {
+      S2SPOST("order/addGoodsOrder", "goodsId=1&count=2&money=576");
+    }
+  </script>
+  <tr>
+    <td> 11.1、 提交商品订单<br>（代金券、VIP会员卡）</td>
+    <td>POST</td>
+    <td>order/addGoodsOrder</td>
+    <td>TOKEN<br>
+      goodsId=1&amp;<br>count=2&amp;money=576
+    </td>
+    <td>
+      <button type="button" onclick="addGoodsOrder()">测试</button>
+    </td>
+    <th>pass|插入成功后返回订单号</th>
+  </tr>
+  <script>
+    function addConsumeOrder() {
+      S2SPOST("order/addConsumeOrder", "data=" + document.getElementById("addconsumdata").value);
+    }
+  </script>
+  <tr>
+    <td> 11.2、 提交消费订单</td>
+    <td>POST</td>
+    <td>order/addConsumeOrder</td>
+    <td>TOKEN<br>data<br>
+      data 为json格式的字符串，内容如下：<br>
+      { "vendorId": 1,<br>
+      "totalAmount": 93,<br>
+      "vipAccount": 300,<br>
+      "notDiscount": 200,<br>
+      "cash": 600,<br>
+      "discount": 80,<br>
+      "cardIds": [2,3] }。<br/>
+      vipAccount:会员卡支付的金额，没有则需要设置0；<br/>
+      notDiscount:不参与优惠的金额，没有则需要设置0;<br/>
+      cash:支付的现金金额，没有则需要设置为0；<br/>
+      cardIds:用来支付的优惠卡id,不使用优惠卡则留空值
+      传入用户数据： <input type="text" id="addconsumdata"
+                     value='{"vendorId": 82,"totalAmount": 100.00,"vipAccount":0,"notDiscount": 20,"cash": 80,"discount": 100,"cardIds": [320]}'
+                     style="width: 100px; "></input><br>
+    </td>
+    <td>
+      <button type="button" onclick="addConsumeOrder()">提交消费定单</button>
+    </td>
+    <th>pass|插入成功后返回订单号</th>
+  </tr>
+  <script>
+    function payForGoods() {
+      S2SPOST("order/payForGoods", "orderId=2&payMethod=2&payMoney=5000&payId=xxdd12321jkslfei");
+    }
+  </script>
+  <script>
+    function prepay() {
+      S2SPOST("order/prepay", "orderId=80&payMethod=1&payMoney=888");
+    }
+  </script>
+
+  <tr>
+    <td> 12、 支付订单</td>
+    <td>POST</td>
+    <td>order/prepay</td>
+    <td>TOKEN<br>orderId=1&amp;payType=1<br>
+      payType=1:支付宝，payType=2：微信<br>
+      请求成功后会返回订单信息，相应的支付信息存于Prepay_info字段；
+    </td>
+    <td>
+      <button type="button" onclick="prepay()">测试</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <script>
+    function payForConsume() {
+      S2SPOST("order/payForConsume",
+          "data={'userId': 1,'orderId': 93,'payMethod': 1,'cash':'600', " +
+          "'payId':'1234567560','vipAccount':300,'notDiscount':200," +
+          "'vendorDiscount': 0.8,'cardIds': [2,3]}");
+
+    }
+  </script>
+  <tr>
+    <td> 取消订单</td>
+    <td>POST</td>
+    <td>order/cancel</td>
+    <td>TOKEN<br>
+      orderId
+    </td>
+    <td>
+
+    </td>
+    <th></th>
+  </tr>
+  <script>
+    function voucherDetail() {
+      S2SPOST("order/voucherDetail", "id=3");
+    }
+  </script>
+  <tr>
+    <td> 13、 单个代金券订单详情</td>
+    <td>POST</td>
+    <td>order/voucherDetail</td>
+    <td>TOKEN<br>id=3</td>
+    <td>
+      <button type="button" onclick="voucherDetail()">测试</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <script>
+    function vipCardDetail() {
+      S2SPOST("order/voucherDetail", "id=2");
+    }
+  </script>
+  <tr>
+    <td> 14、 单个会员卡订单详情</td>
+    <td>POST</td>
+    <td>order/vipCardDetail</td>
+    <td>TOKEN<br>id=2</td>
+    <td>
+      <button type="button" onclick="vipCardDetail()">测试</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <script>
+    function consumeDetail() {
+      S2SPOST("order/consumeDetail", "id=1");
+    }
+  </script>
+  <tr>
+    <td> 15、 单个优惠买单记录详情</td>
+    <td>POST</td>
+    <td>order/consumeDetail</td>
+    <td>TOKEN<br>id=1</td>
+    <td>
+      <button type="button" onclick="consumeDetail()">测试</button>
+    </td>
+    <td>pass</td>
+  </tr>
+
+  <script>
+    function cardsused(type, mod) {
+      S2SPOST("cards/used", "type=" + type + "&mode=" + mod + "&pageNum=1");
+    }
+  </script>
+  <tr>
+    <td> 16、 全部代金券消费明细</td>
+    <td>POST</td>
+    <td>cards/used</td>
+    <td>
+      * 用户 VIP 或 代金券 消费明细.
+      *
+      * @param tokenR the token r <BR>
+      * @param type the type 1，VIP 会员卡， 2，门店代金券 3，通用代金券<BR>
+      * @param mode the mode 0，充值 1，消费<BR>
+      * @param pageNum the page num<BR>
+      type=2,mode=0<BR>
+      type=1,mode=0 17、 全部会员卡购买（充值）明细<BR>
+      type=1,mode=1 18、 全部会员卡消费明细 <BR>
+    </td>
+    <td>
+      <button type="button" onclick="cardsused(2,0)">代金券 消费明细</button>
+      <BR>
+      <button type="button" onclick="cardsused(1,0)">会员卡购买（充值）明细</button>
+      <BR>
+      <button type="button" onclick="cardsused(1,1)">会员卡消费明细</button>
+      <BR>
+    </td>
+    <th>no test</th>
+  </tr>
+
+  <tr>
+    <td> 19、 单笔买单详情</td>
+    <td>POST</td>
+    <td></td>
+    <td></td>
+    <td>TOKEN<br></td>
+    <th>no test</th>
+  </tr>
+  <tr>
+    <td> 20、 全部订单列表</td>
+    <td>POST</td>
+    <td>order/allOrders</td>
+    <td>TOKEN<br>pageNum=1&amp;<br>status=1，不需要区分状态则status不需要传值，多个状态用英文逗号间隔，如 1,3</td>
+    <td></td>
+    <th>no test</th>
+  </tr>
+  <tr>
+    <td> 21、 近期订单列表(近3个月)</td>
+    <td>POST</td>
+    <td>order/recentOrders</td>
+    <td>TOKEN<br>pageNum=1&amp;<br>status=1，不需要区分状态则status不需要传值，多个状态用英文逗号间隔，如 1,3</td>
+    <td></td>
+    <th>no test</th>
+  </tr>
+
+  <script>
+    function listMessage() {
+      S2SPOST("message/list", "type=1");
+    }
+
+    function listMessageSingle() {
+      S2SPOST("message/detail", "id=1");
+    }
+  </script>
+  <tr>
+    <td>22、 消息列表（卡券、普通通知提醒）<br>还差后台推送功能实现
+    </td>
+    <td>POST</td>
+    <td>message/list</td>
+    <td>TOKEN<br>type=1</td>
+    <td>
+      <button type="button" onclick="listMessage()">消息中心 BY 列表</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>POST</td>
+    <td>message/detail</td>
+    <td>TOKEN<br>id=1</td>
+    <td>
+      <button type="button" onclick="listMessageSingle()">消息中心 BY 单条细情</button>
+    </td>
+    <td>pass</td>
+  </tr>
+
+
+  <script>
+    function listCollection(t1) {
+      S2SPOST("collection/list", "userid=1&type=" + t1);
+    }
+
+    function listCollectionSingle() {
+      S2SPOST("collection/detail", "id=1")
+    }
+
+    function addCollection() {
+      S2SPOST("collection/add", "userid=1&type=1&objectid=1");
+    }
+
+  </script>
+  <tr>
+    <td>23 我的收藏</td>
+    <td>POST</td>
+    <td>collection/list</td>
+    <td>TOKEN<br>`type` '收藏类型 1为商铺，2为商品',</td>
+    <td>
+      <button type="button" onclick="listCollection(2)">我的收藏 BY 商品</button>
+      <br>
+      <button type="button" onclick="listCollection(1)">我的收藏 BY 商铺</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>POST</td>
+    <td>collection</td>
+    <td>TOKEN<br>detail?id=1</td>
+    <td>
+      <button type="button" onclick="listCollectionSingle()">我的收藏 BY 单条细情</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <tr>
+    <td>24 加入/移除收藏</td>
+    <td>POST</td>
+    <td>collection/toggle</td>
+    <td>TOKEN<br>type=1&objectid=1 ，商家 type=1,商品 type=2</td>
+    <td>
+      &nbsp;
+    </td>
+    <td>pass</td>
+  </tr>
+
+  <script>
+    function listVip() {
+      S2SPOST("vip/list", "userid=1");
+    }
+
+    function listVipSingle() {
+      S2SPOST("vip/detail", "id=1");
+    }
+
+  </script>
+
+  <tr>
+    <td>25 我的会员卡帐户</td>
+    <td>POST</td>
+    <td>vip/list</td>
+    <td>TOKEN<br>
+      vendorid:商家id<br>
+      pageNum:页码
+    </td>
+    <td>
+      <button type="button" onclick="listVip()">会员卡帐户 BY 列表</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>POST</td>
+    <td>vip/detail</td>
+    <td>TOKEN<br>id=1</td>
+    <td>
+      <button type="button" onclick="listVipSingle()">会员卡帐户 BY 单条细情</button>
+      <button type="button" onclick="alert('前端不支持更新')">更新会员卡帐户余额</button>
+    </td>
+    <td>pass</td>
+  </tr>
+
+  <script>
+    function listcard() {
+      S2SPOST("cards/list", "s=1");
+    }
+  </script>
+  <tr>
+    <td>26 我的代金券</td>
+    <td>POST</td>
+    <td>cards/list</td>
+    <td>TOKEN<br>
+      * @param t the type<br>
+      * @param s the status<br>
+      * @param v the vendorId<br>
+      * @param pageNum the page num
+    </td>
+    <td>
+      <button type="button" onclick="listcard()">卡券 BY 列表</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <script>
+    function listcardSingle() {
+      S2SPOST("cards/detail", "id=1");
+    }
+  </script>
+  <tr>
+    <td></td>
+    <td>POST</td>
+    <td>cards/detail</td>
+    <td>TOKEN<br>id=1</td>
+    <td>
+      <button type="button" onclick="listcardSingle()">卡券 BY 单条细情</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <script>
+    function listofvendor() {
+      S2SPOST("cards/listofvendor", "v=" + document.getElementById("lvid").value);
+    }
+  </script>
+  <tr>
+    <td></td>
+    <td>POST</td>
+    <td>cards/listofvendor <br>
+      填入商户号： <input type="text" id="lvid" value="31" style="width: 100px; "></input><br>
+
+    </td>
+    <td>
+      * 当前用户 当前店铺 可使用的代金券 <br>
+      * @param v the v 商户ID <br>
+      * @param pageNum the page num 分页数据<br>
+    </td>
+    <td>
+      <button type="button" onclick="listofvendor()">获取列表</button>
+    </td>
+    <td>pass</td>
+  </tr>
+
+
+  <script>
+    function listofvoucherdetails() {
+      S2SPOST("cards/voucher/details", "vid=&" + "status=2,1");
+    }
+  </script>
+  <tr>
+    <td></td>
+    <td>POST</td>
+    <td>cards/voucher/details <br>
+      填入商户号： <input type="text" id="llvid" value="31" style="width: 100px; "></input><br>
+    </td>
+    <td>
+      * 个人 代金券 明细查询. b <br>
+      *<br>
+      * 场景一：个人的 所有已经使用代金券明细： status=2,vid=null <br>
+      * 场景二：个人的 X 商家 所有已经使用代金券明细： status=2,vid=X<br>
+      * 场景三：个人的 所有可用代金券明细： status=1,vid=null<br>
+      * 场景四：个人的 X 商家 所有可用代金券明细： status=1,vid=X<br>
+      * <br>
+      * w.b.l 2018.4.2 <br>
+      *<br>
+      * @param tokenR the token r<br>
+      * @param status `status` 代金券状态, null时为所有状态,'状态 ,1 待使用 , 2 已使用, 3 申请售后/已经取消 , 4 已失效,
+      * 5，用来表示锁定的状态', w.b.l 2018.5.10 PS ：状态支持多个查询,以「,」分开。<br>
+      * @param vid 商户 ID 为 null 时，表示所有商户。<br>
+      * @param pageNum the page num<br>
+      * @return the object<br>
+      * @throws Exception the exception<br>
+    </td>
+    <td>
+      <button type="button" onclick="listofvoucherdetails()">获取列表</button>
+    </td>
+    <td>pass</td>
+  </tr>
+
+  <script>
+    function listofvoucherorders() {
+      S2SPOST("cards/voucher/byorder", "oid=" + document.getElementById("lloid").value);
+    }
+  </script>
+  <tr>
+    <td></td>
+    <td>POST</td>
+    <td>cards/voucher/byorder <br>
+      填入订单号： <input type="text" id="lloid" value="175" style="width: 100px; "></input><br>
+    </td>
+    <td>
+      <br>* 根据订单号查询 赠送代金券.
+      <br>*
+      <br>* w.b.l 2018.4.20
+      <br>*
+      <br>* @param tokenR the token r 用户凭证
+      <br>* @param oid 订单号 ID。
+      <br>* @param pageNum the page num 分页
+      <br>* @return the object
+      <br>* @throws Exception the exception
+    </td>
+    <td>
+      <button type="button" onclick="listofvoucherorders()">获取列表</button>
+    </td>
+    <td>pass</td>
+  </tr>
+
+
+  <script>
+    function listPoints() {
+      S2SPOST("point/list", "uid=1");
+    }
+  </script>
+  <tr>
+    <td> 27、 我的积分明细</td>
+    <td>POST</td>
+    <td>point/list</td>
+    <td>TOKEN<br></td>
+    <td>
+      <button type="button" onclick="listPoints()"> 积分明细 BY 用户ID</button>
+    </td>
+    <td>pass</td>
+  </tr>
+
+  <script>
+    function version() {
+      S2SGET("config/version", "")
+    }
+  </script>
+
+  <tr>
+    <td> 28、 APP版本</td>
+    <td>GET</td>
+    <td>config/version</td>
+    <td>
+      返回结果：<br>
+      //旧版本 已经废弃不使用<br>
+      SYSTEM_VERSION = "1.0.2"<br>
+      //旧版本 已经废弃不使用<br>
+      URL = "http://www.anzhi.com/pkg/1f3d_com.md1k.app.youde.html"<br>
+
+      //是否强制更新 0，不强制更新，1，强制更样的<br>
+      upgradeforce<br>
+      //安卓升级 URL 地址<br>
+      upgradeurlandroid<br>
+      //当前安卓版本号 正常情况下 系统版本号=安卓版本号=IOS版本号
+      versionandroid<br>
+      //当前 IOS 版本号<br>
+      versionios<br>
+      //IOS 升级 URL 地址<br>
+      upgradeurlios<br>
+      //服务版本号<br>
+      versionservice<br>
+
+    </td>
+    <td>
+      <button type="button" onclick="version()">系统版本号</button>
+    </td>
+    <td>pass</td>
+  </tr>
+
+
+  <script>
+    function listCity() {
+      S2SGET("city/list", "");
+    }
+
+
+
+  </script>
+  <tr>
+    <td>29、 城市列表</td>
+    <td>GET</td>
+    <td>city/list</td>
+    <td>不用传参数</td>
+    <td>
+      <button type="button" onclick="listCity()">城市信息 BY 列表</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <script>
+    function listCitySingle() {
+      S2SGET("city/detail", "id=1");
+    }
+  </script>
+  <tr>
+    <td></td>
+    <td>GET</td>
+    <td>city/detail</td>
+    <td>id=1</td>
+    <td>
+      <button type="button" onclick="listCitySingle()">城市信息 BY 单条细情</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <script>
+    function recommend() {
+      S2SPOST("vendor/recommend", "cid=1");
+    }
+  </script>
+  <tr>
+    <td> 30、 推荐店铺信息列表</td>
+    <td>POST</td>
+    <td>vendor/recommend</td>
+    <td>
+      * 推荐店铺信息列表.<br>
+      * @param cid 城市 ID<br>
+      * @param pageNum 分页参数 <br>
+    </td>
+    <td>
+      <button type="button" onclick="recommend()">推荐店铺信息列表</button>
+    </td>
+    <td>pass</td>
+  </tr>
+
+  <script>
+    function listCategory(type) {
+      S2SGET("category/list", "type=" + type)
+    }
+
+    function listCategorySingle() {
+      S2SGET("category/detail", "id=1")
+    }
+  </script>
+  <tr>
+    <td>31、 分类（一级、二级）分类信息</td>
+    <td>GET</td>
+    <td>category/list</td>
+    <td>type = 1 （值为1时取所有的， 值为2时分为两层返回）</td>
+    <td>
+      <button type="button" onclick="listCategory(1)">分类信息 BY 所有</button>
+      <br>
+      <button type="button" onclick="listCategory(2)">分类信息 BY 分两层</button>
+
+    </td>
+    <td>pass</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>GET</td>
+    <td>category/detail</td>
+    <td>id=1</td>
+    <td>
+      <button type="button" onclick="listCategorySingle()">分类信息 BY 单条细情</button>
+    </td>
+    <td>pass</td>
+  </tr>
+
+  <script>
+    function listad() {
+      S2SPOST("ad/list", "fn=" + document.getElementById("adlistfn").value+"&cid="+ + document.getElementById("adlistcity").value)
+    }
+  </script>
+  <tr>
+    <td> 32、 广告（）</td>
+    <td>GET</td>
+    <td>ad/list</td>
+    <td>
+      * 获取广告内容 根据位置获取广告<br>
+      *<br>
+      * @param fn 功能代码  1，首页头部广告 2，首页中部广告 3，附近头部广告<br>
+      * @param cid w.b.l 2018.5.18 增加城参数传入<br>
+
+      fn： <input type="text" id="adlistfn" value="2" style="width: 100px; "></input><br>
+      cid： <input type="text" id="adlistcity" value="1" style="width: 100px; "></input><br>
+
+    </td>
+    <td>
+      <button type="button" onclick="listad()">广告 BY 功能码</button>
+    </td>
+    <td>pass</td>
+  </tr>
+
+
+
+  <script>
+    function nearby() {
+      S2SPOST("vendor/nearby", "lg=1.21121&lt=1.7812&cid=1")
+    }
+
+    function detail() {
+      S2SPOST("vendor/detail", "vid=1")
+    }
+
+    function recommend() {
+      S2SPOST("vendor/recommend", "")
+    }
+  </script>
+
+  <tr>
+    <td> 33、 店铺搜索（附近店铺）</td>
+    <td>POST</td>
+    <td>vendor/nearby</td>
+    <td>
+      * List 店铺搜索（附近店铺）.<br>
+      *<br>
+      * @param lg the longitude 经度<br>
+      * @param lt the latitude 纬度<br>
+      * @param distance 距离<br>
+      * @param key 搜索关键字<br>
+      * @param category 分类<br>
+      * @param mininums 最低平均消费<br>
+      * @param maxinums 最高平均消费<br>
+      * @param cid 城市 id<br>
+      * @param orderBy 排序的完整的字符串，例如：md1k_vendor_basic.name asc<br>
+      * @return the return list<br>
+      * @throws Exception the exception<br>
+    </td>
+    <td>
+      <button type="button" onclick="nearby()">附近的商家 BY 位置</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <tr>
+    <td> 34、 单个商家详情</td>
+    <td>POST</td>
+    <td>vendor/detail</td>
+    <td>vid=1</td>
+    <td>
+      <button type="button" onclick="nearby()">单个商家详情 BY ID</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <tr>
+    <td> 35、 商家推荐（店铺特色）</td>
+    <td>GET</td>
+    <td>images/list</td>
+    <td> @param fnCode the fn code <br>
+      @param vendorId the vendor id<br>
+      固定传入 fnCode=2
+    </td>
+    <td>
+
+    </td>
+    <td>pass</td>
+  </tr>
+
+  <script>
+    function listReviews() {
+      S2SPOST("reviews/list", "vid=1");
+    }
+
+    function listReviewsSingle() {
+      S2SPOST("reviews/detail", "id=1");
+    }
+  </script>
+  <tr>
+    <td> 36、 店铺评价列表 OK</td>
+    <td>POST</td>
+    <td>reviews/list</td>
+    <td>vid=1</td>
+    <td>
+      <button type="button" onclick="listReviews()">店铺评价 BY 商家ID</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>POST</td>
+    <td>reviews/detail</td>
+    <td>id=1</td>
+    <td>
+      <button type="button" onclick="listReviewsSingle()">店铺评价 BY ID</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <script>
+    function addReviewsSingle() {
+      var paramsvalue = new FormData();
+//      {u:'陈小风',c:'自动测试-我很喜欢这家餐馆',is:0,uid:1,oid:1,t:1,isimage:2,s:5}
+      paramsvalue.append('u', '陈小风');
+      paramsvalue.append('c', '自动测试-我很喜欢这家餐馆');
+      paramsvalue.append('is', '0');
+      paramsvalue.append('uid', '1');
+      paramsvalue.append('oid', '1');
+      paramsvalue.append('t', '1');
+      paramsvalue.append('isimage', '2');
+      paramsvalue.append('s', '5');
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          document.getElementById("test").innerHTML = xmlhttp.responseText;
+        }
+      }
+      xmlhttp.open("POST", "reviews/add", true);
+      xmlhttp.setRequestHeader("X-Auth-Token", "test-110")
+//      xmlhttp.setDate({u:'陈小风',c:'自动测试-我很喜欢这家餐馆',is:0,uid:1,oid:1,t:1,isimage:2,s:5})
+      xmlhttp.setRequestHeader("Content-type", "application/json");
+      xmlhttp.send({u: '陈小风', c: '自动测试-我很喜欢这家餐馆', is: 0, uid: 1, oid: 1, t: 1, isimage: 2, s: 5});
+    }
+  </script>
+  <tr>
+    <td> 37、 发表评价</td>
+    <td>POST</td>
+    <td>reviews/add
+    </td>
+    <td>TOKEN<br>u='陈小风'<br>&c='自动测试-我很喜欢这家餐馆'<br>&is=0&<br>
+      <br>&oid=1<br>&t=1&<br>isimage=2<br>&s=5<br>
+
+      * 对应传入参数(u,c,is,uid,oid,t,isimage,s) <br/>
+      * String user_name, String content, <br/>
+      * boolean is_approved, Integer user_id, <br/>
+      * Integer object_id, Integer object_type, <br/>
+      * boolean is_contain_images, BigDecimal star_level
+    </td>
+    <td>
+      <button type="button" onclick="addReviewsSingle()">新增加评价</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <script>
+    function addfeedback() {
+      S2SPOST("feedback/add", "c=18098982812112&uid=1&con='整个 APP 的麻颜色看起来很漂亮啊。'");
+    }
+  </script>
+  <tr>
+    <td> 38、 意见反馈</td>
+    <td>POST</td>
+    <td>feedback/add</td>
+    <td>TOKEN<br>(c,uid,con) 对应参数如下：<br/>
+      *String contact_method, Integer user_id, String content
+    </td>
+    <td>
+      <button type="button" onclick="addfeedback()">意见反馈</button>
+    </td>
+    <td>pass</td>
+  </tr>
+  <tr>
+    <td> 39、 提交申请售后</td>
+    <td>POST</td>
+    <td>aftersales/add</td>
+    <td>*TOKEN<br/>
+      reason '退款原因 或者 编号'<br/>
+      good_id '商品ID标识'<br/>
+      order_id '订单ID'<br/>
+      count '数量 0~99'<br/>
+      money '退款金额 0.00~999999.99'<br/>
+      remark '备注'
+    </td>
+    <td><br></td>
+    <th>no test</th>
+  </tr>
+  <tr>
+    <td> 40、 申请售后详情</td>
+    <td>POST</td>
+    <td>aftersales/detail</td>
+    <td>*TOKEN<br/>
+      id <br/>
+    </td>
+    <td><br></td>
+    <th>no test</th>
+  </tr>
+  <tr>
+    <td> 41、 单个卡券详情<br>（包含商家简易信息、是否收藏）</td>
+    <td>POST</td>
+    <td>goods/detail</td>
+    <td>TOKEN<br>id=1</td>
+    <td>pass</td>
+  </tr>
+  <tr>
+    <td> 42、 商家申请入驻</td>
+    <td>POST</td>
+    <td>apply/add</td>
+    <td>phone_number<br/>name<br/>address<br/>contact_name<br/>contact_code<br/>remark</td>
+    <td><br></td>
+    <th>no test</th>
+  </tr>
+
+  <tr>
+    <td>43、 获取商家图片信息</td>
+    <td>GET</td>
+    <td>images/list</td>
+    <td>* @param fnCode the fn code<br>
+      * @param vendorId the vendor id
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>44、查找商家、商品是否被用户收藏</td>
+    <td>POST</td>
+    <td>collection/find</td>
+    <td>TOKEN<br>
+      * @param type the type，vendor =1,goods=2<br>
+      * @param id the id ,vendor or goods id
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+</body>
+</html>

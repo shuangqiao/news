@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>YOUDE TEST PAGE</title>
+	<!-- CSS goes in the document HEAD or added to your external stylesheet -->
+	<style type="text/css">
+		table.gridtable {
+			font-family: verdana, arial, sans-serif;
+			font-size: 11px;
+			color: #333333;
+			border-width: 1px;
+			border-color: #666666;
+			border-collapse: collapse;
+		}
+
+		table.gridtable th {
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #666666;
+			background-color: #dedede;
+		}
+
+		table.gridtable td {
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #666666;
+			background-color: #ffffff;
+		}
+	</style>
+
+	<script>
+    function S2SPOST(urlvalue, params) {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("POST", urlvalue, true);
+      xmlhttp.setRequestHeader("X-Auth-Token", "test-110")
+      //xmlhttp.setRequestHeader("cache-control", "no-cache");
+      xmlhttp.setRequestHeader("contentType", "text/html;charset=uft-8") //指定发送的编码
+      //var parm = "act=" + act + "&cityname=" + cityname + "&antique=" + antique;//构造URL参数
+      xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");  //设置请求头信息
+      //判断URL调用的状态值并处理
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          document.getElementById("test").innerHTML = xmlhttp.responseText;
+        }
+      }
+      xmlhttp.send(params);//设置为发送给服务器数据
+      document.getElementById("oplog").innerHTML = "当前操作时间" + new Date();
+    }
+
+    function S2SGET(urlvalue, params) {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("GET", urlvalue + "?" + params, true);
+      xmlhttp.setRequestHeader("X-Auth-Token", "test-110")
+      xmlhttp.setRequestHeader("contentType", "text/html;charset=uft-8") //指定发送的编码
+      xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");  //设置请求头信息
+      //判断URL调用的状态值并处理
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          document.getElementById("test").innerHTML = xmlhttp.responseText;
+        }
+      }
+      xmlhttp.send();//设置为发送给服务器数据
+      document.getElementById("oplog").innerHTML = "当前操作时间" + new Date();
+    }
+
+    function S2SPUT(urlvalue, params) {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("PUT", urlvalue, true);
+      xmlhttp.setRequestHeader("X-Auth-Token", "test-110")
+      xmlhttp.setRequestHeader("contentType", "text/html;charset=uft-8") //指定发送的编码
+      xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");  //设置请求头信息
+      //判断URL调用的状态值并处理
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          document.getElementById("test").innerHTML = xmlhttp.responseText;
+        }
+      }
+      xmlhttp.send(params);//设置为发送给服务器数据
+      document.getElementById("oplog").innerHTML = "当前操作时间" + new Date();
+    }
+	</script>
+</head>
+<body>
+<div id="dg" style="z-index: 9999; position: fixed ! important; left: 0px; top: 0px;">
+  <textarea id="test"
+						style="width: 1024px; height: 200px; font-family: 'Courier New'; font-size: 12px; line-height: 1.5;">
+  Hello Minders!
+</textarea>
+</div>
+
+<!-- Table goes in the document BODY -->
+<div style="height: 200px;">head</div>
+<table class="gridtable">
+	<tr>
+		<th>分类</th>
+		<th>URL值</th>
+		<th>参数值</th>
+		<th>测试按钮</th>
+	</tr>
+
+	<script>
+    function updatetestuser() {
+      S2SPOST("t/updatetestuser", "userid="+ document.getElementById("userid").value);
+    }
+	</script>
+	<tr>
+		<td>增加测试用户 110
+		</td>
+		<td> </td>
+		<td>填入用户号： <input type="text" id="userid" value="245" style="width: 100px; "></input><br></td>
+		<td>
+			<button type="button" onclick="updatetestuser()">测试</button>
+		</td>
+	</tr>
+
+	<script>
+    function testmethod() {
+      S2SPOST("t/mock/notify", "oid="+ document.getElementById("oid").value+"&ptype="+document.getElementById("ptype").value);
+    }
+	</script>
+	<tr>
+		<td>完成订单
+		</td>
+		<td> </td>
+		<td>填入订单号： <input type="text" id="oid" value="418" style="width: 100px; "></input><br>
+			填入选择支付方式（1表示支付宝，2表示微信）： <input type="text" id="ptype" value="1" style="width: 100px; "></input>
+		</td>
+		<td>
+			<button type="button" onclick="testmethod()">完成订单</button>
+		</td>
+	</tr>
+
+
+</table>
+<div class="control-group">
+	<label class="control-label" style="color: #828282;">图片文件：</label>
+	<span style="color:red; margin-left: 18px;">*</span>&nbsp;&nbsp;
+	<input type="file" name="file" id="file" style="display: none;"  onchange="preview(this,this.value)" />
+	<input style="width: 150px; height: 26px;" id="imgName" name="ye" style="color: green; border: 1px solid green;" />
+	<input type=button value="选择物料" onclick="file.click()" style="width: 75px; margin-left:8px;" />
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	<button onclick="upload(0)" style="width: 75px;">上传物料</button><button onclick="upload(1)" style="width: 75px;">上传物料</button>
+	<span style="margin-left: 108px;" id="showData"></span>
+</div>
+<span id="preview"></span>
+<script>
+    function preview(file,v) {
+        document.getElementById("imgName").value = v;
+        var prevDiv = document.getElementById('preview');
+        if (file.files && file.files[0])
+        {
+            var reader = new FileReader();
+            reader.onload = function(evt){
+                prevDiv.innerHTML = '<img style="max-height: 500px;max-width: 300px;" src="' + evt.target.result + '" />';
+            }
+            reader.readAsDataURL(file.files[0]);
+        }
+        else
+        {
+            prevDiv.innerHTML = '<div class="img"  style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src=\'' + file.value + '\'"></div>';
+        }
+    }
+    var xhr;
+    function upload(a){
+        var fileObj = document.getElementById("file").files[0];
+        var fileReceive = "";
+        if (a == 0){
+            fileReceive = 'http://172.16.16.234:26005/vendor/upload';
+		} else if (a == 1) {
+            fileReceive = '/apiv35/upload/apply';
+		}
+
+        // FormData 对象
+        var form = new FormData();
+        form.append("author", "hooyes");                        // 可以增加表单数据
+        form.append("file", fileObj);                           // 文件对象
+        // XMLHttpRequest 对象
+        xhr = new XMLHttpRequest();
+        //注册回调函数
+        xhr.onreadystatechange=callback;
+        xhr.open("post", fileReceive, true);
+        xhr.onload = function () {
+        };
+        xhr.send(form);
+    }
+    function callback() {
+        //接收响应数据
+        //判断对象状态是否交互完成，如果为4则交互完成
+        if(xhr.readyState == 4) {
+            //判断对象状态是否交互成功,如果成功则为200
+            if(xhr.status == 200) {
+                //接收数据,得到服务器输出的纯文本数据
+                var responseData = xhr.responseText;
+                //得到div的节点将数据显示在div上
+                if(responseData==""||responseData==null){
+                    responseData = "上传失败，请重新上传！";
+                }else{
+                    document.getElementById("fileName").innerHTML = responseData;
+                    responseData = "<br>图片&nbsp;<font color='blue'>"+responseData+"</font>&nbsp;上传成功！";
+                    document.getElementById("showData").innerHTML = responseData;
+                }
+
+            }
+        }
+    }
+</script>
+</body>
+</html>
