@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.md1k.api.dao.IPRecordDao">
+  <resultMap id="BaseResultMap" type="com.md1k.api.pojo.IPRecord">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="region" jdbcType="VARCHAR" property="region" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="country_id" jdbcType="VARCHAR" property="countryId" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, country, area, region, city, country_id, created_time, updated_time
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from md1k_cities
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert">
+    	INSERT INTO qing_ip_record (id, country, area, region,city,country_id,created_time,updated_time)
+		VALUES (#{id}, #{country}, #{area}, #{region},city,country_id,now(),now())
+  </insert>
+</mapper>

@@ -1,19 +1,18 @@
-package com.md1k.api.config;
+package com.md1k.api.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class MyInterceptor implements HandlerInterceptor {
-    private final static Logger logger = LoggerFactory.getLogger(MyInterceptor.class);
-
-    @Resource
-    private IPTask ipTask;
+/**
+ * Created by IntelliJ IDEA.
+ * Author: shuangqiao
+ * Date: 2019/1/3  17:43
+ * Descript:
+ */
+public class InterceptorConfig implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -27,18 +26,7 @@ public class MyInterceptor implements HandlerInterceptor {
         if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getRemoteAddr();
         }
-        Integer count = IPTask.IPS.get(ip);
-        if (count == null){
-            IPTask.IPS.put(ip,1);
-            ipTask.commissionService(ip);
-            return true;
-        }
-        if (count > 300){
-            response.setStatus(403);
-            return false;
-        }else {
-            IPTask.IPS.put(ip,count + 1);
-        }
+
         return true;
     }
 
