@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 import static com.md1k.api.config.LoadListTask.*;
@@ -23,8 +25,8 @@ public class ArticleController {
 	@Resource
 	private IArticleService iarticleService;
 
-	@RequestMapping(value="/")
-	public String getQing(Model model){
+	@RequestMapping(value="/",method = RequestMethod.POST)
+	public String getQing(Model model, HttpServletRequest request){
 		model.addAttribute("WOMAN_LIST",WOMAN_LIST);
 		model.addAttribute("MAN_LIST",MAN_LIST);
 		model.addAttribute("SEX_LIST",SEX_LIST);
@@ -34,25 +36,32 @@ public class ArticleController {
 		model.addAttribute("WEEK_LIST",WEEK_LIST);
 		model.addAttribute("YOUNG_LIST",YOUNG_LIST);
 		model.addAttribute("HISTORY_LIST",HISTORY_LIST);
-		return "/home";
+		if (request.getHeader("User-Agent").toLowerCase().contains("windows")) {
+			return "/home";
+		}else {
+			return "/app/home";
+		}
 	}
 
 	//文章列表页
-	@RequestMapping("/list/{categoryId}/{currentPage}")
-	public String list(Model model, @PathVariable("categoryId") Integer categoryId,@PathVariable("currentPage") Integer currentPage){
+	@RequestMapping(value = "/list/{categoryId}/{currentPage}",method = RequestMethod.POST)
+	public String list(Model model, @PathVariable("categoryId") Integer categoryId,@PathVariable("currentPage") Integer currentPage, HttpServletRequest request){
 		PageInfo<Article> pageInfo = iarticleService.getAllArticle(categoryId,currentPage);
 		if (pageInfo.getList().size()>0){
 			model.addAttribute("categoryName",pageInfo.getList().get(0).getCategoryName());
 		}
-
 		model.addAttribute("range",RANGE_LIST);
 		model.addAttribute("pageInfo", pageInfo);
-		return "/list";
+		if (request.getHeader("User-Agent").toLowerCase().contains("windows")) {
+			return "/list";
+		}else {
+			return "/app/list";
+		}
 	}
 
 	//文章详情页
-	@RequestMapping("/detail/{id}")
-	public String essayDetail(Model model, @PathVariable("id") Integer id){
+	@RequestMapping(value = "/detail/{id}",method = RequestMethod.POST)
+	public String essayDetail(Model model, @PathVariable("id") Integer id,HttpServletRequest request){
 		Article article = iarticleService.findById(id);
 		model.addAttribute("article", article);
 
@@ -62,6 +71,10 @@ public class ArticleController {
 		model.addAttribute("lastTitle",lastInfo);
 		Article nextInfo = iarticleService.getNextArticleById(id,categoryId);
 		model.addAttribute("nextTitle",nextInfo);
-		return "/detail";
+		if (request.getHeader("User-Agent").toLowerCase().contains("windows")) {
+			return "/detail";
+		}else {
+			return "/app/detail";
+		}
 	}
 }
