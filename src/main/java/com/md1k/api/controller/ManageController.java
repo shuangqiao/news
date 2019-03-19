@@ -58,20 +58,18 @@ public class ManageController {
     @ResponseBody
     public String checkPasswd(String username,String password)
     {
-        if(!Constants.MANAGE_USERNAME.equals(username))
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHH");
+        String dateStr = sdf.format(date);
+        String d =  dateStr.substring(dateStr.length()-2);
+        if(!Constants.MANAGE_PASSWD.equals(password))
         {
-            return "username error";
-        }
-        else if(!Constants.MANAGE_PASSWD.equals(password))
-        {
-            Date date = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHH");
-            String dateStr = sdf.format(date);
-            String d =  dateStr.substring(dateStr.length()-2);
             String pwd = dateStr + BigDecimalUtil.mul(new BigDecimal(d),new BigDecimal(2)) + "lsq"+Integer.valueOf(d)+1;
             if (!password.equals(pwd)) {
                 return "password error";
             }
+        }else if(!(Constants.MANAGE_USERNAME+Integer.valueOf(d)+1).equals(username)) {
+            return "username error";
         }
 
         return "redirect:/manage/list";
