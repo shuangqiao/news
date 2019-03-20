@@ -47,12 +47,6 @@
 
   </properties>
   <dependencies>
-    <!--引用项目项目自己定义的 实体类 w.b.l 2018.04.18 start-->
-    <dependency>
-      <groupId>com.md1k.security</groupId>
-      <artifactId>common</artifactId>
-      <version>1.0.0.RELEASE</version>
-    </dependency>
     <!--引用项目项目自己定义的 实体类 w.b.l 2018.04.18 end-->
     <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
     <dependency>
@@ -356,11 +350,6 @@
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
-    <dependency>
-      <groupId>redis.clients</groupId>
-      <artifactId>jedis</artifactId>
-      <version>2.9.0</version>
-    </dependency>
     <!-- protostuff序列化依赖  -->
     <dependency>
       <groupId>com.dyuproject.protostuff</groupId>

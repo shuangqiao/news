@@ -145,47 +145,37 @@ public class ArticleService implements IArticleService {
 		if (article.getCategoryId().equals(Constants.WOMAN)){
 			LoadListTask.WOMAN_LIST = articleDao.findByCategoryId(Constants.WOMAN);
 			for (Article a : LoadListTask.WOMAN_LIST){
-				a.setWords(article.getWords().substring(0,20));
+				a.setWords(article.getWords().substring(0,80)+"...");
 			}
 		}else if (article.getCategoryId().equals(Constants.SEX)){
 			LoadListTask.SEX_LIST = articleDao.findByCategoryId(Constants.SEX);
 			for (Article a :  LoadListTask.SEX_LIST){
-				a.setWords(article.getWords().substring(0,20));
+				a.setWords(article.getWords().substring(0,80)+"...");
 			}
 		}else if (article.getCategoryId().equals(Constants.MAN)){
 			LoadListTask.MAN_LIST = articleDao.findByCategoryId(Constants.MAN);
 			for (Article a :  LoadListTask.MAN_LIST){
-				a.setWords(article.getWords().substring(0,20));
+				a.setWords(article.getWords().substring(0,80)+"...");
 			}
 		}else if (article.getCategoryId().equals(Constants.HEALTH)){
 			LoadListTask.HEALTH_LIST = articleDao.findByCategoryId(Constants.HEALTH);
 			for (Article a :  LoadListTask.HEALTH_LIST){
-				a.setWords(article.getWords().substring(0,20));
+				a.setWords(article.getWords().substring(0,80)+"...");
 			}
 		}else if (article.getCategoryId().equals(Constants.COLD)){
 			LoadListTask.COLD_LIST = articleDao.findByCategoryId(Constants.COLD);
 			for (Article a :  LoadListTask.COLD_LIST){
-				a.setWords(article.getWords().substring(0,20));
-			}
-		}else if (article.getCategoryId().equals(Constants.Physiology)){
-			LoadListTask.Physiology_LIST = articleDao.findByCategoryId(Constants.Physiology);
-			for (Article a :  LoadListTask.Physiology_LIST){
-				a.setWords(article.getWords().substring(0,20));
-			}
-		}else if (article.getCategoryId().equals(Constants.WEEK)){
-			LoadListTask.WEEK_LIST = articleDao.findByCategoryId(Constants.WEEK);
-			for (Article a :  LoadListTask.WEEK_LIST){
-				a.setWords(article.getWords().substring(0,20));
+				a.setWords(article.getWords().substring(0,80)+"...");
 			}
 		}else if (article.getCategoryId().equals(Constants.YOUNG)){
 			LoadListTask.YOUNG_LIST = articleDao.findByCategoryId(Constants.YOUNG);
 			for (Article a :  LoadListTask.YOUNG_LIST){
-				a.setWords(article.getWords().substring(0,20));
+				a.setWords(article.getWords().substring(0,80)+"...");
 			}
 		}else if (article.getCategoryId().equals(Constants.HISTORY)){
 			LoadListTask.HISTORY_LIST = articleDao.findByCategoryId(Constants.HISTORY);
 			for (Article a :  LoadListTask.HISTORY_LIST){
-				a.setWords(article.getWords().substring(0,20));
+				a.setWords(article.getWords().substring(0,80)+"...");
 			}
 		}
 	}

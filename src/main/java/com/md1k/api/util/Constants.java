@@ -34,9 +34,7 @@ public class Constants {
 	public static final Integer SEX = 3;
 	public static final Integer HEALTH = 4;
 	public static final Integer COLD = 5;
-	public static final Integer Physiology = 6;
-	public static final Integer WEEK = 7;
-	public static final Integer YOUNG = 8;
-	public static final Integer HISTORY = 9;
+	public static final Integer YOUNG = 6;
+	public static final Integer HISTORY = 7;
 
 }

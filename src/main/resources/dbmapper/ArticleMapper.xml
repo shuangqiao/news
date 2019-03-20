@@ -18,19 +18,19 @@
 
 	<select id="findById" resultMap="ArticleManage">
 		select a.*,b.name as
-		categoryName from articles a LEFT JOIN category_name b on
+		categoryName from qing_articles a LEFT JOIN category_name b on
 		a.category_id = b.category_id where a.id=#{id} AND a.status='1'
 	</select>
 
 	<select id="getNewArticle" resultMap="ArticleManage">
 		select a.*,b.name as
-		categoryName from articles a LEFT JOIN category_name b on
+		categoryName from qing_articles a LEFT JOIN category_name b on
 		a.category_id = b.category_id WHERE a.status='1' ORDER BY created_time DESC
 		LIMIT 10
 	</select>
 
 	<select id="getAllArticle" resultMap="ArticleManage">
-		select a.*,b.name as categoryName from articles a
+		select a.*,b.name as categoryName from qing_articles a
 		LEFT JOIN category_name b on a.category_id = b.category_id
 		where a.category_id = #{categoryId} AND a.status='1'
 		ORDER BY created_time DESC
@@ -41,11 +41,11 @@
 	</select>
 
 	<select id="getNextArticleById" resultMap="ArticleManage">
-		select * FROM articles WHERE category_id=#{categoryId} AND id>#{id} AND status='1' ORDER BY id ASC LIMIT 1
+		select * FROM qing_articles WHERE category_id=#{categoryId} AND id>#{id} AND status='1' ORDER BY id ASC LIMIT 1
 	</select>
 
 	<select id="getArticleByHits" resultMap="ArticleManage">
-		select id,title from articles WHERE status='1' order by hits DESC limit 10
+		select a.*,c.name as 'categoryName' from qing_articles a left join category_name c on a.category_id=c.category_id WHERE status='1' order by hits DESC limit 10
 	</select>
 
 	<update id="updateHitsById">
@@ -53,12 +53,12 @@
 	</update>
 	
 	<insert id="insertArticle">
-		INSERT INTO articles (title, words, author, category_id,created_time)
+		INSERT INTO qing_articles (title, words, author, category_id,created_time)
 		VALUES (#{title}, #{words}, #{author}, #{categoryId},now())
 	</insert>
 	
 	<update id="updateArticle">
-		UPDATE articles SET 
+		UPDATE qing_articles SET
 		<if test="title != null and title != ''">
 			title = #{title},
 		</if>
@@ -78,12 +78,12 @@
 	</update>
 	
 	<update id="changeStatusById">
-		UPDATE articles SET status = #{status} WHERE id = #{id}
+		UPDATE qing_articles SET status = #{status} WHERE id = #{id}
 	</update>
 
 	<select id="findArticleList" resultMap="ArticleManage">
 		select a.*,b.name as
-		categoryName from articles a LEFT JOIN category_name b on
+		categoryName from qing_articles a LEFT JOIN category_name b on
 		a.category_id = b.category_id WHERE a.status = #{status}
 	</select>
 
@@ -95,12 +95,12 @@
 
 	<select id="findByWords" resultMap="ArticleManage">
 		select a.*,b.name as
-		categoryName from articles a LEFT JOIN category_name b on
+		categoryName from qing_articles a LEFT JOIN category_name b on
 		a.category_id = b.category_id WHERE a.words LIKE CONCAT('%',#{words},'%')
 	</select>
 
 	<select id="find" resultMap="ArticleManage">
-		SELECT * FROM articles
+		SELECT * FROM qing_articles
 		<where> 1=1
 			<if test="id != '' and id != null">
 				and id = #{id}
@@ -121,6 +121,6 @@
 	</select>
 
 	<select id="findByCategoryId" resultMap="ArticleManage">
-		select * from  articles where category_id = #{categoryId} order by created_time DESC limit 10
+		select * from  qing_articles where category_id = #{categoryId} order by created_time DESC limit 10
 	</select>
 </mapper>
