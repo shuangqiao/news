@@ -8,9 +8,7 @@ import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.annotation.Resource;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -41,17 +39,32 @@ public class ReadTxtTask {
         for (File file : list) {
             if (file.getName().endsWith(".txt") && file.getName().contains(dateStr)) {
                 StringBuffer result = new StringBuffer();
+                String title = "";
+                boolean flag = true;
                 try {
-                    BufferedReader br = new BufferedReader(new FileReader(file));//构造一个BufferedReader类来读取文件
+                    InputStreamReader isr = new InputStreamReader(new FileInputStream(file), "GB2312");
+                    BufferedReader br = new BufferedReader(isr);
                     String s = null;
                     while ((s = br.readLine()) != null) {//使用readLine方法，一次读一行
                         result.append(System.lineSeparator() + s);
+                        if (flag){
+                            title = result.toString();
+                            flag = false;
+                        }
                     }
                     br.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 Article article = new Article();
+                article.setAuthor("兰陵笑笑生");
+                article.setCategoryId(Integer.valueOf(file.getName().replaceAll(".txt","").replaceAll(dateStr,"")
+                        .replaceAll("-","")));
+                article.setTitle(title.trim());
+                article.setStatus((char)1);
+                article.setCreatedTime(now);
+                article.setHits(0);
+                articleDao.insertArticle(article);
             }
         }
     }
