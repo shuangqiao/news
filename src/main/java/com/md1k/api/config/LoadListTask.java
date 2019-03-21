@@ -5,6 +5,8 @@ import com.md1k.api.dao.IArticleDao;
 import com.md1k.api.pojo.Article;
 import com.md1k.api.util.Constants;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.Scheduled;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ public class LoadListTask {
     public static List<Article> HISTORY_LIST = new ArrayList<>();
 
     public static List<Article> RANGE_LIST = new ArrayList<>();
+    public static List<Article> RAND_LIST = new ArrayList<>();
 
     @Resource
     private IArticleDao articleDao;
@@ -31,7 +34,7 @@ public class LoadListTask {
     @PostConstruct
     public void initList(){
         try {
-            WOMAN_LIST = articleDao.findByCategoryId(Constants.WOMAN);
+          /*  WOMAN_LIST = articleDao.findByCategoryId(Constants.WOMAN);
             for (Article article : WOMAN_LIST){
                 if (article.getWords().length()>41){
                     article.setWords(article.getWords().substring(0,80)+"...");
@@ -85,15 +88,31 @@ public class LoadListTask {
                     article.setWords(article.getWords().substring(0,80)+"...");
                 }
             }
-
-            RANGE_LIST = articleDao.getArticleByHits();
+*/
+            RANGE_LIST = articleDao.getNewArticle();
             for (Article article : RANGE_LIST){
                 if (article.getWords().length()>41){
                     article.setWords(article.getWords().substring(0,80)+"...");
                 }
             }
+            RAND_LIST = articleDao.getArticleByRand();
+
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    //每20分钟更新一次
+    @Scheduled(cron = "0 */20 * * * ?")
+    public void updateList(){
+        RANGE_LIST.clear();
+        RANGE_LIST = articleDao.getNewArticle();
+        for (Article article : RANGE_LIST){
+            if (article.getWords().length()>41){
+                article.setWords(article.getWords().substring(0,80)+"...");
+            }
+        }
+        RAND_LIST.clear();
+        RAND_LIST = articleDao.getArticleByRand();
     }
 }

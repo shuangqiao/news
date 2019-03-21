@@ -26,7 +26,7 @@
 		select a.*,b.name as
 		categoryName from qing_articles a LEFT JOIN category_name b on
 		a.category_id = b.category_id WHERE a.status='1' ORDER BY created_time DESC
-		LIMIT 10
+		LIMIT 20
 	</select>
 
 	<select id="getAllArticle" resultMap="ArticleManage">
@@ -46,6 +46,11 @@
 
 	<select id="getArticleByHits" resultMap="ArticleManage">
 		select a.*,c.name as 'categoryName' from qing_articles a left join category_name c on a.category_id=c.category_id WHERE status='1' order by hits DESC limit 10
+	</select>
+
+	<select id="getArticleByRand" resultMap="ArticleManage">
+		select a.*,c.name as 'categoryName' from qing_articles a left join category_name c on a.category_id=c.category_id
+		WHERE status='1'  ORDER BY RAND() limit 10
 	</select>
 
 	<update id="updateHitsById">

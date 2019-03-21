@@ -90,4 +90,10 @@ public interface IArticleDao {
 	List<Article> find(Article article);
 
 	List<Article> findByCategoryId(@Param("categoryId") Integer categoryId);
+
+	/**
+	 * 随机列表
+	 * @return
+	 */
+	List<Article> getArticleByRand();
 }
