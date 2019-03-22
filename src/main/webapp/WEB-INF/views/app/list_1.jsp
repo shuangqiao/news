@@ -11,150 +11,352 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>情感夜话</title>
-	<link href="/css/style.css" type="text/css" rel="stylesheet" />
-	<script type="text/javascript" src="/js/banner1.js"></script>
-	<link rel="stylesheet" type="text/css" href="/css/based.css" />
-	<link rel="stylesheet" type="text/css" href="/css/qing_list.css" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link rel="stylesheet" href="/css/app/amazeui.min.css">
+	<link rel="stylesheet" href="/css/app/wap.css">
+	<title>内容页列表页</title>
 </head>
+<body style="background:#ececec">
+<div class="pet_mian" >
+	<div class="pet_head">
+		<header data-am-widget="header"
+				class="am-header am-header-default pet_head_block">
+			<div class="am-header-left am-header-nav ">
+				<a href="#left-link" class="iconfont pet_head_jt_ico">&#xe601;</a>
+			</div>
 
-<body>
-<jsp:include page="header.jsp"/>
-<div class="wrap-sex-list">
-	<div class="m-sex-detail-guid clr posr">
-		<ul class="guid-list">
-            <ul class="guid-list">
-			<li class="guid-list-item"><a href="/" class="guid-list-item-link">情感夜话</a>&gt;</li>
-			<li class="guid-list-item"><a href="/sl/" class="guid-list-item-link">主题分类</a>&gt;</li>
-                <li class="guid-list-item"><a href="#" class="guid-list-item-link">${categoryName}</a>&gt;</li>
-            </ul>
-		</ul>
+			<div class="am-header-right am-header-nav">
+				<a href="javascript:;" class="iconfont pet_head_gd_ico">&#xe600;</a>
+			</div>
+		</header>
 	</div>
-	<div class="m-sex-lists clr">
-		<div class="mod-list">
-			<div class="sex-box">
-				<div class="sex-list">
-					<span class="sex-list-ico"></span>
-					<h3 class="sex-list-tit">${categoryName}</h3>
-				</div>
-				<!-- list1 -->
-				<div class="m-sex-list clr">
-					<ul class="sex-lists clr">
-                        <c:forEach items="${pageInfo.list}" var="list" varStatus="vs">
-						<li class="sex-lists-item">
-							<a target="_blank" href="/detail/${list.id}" title="${list.title}" class="col333">${list.title}</a>
-							<span class="sex-lists-item-date"><fmt:formatDate value="${list.createdTime}" pattern="yyyy-MM-dd"/></span>
-						</li>
-                        </c:forEach>
-						<li style="  list-style-type: none; border-bottom: 1px dashed rgb(205, 205, 205); background: transparent none repeat scroll 0px 0px; height: 20px;" class="sex-lists-item">
-						</li>
-					</ul>
-				</div>
-				<div class="wrap-list-paging">
 
-					<p><span class="current">1</span><a href="list_5487_2.html">2</a><a href="list_5487_3.html">3</a><a href="list_5487_4.html">4</a><a href="list_5487_5.html">5</a> ...&nbsp;&nbsp;<a href="list_5487_45.html">45</a><a href="list_5487_2.html">下一页</a><a href="list_5487_45.html">末页</a></p>
-
-   <%-- <div class="page"><%@include file="page.jsp"%></div>--%>
+	<div class="pet_more_list">
+		<div class="pet_more_list_block">
+			<div class="iconfont pet_more_close">×</div>
+			<div class="pet_more_list_block">
+				<div class="pet_more_list_block_name">
+					<div class="pet_more_list_block_name_title">阅读 Read</div>
+					<a class="pet_more_list_block_line"> <i class="iconfont pet_nav_xinxianshi pet_more_list_block_line_ico">&#xe61e;</i>
+						<div class="pet_more_list_block_line_font">新鲜事</div>
+					</a>
+					<a class="pet_more_list_block_line"> <i class="iconfont pet_nav_zhangzhishi pet_more_list_block_line_ico">&#xe607;</i>
+						<div class="pet_more_list_block_line_font">趣闻</div>
+					</a>
+					<a class="pet_more_list_block_line">
+						<i class="iconfont pet_nav_kantuya pet_more_list_block_line_ico">&#xe62c;</i>
+						<div class="pet_more_list_block_line_font">阅读</div>
+					</a>
+					<a class="pet_more_list_block_line">
+						<i class="iconfont pet_nav_mengzhuanti pet_more_list_block_line_ico">&#xe622;</i>
+						<div class="pet_more_list_block_line_font">专题</div>
+					</a>
+					<a class="pet_more_list_block_line">
+						<i class="iconfont pet_nav_bk pet_more_list_block_line_ico">&#xe629;</i>
+						<div class="pet_more_list_block_line_font">订阅</div>
+					</a>
+					<a class="pet_more_list_block_line">
+						<i class="iconfont pet_nav_wd pet_more_list_block_line_ico">&#xe602;</i>
+						<div class="pet_more_list_block_line_font">专栏</div>
+					</a>
+					<div class="pet_more_list_block_name_title pet_more_list_block_line_height">服务 Service</div>
+					<a class="pet_more_list_block_line">
+						<i class="iconfont pet_nav_xinxianshi pet_more_list_block_line_ico">&#xe61e;</i>
+						<div class="pet_more_list_block_line_font">新鲜事</div>
+					</a>
+					<a class="pet_more_list_block_line">
+						<i class="iconfont pet_nav_zhangzhishi pet_more_list_block_line_ico">&#xe607;</i>
+						<div class="pet_more_list_block_line_font">趣闻</div>
+					</a>
+					<a class="pet_more_list_block_line">
+						<i class="iconfont pet_nav_kantuya pet_more_list_block_line_ico">&#xe62c;</i>
+						<div class="pet_more_list_block_line_font">阅读</div>
+					</a>
+					<a class="pet_more_list_block_line">
+						<i class="iconfont pet_nav_mengzhuanti pet_more_list_block_line_ico">&#xe622;</i>
+						<div class="pet_more_list_block_line_font">专题</div>
+					</a>
+					<a class="pet_more_list_block_line">
+						<i class="iconfont pet_nav_bk pet_more_list_block_line_ico">&#xe629;</i>
+						<div class="pet_more_list_block_line_font">订阅</div>
+					</a>
+					<a class="pet_more_list_block_line">
+						<i class="iconfont pet_nav_wd pet_more_list_block_line_ico">&#xe602;</i>
+						<div class="pet_more_list_block_line_font">专栏</div>
+					</a>
 				</div>
 			</div>
-		</div>
-		<div class="ad">
 
-			<div style="width: 100%;"><ins style="display:none;"></ins></div><script type="text/javascript" src="//1.feihua.com/ry3a1ecf97f6c2fe31db4c3e8da4f73ffa54acde0b36.js"></script>
-		</div>
-		<!-- .友情链接 -->
-		<div class="blogroll m-col-space">
-			<p class="blogroll-txt">友情链接<span>|</span>合作 &nbsp;QQ412796930 :&nbsp;&nbsp;&nbsp;</p>
-			<p class="blogroll-item">
-				<a href="http://www.qiuyi.cn/department/519/index.html" class="blogroll-item-link" target="_blank">嫩肤保湿</a>
-				<a href="http://www.romzhijia.net/phonelist/76" class="blogroll-item-link" target="_blank">世纪美讯手机ROM</a>
-				<a href="http://www.58.com/gdianhouting/" class="blogroll-item-link" target="_blank">G点后庭</a>
-				<a href="http://www.360bzl.com/ask/27/" class="blogroll-item-link" target="_blank">儿科</a>
-				<a href="http://www.dcpfb.com/qspfgm/" class="blogroll-item-link" target="_blank">全身皮肤过敏怎么办</a>
-			</p>
 		</div>
 	</div>
-	<div class="wrap-sex-detail-right clr">
-		<div class="ad top">
-			<iframe frameborder="0" scrolling="no" src="https://boardx.huanqiu.com/smu0/j.html#ec035f619c3646dpu3145753r35963849292899885000t1544541054546(%E5%A4%AB%E5%A6%BB%E4%BF%9D%E5%81%A5%2C%E9%A5%AE%E9%A3%9F%E5%85%BB%E7%94%9F%2C%E4%B8%A4%E6%80%A7%E7%94%9F%E7%90%86)sbuyu5i25xilyv3grcrjgiudi" style="width: 300px; height: 250px; margin: 0px; padding: 0px; border: 0px;"></iframe>            </div>
+
+	<div class="pet_content pet_content_list">
+		<div class="pet_article_like">
+			<div class="pet_content_main pet_article_like_delete">
+				<div data-am-widget="list_news" class="am-list-news am-list-news-default am-no-layout">
+					<div class="am-list-news-bd">
+						<ul class="am-list">
+							<!--缩略图在标题右边-->
+							<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right pet_list_one_block">
+								<div class="pet_list_one_info">
+									<div class="pet_list_one_info_l">
+										<div class="pet_list_one_info_ico"><img src="img/a1.png" alt=""></div>
+										<div class="pet_list_one_info_name">Super invincible 菁 </div>
+									</div>
+									<div class="pet_list_one_info_r">
+										<div class="pet_list_tag pet_list_tag_xxs">新鲜事</div>
+									</div>
+								</div>
+								<div class=" am-u-sm-8 am-list-main pet_list_one_nr">
+									<h3 class="am-list-item-hd pet_list_one_bt"><a href="###" class="">十一长假哪也不去，宅在家里看电影！</a></h3>
+									<div class="am-list-item-text pet_list_one_text">每逢长假，总有那么一群人选择远离人山人海，静静地呆在家，坐在电脑电视前。长时间的工作学习让他们感觉很疲惫，对什么都提不起劲，打开电脑却不知道干什么好…</div>
+
+								</div>
+								<div class="am-u-sm-4 am-list-thumb">
+									<a href="###" class="">
+										<img src="img/q1.jpg" class="pet_list_one_img" alt=""/>
+									</a>
+								</div>
+							</li>
+							<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right pet_list_one_block">
+								<div class="pet_list_one_info">
+									<div class="pet_list_one_info_l">
+										<div class="pet_list_one_info_ico"><img src="img/a6.png" alt=""></div>
+										<div class="pet_list_one_info_name">La Da Dee</div>
+									</div>
+									<div class="pet_list_one_info_r">
+										<div class="pet_list_tag pet_video_tag">视频</div>
+									</div>
+								</div>
+								<div class=" am-u-sm-8 am-list-main pet_list_one_nr">
+									<h3 class="am-list-item-hd pet_list_one_bt"><a href="###" class="">不是说好做彼此的天使吗？连最后一口汉堡也不给我</a></h3>
+									<div class="am-list-item-text pet_list_one_text">国外网友waxiestapple在论坛Reddit贴出爱犬照片，指出“我的狗狗好像瘦了点”“因为我刚刚把最后一口汉堡吃掉”，只见这只哈士奇一脸惨遭背叛的样子，对主人露出相当不可思议的表情。</div>
+
+								</div>
+								<div class="am-u-sm-4 am-list-thumb pet_video_info">
+									<div class="pet_video_info_tag"><i class="iconfont">&#xe62d;</i>03:50</div>
+									<a href="###" class="">
+										<img src="img/q4.jpg" class="pet_list_one_img" alt="我很囧，你保重....晒晒旅行中的那些囧！"/>
+									</a>
+								</div>
+							</li>
+							<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right pet_list_one_block">
+								<div class="pet_list_one_info">
+									<div class="pet_list_one_info_l">
+										<div class="pet_list_one_info_ico"><img src="img/a2.png" alt=""></div>
+										<div class="pet_list_one_info_name">AbsScript</div>
+									</div>
+									<div class="pet_list_one_info_r">
+										<div class="pet_list_tag pet_list_tag_zzs">趣闻</div>
+									</div>
+								</div>
+								<div class=" am-u-sm-8 am-list-main pet_list_one_nr">
+									<h3 class="am-list-item-hd pet_list_one_bt"><a href="###" class="">怦然心动！澳洲大眼宝宝逆天睫毛萌翻全球！</a></h3>
+									<div class="am-list-item-text pet_list_one_text">来自澳大利亚布里斯班的十个月大的萌宝Egypt拥有一双修长的睫毛、清澈的眼眸，可爱的模样让她在社交网站上爆红。</div>
+
+								</div>
+								<div class="am-u-sm-4 am-list-thumb">
+									<a href="###" class="">
+										<img src="img/q5.jpg" class="pet_list_one_img" alt="我很囧，你保重....晒晒旅行中的那些囧！"/>
+									</a>
+								</div>
+							</li>
+
+							<li class="am-g am-list-item-desced pet_list_one_block">
+								<div class="pet_list_one_info">
+									<div class="pet_list_one_info_l">
+										<div class="pet_list_one_info_ico"><img src="img/a3.png" alt=""></div>
+										<div class="pet_list_one_info_name">养了猫的飞飞</div>
+									</div>
+									<div class="pet_list_one_info_r">
+										<div class="pet_list_tag pet_list_tag_stj">阅读</div>
+									</div>
+								</div>
+								<div class=" am-list-main">
+									<h3 class="am-list-item-hd pet_list_one_bt"><a href="###" class="">浣熊孤儿掉到树下，被一家人收养之后……</a></h3>
+									<ul data-am-widget="gallery" class="am-gallery am-avg-sm-3
+  am-avg-md-3 am-avg-lg-3 am-gallery-default pet_list_one_list" >
+										<li>
+											<div class="am-gallery-item">
+												<a href="###" class="">
+													<img src="img/qq1.jpg"  alt="某天 也许会相遇 相遇在这个好地方"/>
+												</a>
+											</div>
+										</li>
+										<li>
+											<div class="am-gallery-item">
+												<a href="###" class="">
+													<img src="img/qq2.jpg"  alt="不要太担心 只因为我相信"/>
+												</a>
+											</div>
+										</li>
+										<li>
+											<div class="am-gallery-item">
+												<a href="###" class="">
+													<img src="img/qq3.jpg"  alt="终会走过这条遥远的道路"/>
+												</a>
+											</div>
+										</li>
+									</ul>
+									<div class="am-list-item-text pet_list_two_text">巴哈马拿骚的居民Rosie Kemp发现一个刚出生的浣熊，掉在了树下。因为找不到小浣熊的妈妈了，Rosie和她的女儿Laura Young决定收养这只小东西，并给她取名“小南瓜”。</div>
+								</div>
+							</li>
+
+							<li class="am-g am-list-item-desced pet_list_one_block">
+								<div class="pet_list_one_info">
+									<div class="pet_list_one_info_tytj"><i class="iconfont pet_nav_kantuya pet_more_list_block_line_ico pet_list_tytj_ico">&#xe607;</i>诺奖得主回忆通知获奖那一刻</div>
+									<div class="pet_list_one_info_r">
+										<div class="pet_list_tag pet_list_tag_kty">图集</div>
+									</div>
+								</div>
+								<div class=" am-list-main">
+									<ul data-am-widget="gallery" class="am-gallery am-avg-sm-3
+  am-avg-md-3 am-avg-lg-3 am-gallery-default pet_list_one_list pet_list_one_tytj" >
+										<li>
+											<div class="am-gallery-item">
+												<a href="###" class="">
+													<img src="img/w1.jpg"  alt="某天 也许会相遇 相遇在这个好地方"/>
+												</a>
+											</div>
+										</li>
+										<li>
+											<div class="am-gallery-item">
+												<a href="###" class="">
+													<img src="img/w2.jpg"  alt="不要太担心 只因为我相信"/>
+												</a>
+											</div>
+										</li>
+										<li>
+											<div class="am-gallery-item">
+												<a href="###" class="">
+													<img src="img/w3.jpg"  alt="终会走过这条遥远的道路"/>
+												</a>
+											</div>
+										</li>
+										<li>
+											<div class="am-gallery-item">
+												<a href="###" class="">
+													<img src="img/w4.jpg"  alt="终会走过这条遥远的道路"/>
+												</a>
+											</div>
+										</li>
+										<li>
+											<div class="am-gallery-item">
+												<a href="###" class="">
+													<img src="img/w5.jpg"  alt="终会走过这条遥远的道路"/>
+												</a>
+											</div>
+										</li>
+										<li>
+											<div class="am-gallery-item">
+												<a href="###" class="">
+													<img src="img/w6.jpg"  alt="终会走过这条遥远的道路"/>
+												</a>
+											</div>
+										</li>
+									</ul>
+							</li>
+
+							<li class="am-g am-list-item-desced pet_list_one_block">
+								<div class="pet_list_one_info">
+									<div class="pet_list_one_info_l">
+										<div class="pet_list_one_info_ico"><img src="img/a4.png" alt=""></div>
+										<div class="pet_list_one_info_name">大兔</div>
+									</div>
+									<div class="pet_list_one_info_r">
+										<div class="pet_list_tag pet_list_tag_zzs">趣闻</div>
+									</div>
+								</div>
+								<div class=" am-list-main">
+									<h3 class="am-list-item-hd pet_list_one_bt"><a href="###" class="">“你的旅行，是什么颜色？” 晒照片，换北欧梦幻极光之旅！</a></h3>
 
 
-		<style>
-			.wrap-sex-detail-right .detail-right-tips .right-tips-lists .right-tips-lists-item .right-tips-lists-num {
-				margin-right: 12px;
-			}
-		</style>
-		<div class="detail-right-tips">
-			<h3 class=" detail-right-tips-tit">
-				<b class=" tips-tit-fb">排行<span class="detail-right-tips-titcol">榜</span></b>
-			</h3>
+									<div class="am-list-item-text pet_list_two_text">狗狗会天天的跟着我们生活在一起，它们的一切都会影响着主人，尤其是狗狗身上散发的味道，会无时无刻的对主人有影响，如果狗狗身体有异味，主人就会用过于香喷喷的洗漱品帮狗狗洗澡，这样不仅对狗狗身体有伤害，还会容易患上皮肤病，其实，我们知道一些小技巧，就会改善狗狗身上存在的味道。</div>
 
-			<ul class="right-tips-lists clr">
-				<c:forEach items="${range}" var="range_list" varStatus="vs">
-				<li class="right-tips-lists-item item-impor">
-					<span class="right-tips-lists-num item-num-impor">${vs.index +1}</span><a href="/detail/${range_list.id}" title="${range_list.title}" target="_blank" class="col333">${range_list.title}</a>
-				</li>
-				</c:forEach>
-			</ul>
-		</div>
-		<div class="ad">
-		<div id="_zu0sdeiywuegzmkj63nxw29" style="width: 100%;"><em style="width:0px;height:0px;text-align:left;"></em><iframe width="300" frameborder="0" height="250" scrolling="no" src="//pos.baidu.com/s?hei=250&amp;wid=300&amp;di=u2871875&amp;ltu=https%3A%2F%2Fsex.fh21.com.cn%2Fsl%2Fxzs%2F&amp;psi=861e59a7e63992656c2234c73e4cc7c0&amp;psr=1920x1080&amp;dai=2&amp;drs=1&amp;pis=-1x-1&amp;tpr=1544541054366&amp;tcn=1544541054&amp;prot=2&amp;cec=UTF-8&amp;cmi=6&amp;ari=2&amp;ccd=24&amp;cfv=0&amp;tlm=1544541054&amp;dc=3&amp;dri=0&amp;par=1920x1040&amp;col=zh-CN&amp;cja=false&amp;ant=0&amp;exps=111000,110000&amp;pss=1903x4054&amp;cdo=-1&amp;ps=563x1151&amp;ltr=https%3A%2F%2Fsex.fh21.com.cn%2Fsl%2F&amp;cpl=4&amp;cce=true&amp;dtm=HTML_POST&amp;ti=%E5%A4%AB%E5%A6%BB%E4%BF%9D%E5%81%A5%2C%E9%A5%AE%E9%A3%9F%E5%85%BB%E7%94%9F%2C%E4%B8%A4%E6%80%A7%E7%94%9F%E7%90%86_%E4%B8%A4%E6%80%A7%E9%A2%91%E9%81%93&amp;dis=0&amp;pcs=1903x955&amp;chi=1"></iframe></div><script type="text/javascript" src="//1.feihua.com/ta3a1ecf97f6c2f03ddb4c3e8da4f73ffa54acde0b36.js"></script>
-		</div>
-		<style>
-			.wrap-sex-detail-right .right-test .test-btn {
-				height: 21px;
-				line-height: 21px;
-				font-size: 12px;
-			}
-		</style>
-		<div class="right-test m-col-space">
-			<h3 class="right-test-tit clr"><a href="http://test.fh21.com.cn/lxzc/" class="right-test-tit-link " target="_blank">热门<b class="right-test-tit-ce">测</b><span class="right-test-tit-shi">试</span></a>
-			</h3>
-			<a href="http://test.fh21.com.cn/lxzc/" target="_blank">
-				<ul class="right-test-tips">
-					<li class="right-test-tips-tag"></li>
-					<li class="right-test-tips-tag"></li>
-					<li class="right-test-tips-tag"></li>
-				</ul>
-			</a>
-			<div class="right-test-contents">
-				<dl class="right-test-content">
-					<a target="blank" href="http://test.fh21.com.cn/lxzc/show_47.html" title="性新鲜感" class="right-test-content-link"><dt><img src="https://sex.fh21.com.cn/templets/default/sex/image/47.jpg"></dt></a>
-					<a target="blank" href="http://test.fh21.com.cn/lxzc/show_47.html" title="性新鲜感" class="right-test-content-link"><dd>性新鲜感测</dd></a>
-				</dl>
-				<dl class="right-test-content">
-					<a target="blank" href="http://test.fh21.com.cn/lxzc/show_151.html" title="如何面对一夜情" class="right-test-content-link"><dt><img src="https://sex.fh21.com.cn/templets/default/sex/image/151.jpg"></dt></a>
-					<a target="blank" href="http://test.fh21.com.cn/lxzc/show_151.html" title="如何面对一夜情" class="right-test-content-link"><dd>如何面对一</dd></a>
-				</dl>
-				<dl class="right-test-content marno">
-					<a target="blank" href="http://test.fh21.com.cn/lxzc/show_169.html" title="性浓度测试" class="right-test-content-link"><dt><img src="https://sex.fh21.com.cn/templets/default/sex/image/169.jpg"></dt></a>
-					<a target="blank" href="http://test.fh21.com.cn/lxzc/show_169.html" title="性浓度测试" class="right-test-content-link"><dd>性浓度测试</dd></a>
-				</dl>
+								</div>
+							</li>
+							<li class="am-g am-list-item-desced pet_list_one_block">
+								<div class="pet_list_one_info">
+									<div class="pet_list_one_info_l">
+										<div class="pet_list_one_info_ico"><img src="img/a5.png" alt=""></div>
+										<div class="pet_list_one_info_name">Hope</div>
+									</div>
+									<div class="pet_list_one_info_r">
+										<div class="pet_list_tag pet_list_tag_mzt">萌专题</div>
+									</div>
+								</div>
+								<div class=" am-list-main">
+									<h3 class="am-list-item-hd pet_list_one_bt"><a href="###" class="">心情不好了，就来看看这只狗！</a></h3>
+									<div class="pet_list_zt_img"><img src="img/c1.png" alt=""></div>
+
+									<div class="am-list-item-text pet_list_two_text">猫咪不像人，猫咪的情绪不会写在脸上，反馈给我们的信息更多的应该是行为上肢体上的，当然从叫声中也会反应一些信息，那么要想“抓住它的心，就一定要抓住它的胃吗？”从它的行为和肢体语言当中我们可以读懂什么呢？</div>
+
+								</div>
+							</li>
+							<li class="am-g am-list-item-desced pet_list_one_block">
+								<div class="pet_article_user_block">
+									<div class="pet_article_user_img">
+										<div class="pet_article_user_shadow"></div>
+										<div class="pet_article_user_title">一周在任意地点工作三天？</div>
+										<img src="img/c2.png" alt=""></div>
+									<div class="pet_article_user_info">
+										<div class="pet_article_user_info_ico"><img src="img/c.png" alt=""></div>SeeYouAgain
+									</div>
+									<div class="am-list-item-text pet_article_user_nr">这是一家帮助客户在亚太地区找到适合的打折酒店的中介机构，在全球设立了9个办事处，老板克里斯蒂安·米施勒宣称要把它打造成世界上最棒的公司。</div>
+								</div>
+							</li>
+
+						</ul>
+					</div>
+
+				</div>
+
 			</div>
-			<a target="blank" href="http://test.fh21.com.cn/lxzc/show_47.html" class="right-test-content-link test-btn">马上自测</a>
-			<a target="blank" href="http://test.fh21.com.cn/lxzc/show_151.html" class="right-test-content-link test-btn">马上自测</a>
-			<a target="blank" href="http://test.fh21.com.cn/lxzc/show_169.html" class="right-test-content-link test-btn">马上自测</a>
-			<p class="right-test-num">
-				<a target="blank" href="http://test.fh21.com.cn/lxzc/show_47.html" class="right-test-num-link">参与
-					<span class="right-test-num-linkclo">1174333</span>人
-				</a>
-				<a target="blank" href="http://test.fh21.com.cn/lxzc/show_151.html" class="right-test-num-link">
-					参与<span class="right-test-num-linkclo">449374</span>人
-				</a>
-				<a target="blank" href="http://test.fh21.com.cn/lxzc/show_169.html" class="right-test-num-link" id="marrno">
-					参与<span class="right-test-num-linkclo">227865</span>人
-				</a>
-			</p>
-		</div>            <div class="ad">
-		<div style=""><div id="hxhtpcgpb"><div><span id="eurlqygep" style="width:0px;height:0px;padding-bottom:0px;"></span><iframe width="300" frameborder="0" height="250" scrolling="no" src="https://pos.baidu.com/s?hei=250&amp;wid=300&amp;di=u2871925&amp;ltu=https%3A%2F%2Fsex.fh21.com.cn%2Fsl%2Fxzs%2F&amp;psi=861e59a7e63992656c2234c73e4cc7c0&amp;ti=%E5%A4%AB%E5%A6%BB%E4%BF%9D%E5%81%A5%2C%E9%A5%AE%E9%A3%9F%E5%85%BB%E7%94%9F%2C%E4%B8%A4%E6%80%A7%E7%94%9F%E7%90%86_%E4%B8%A4%E6%80%A7%E9%A2%91%E9%81%93&amp;tpr=1544541054366&amp;dri=0&amp;dis=0&amp;tcn=1544541054&amp;cpl=4&amp;ant=0&amp;par=1920x1040&amp;drs=1&amp;cja=false&amp;pss=1903x4264&amp;exps=111000,113000,110000&amp;prot=2&amp;cmi=6&amp;cfv=0&amp;pcs=1903x955&amp;ps=1088x1151&amp;dai=4&amp;ari=2&amp;psr=1920x1080&amp;dtm=HTML_POST&amp;pis=-1x-1&amp;ccd=24&amp;chi=1&amp;cec=UTF-8&amp;ltr=https%3A%2F%2Fsex.fh21.com.cn%2Fsl%2F&amp;cdo=-1&amp;col=zh-CN&amp;cce=true&amp;tlm=1544541054&amp;dc=3"></iframe><abbr class="znlrhlcjoqev" style="display:none;margin:0px;"></abbr></div></div></div><script type="text/javascript" src="//1.feihua.com/ra3a1ecf97f6c3f53ddb4c3e8da4f73ffa54acde0b36.js"></script>            </div>
 
-		<div class="ad">
-		<!--<script type="text/javascript" src="//1.feihua.com/wf3a1ecf97f6c3f438db4c3e8da4f73ffa54acde0b36.js"></script>-->
-	</div>
+		</div>
+
+		<div class="pet_article_footer_info">Copyright(c)2015 PetShow All Rights Reserved</div>
 	</div>
 </div>
+<script src="/js/app/jquery.min.js"></script>
+<script src="/js/app/amazeui.min.js"></script>
+<script>
+    $(function(){
+
+        // 动态计算新闻列表文字样式
+        auto_resize();
+        $(window).resize(function() {
+            auto_resize();
+        });
+        $('.am-list-thumb img').load(function(){
+            auto_resize();
+        });
+        $('.pet_article_like li:last-child').css('border','none');
+        function auto_resize(){
+            $('.pet_list_one_nr').height($('.pet_list_one_img').height());
+            // alert($('.pet_list_one_nr').height());
+        }
+        $('.pet_article_user').on('click',function(){
+            if($('.pet_article_user_info_tab').hasClass('pet_article_user_info_tab_show')){
+                $('.pet_article_user_info_tab').removeClass('pet_article_user_info_tab_show').addClass('pet_article_user_info_tab_cloes');
+            }else{
+                $('.pet_article_user_info_tab').removeClass('pet_article_user_info_tab_cloes').addClass('pet_article_user_info_tab_show');
+            }
+        });
+
+        $('.pet_head_gd_ico').on('click',function(){
+            $('.pet_more_list').addClass('pet_more_list_show');
+        });
+        $('.pet_more_close').on('click',function(){
+            $('.pet_more_list').removeClass('pet_more_list_show');
+        });
+    });
+
+</script>
 </body>
 </html>
