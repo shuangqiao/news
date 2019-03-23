@@ -96,4 +96,5 @@ public interface IArticleDao {
 	 * @return
 	 */
 	List<Article> getArticleByRand();
+
 }

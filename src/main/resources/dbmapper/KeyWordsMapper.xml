@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.md1k.api.dao.IKeyWordsDao">
+
+	<resultMap id="KeyManage" type="com.md1k.api.pojo.KeyWord">
+		<result column="id" jdbcType="INTEGER" property="id" />
+		<result column="word" jdbcType="VARCHAR" property="word" />
+	</resultMap>
+
+	<select id="getList" resultMap="KeyManage">
+		select * from qing_key_words
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO qing_key_words (id, word)
+		VALUES (#{id}, #{word})
+	</insert>
+
+</mapper>

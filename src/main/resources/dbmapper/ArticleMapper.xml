@@ -13,7 +13,6 @@
 		<result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
 		<result column="picture" jdbcType="VARCHAR" property="picture" />
 		<result column="category_id" jdbcType="INTEGER" property="categoryId" />
-		<result column="categoryName" jdbcType="VARCHAR" property="categoryName" />
 	</resultMap>
 
 	<select id="findById" resultMap="ArticleManage">
@@ -49,8 +48,12 @@
 	</select>
 
 	<select id="getArticleByRand" resultMap="ArticleManage">
-		select a.*,c.name as 'categoryName' from qing_articles a left join category_name c on a.category_id=c.category_id
+		select id,title,created_time,hits from qing_articles
 		WHERE status='1'  ORDER BY RAND() limit 10
+	</select>
+
+	<select id="getCount" resultType="java.lang.Integer">
+		select count(id) from qing_articles WHERE status='1'
 	</select>
 
 	<update id="updateHitsById">

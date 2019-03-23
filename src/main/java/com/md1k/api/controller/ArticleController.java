@@ -36,10 +36,12 @@ public class ArticleController {
 		model.addAttribute("YOUNG_LIST",YOUNG_LIST);
 		model.addAttribute("HISTORY_LIST",HISTORY_LIST);*/
 		model.addAttribute("RANGE_LIST",RANGE_LIST);
+		model.addAttribute("RAND_LIST",RAND_LIST);
+		model.addAttribute("KEY_WORDS",KEY_WORDS);
 		if (request.getHeader("User-Agent").toLowerCase().contains("windows")) {
 			return "/pc/home";
 		}else {
-			return "/app/home_1";
+			return "/app/home";
 		}
 	}
 
@@ -55,7 +57,7 @@ public class ArticleController {
 		if (request.getHeader("User-Agent").toLowerCase().contains("windows")) {
 			return "/pc/list";
 		}else {
-			return "/app/list_1";
+			return "/app/list";
 		}
 	}
 
@@ -74,7 +76,7 @@ public class ArticleController {
 		if (request.getHeader("User-Agent").toLowerCase().contains("windows")) {
 			return "/pc/detail";
 		}else {
-			return "/app/detail_1";
+			return "/app/detail";
 		}
 	}
 }

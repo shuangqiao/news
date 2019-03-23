@@ -2,7 +2,9 @@ package com.md1k.api.config;
 
 
 import com.md1k.api.dao.IArticleDao;
+import com.md1k.api.dao.IKeyWordsDao;
 import com.md1k.api.pojo.Article;
+import com.md1k.api.pojo.KeyWord;
 import com.md1k.api.util.Constants;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -27,9 +29,12 @@ public class LoadListTask {
 
     public static List<Article> RANGE_LIST = new ArrayList<>();
     public static List<Article> RAND_LIST = new ArrayList<>();
+    public static List<KeyWord> KEY_WORDS = new ArrayList<>();
 
     @Resource
     private IArticleDao articleDao;
+    @Resource
+    private IKeyWordsDao keyWordsDao;
 
     @PostConstruct
     public void initList(){
@@ -96,6 +101,7 @@ public class LoadListTask {
                 }
             }
             RAND_LIST = articleDao.getArticleByRand();
+            KEY_WORDS = keyWordsDao.getList();
 
         }catch (Exception e){
             e.printStackTrace();
@@ -114,5 +120,7 @@ public class LoadListTask {
         }
         RAND_LIST.clear();
         RAND_LIST = articleDao.getArticleByRand();
+        KEY_WORDS.clear();
+        KEY_WORDS = keyWordsDao.getList();
     }
 }
