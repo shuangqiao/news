@@ -15,9 +15,9 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+    <title>欢迎来到 - 情感夜话</title>
+    <meta name="keywords" content="情感，夜话，青春，两性">
+    <meta name="description" content="情感夜话">
     <link rel="stylesheet" type="text/css" href="/css/pc/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pc/nprogress.css">
     <link rel="stylesheet" type="text/css" href="/css/pc/style.css">
@@ -48,32 +48,34 @@
     <script src="/js/pc/nprogress.js"></script>
     <script src="/js/pc/jquery.lazyload.min.js"></script>
     <!--[if gte IE 9]>
-    <script src="/js/pc/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="/js/pc/html5shiv.min.js" type="text/javascript"></script>
     <script src="/js/pc/respond.min.js" type="text/javascript"></script>
     <script src="/js/pc/selectivizr-min.js" type="text/javascript"></script>
+    <script src="/js/pc/bootstrap.min.js"></script>
+    <script src="/js/pc/jquery.ias.js"></script>
+    <script src="/js/pc/scripts.js"></script>
     <![endif]-->
     <!--[if lt IE 9]>
     <script>window.location.href='upgrade-browser.html';</script>
     <![endif]-->
 </head>
-<body class="user-select">
+<body class="user-select" style="background-color: pink">
 <header class="header">
-    <nav class="navbar navbar-default" id="navbar">
+    <nav class="navbar navbar-default" id="navbar" style="background-color: pink">
         <div class="container">
             <div class="header-topbar hidden-xs link-border">
-                <ul class="site-nav topmenu">
+                <%--<ul class="site-nav topmenu">
                     <li><a href="#" >标签云</a></li>
                     <li><a href="#" rel="nofollow" >读者墙</a></li>
                     <li><a href="#" title="RSS订阅" >
                         <i class="fa fa-rss">
                         </i> RSS订阅
                     </a></li>
-                </ul>
+                </ul>--%>
                 情感故事 心灵港湾</div>
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar" aria-expanded="false"> <span class="sr-only"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                <h1 class="logo hvr-bounce-in"><a href="#" title="情感夜话"><img src="/images/pc/201610171329086541.png" alt="情感夜话"></a></h1>
+                <h1 class="logo hvr-bounce-in"><a href="#" title="情感夜话"><%--<img src="/images/pc/201610171329086541.png" alt="情感夜话">--%></a></h1>
             </div>
             <div class="collapse navbar-collapse" id="header-navbar">
                 <form class="navbar-form visible-xs" action="/Search" method="post">
@@ -84,14 +86,13 @@
 		</span> </div>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a data-cont="情感夜话" title="情感夜话" href="/">首页</a></li>
-                    <li><a data-cont="女性健康" title="女性健康" href="/list/1/1">女性健康</a></li>
-                    <li><a data-cont="男性健康" title="男性健康" href="/list/2/1">男性健康</a></li>
-                    <li><a data-cont="两性关系" title="两性关系" href="/list/3/1">两性关系</a></li>
-                    <li><a data-cont="健康生活" title="健康生活" href="/list/4/1" >健康生活</a></li>
-                    <li><a data-cont="冷知识" title="冷知识" href="/list/5/1" >冷知识</a></li>
-                    <li><a data-cont="青春期" title="青春期" href="/list/6/1" >青春期</a></li>
-                    <li><a data-cont="历史上的今天" title="历史上的今天" href="/list/7/1" >历史上的今天</a></li>
+                    <li><a data-cont="情感夜话" target="_blank" title="情感夜话" href="${pageContext.request.contextPath}/">首页</a></li>
+                    <li><a data-cont="情感故事" target="_blank" title="女性健康" href="${pageContext.request.contextPath}/list/1/1">情感故事</a></li>
+                    <li><a data-cont="亲密关系" target="_blank" title="亲密关系" href="${pageContext.request.contextPath}/list/3/1">亲密关系</a></li>
+                    <li><a data-cont="青春期" target="_blank" title="青春期" href="${pageContext.request.contextPath}/list/6/1" >青春期</a></li>
+                    <li><a data-cont="健康生活" target="_blank" title="健康生活" href="${pageContext.request.contextPath}/list/4/1" >健康生活</a></li>
+                    <li><a data-cont="冷知识" target="_blank" title="冷知识" href="${pageContext.request.contextPath}/list/5/1" >冷知识</a></li>
+                    <li><a data-cont="历史上的今天" target="_blank" title="历史上的今天" href="${pageContext.request.contextPath}/list/7/1" >历史上的今天</a></li>
                 </ul>
             </div>
         </div>
@@ -108,14 +109,21 @@
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
                         <a href="#" target="_blank" title="木庄网络博客源码" >
-                            <img src="/images/pc/201610181557196870.jpg" alt="木庄网络博客源码" class="img-responsive"></a>
+                            <img src="${pageContext.request.contextPath}/images/pc/m1.jpg" alt="木庄网络博客源码" class="img-responsive"></a>
                     </div>
                     <div class="item">
                         <a href="#" target="_blank" title="专业网站建设" >
-                            <img src="/images/pc/201610241227558789.jpg" alt="专业网站建设" class="img-responsive"></a>
+                            <img src="${pageContext.request.contextPath}/images/pc/m2.jpg" alt="专业网站建设" class="img-responsive"></a>
                     </div>
+
                 </div>
-                <a class="left carousel-control" href="#focusslide" role="button" data-slide="prev" rel="nofollow"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">上一个</span> </a> <a class="right carousel-control" href="#focusslide" role="button" data-slide="next" rel="nofollow"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">下一个</span> </a> </div>
+                <a class="left carousel-control" href="#focusslide" role="button" data-slide="prev" rel="nofollow">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">上一个</span> </a>
+                <a class="right carousel-control" href="#focusslide" role="button" data-slide="next" rel="nofollow">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">下一个</span> </a>
+            </div>
             <article class="excerpt-minic excerpt-minic-index">
                 <h2><span class="red">【推荐】</span><a target="_blank" href="#" title="用DTcms做一个独立博客网站（响应式模板）" >用DTcms做一个独立博客网站（响应式模板）</a>
                 </h2>
@@ -124,24 +132,28 @@
             <div class="title">
                 <h3>最新发布</h3>
                 <div class="more">
-                    <a href="#" title="欢迎您" >情感夜话，情感与心灵的港湾</a>
+                    <%--<a href="#" title="欢迎您" >情感夜话，情感与心灵的港湾</a>--%>
+                        <marquee direction=left  scrollamount=4  onmouseover="this.stop();" onmouseout="this.start();" width=80% height=100>
+                            <c:forEach items="${RANGE_LIST}" var="list" varStatus="vs">
+                                <a href="${pageContext.request.contextPath}/detail/${list.id}" title="${list.title}" target="_blank" >${list.title}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                            </c:forEach>
+                        </marquee>
                 </div>
             </div>
             <c:forEach items="${RANGE_LIST}" var="list" varStatus="vs">
             <article class="excerpt excerpt-1" style="">
-                <a class="focus" href="#" title="${list.title}" target="_blank" ><img class="thumb" data-original="/images/pc/201610181739277776.jpg" src="/images/pc/201610181739277776.jpg" alt="${list.title}"  style="display: inline;"></a>
-                <header><a class="cat" href="#" title="MZ-NetBlog主题" >${list.categoryName}<i></i></a>
-                    <h2><a href="#" title="${list.title}" target="_blank" >${list.title}</a>
+                <a class="focus" href="${pageContext.request.contextPath}/detail/${list.id}" title="${list.title}" target="_blank" ><img class="thumb" data-original="${pageContext.request.contextPath}/${list.picture}" src="${pageContext.request.contextPath}/${list.picture}" alt="${list.title}"  style="display: inline;"></a>
+                <header><a class="cat" target="_blank" href="${pageContext.request.contextPath}/detail/${list.id}" title="${list.title}" >${list.categoryName}<i></i></a>
+                    <h2><a href="${pageContext.request.contextPath}/detail/${list.id}" title="${list.title}" target="_blank" >${list.title}</a>
                     </h2>
                 </header>
                 <p class="meta">
-                    <time class="time"><i class="glyphicon glyphicon-time"></i> ${list.createdTime}</time>
+                    <time class="time"><i class="glyphicon glyphicon-time"></i> <fmt:formatDate pattern="yyyy-MM-dd" value="${list.createdTime }"></fmt:formatDate></time>
                     <span class="views"><i class="glyphicon glyphicon-eye-open"></i> ${list.hits}</span> <a class="comment" href="##comment" title="评论" target="_blank" ><i class="glyphicon glyphicon-comment"></i> 4</a>
                 </p>
                 <p class="note">${list.words}</p>
             </article>
             </c:forEach>
-
             <nav class="pagination" style="display: none;">
                 <ul>
                     <li class="prev-page"></li>
@@ -158,8 +170,8 @@
         <div class="fixed">
             <div class="widget widget-tabs">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#notice" aria-controls="notice" role="tab" data-toggle="tab" >统计信息</a></li>
-                    <li role="presentation"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab" >联系站长</a></li>
+                    <li role="presentation" class="active"><a href="#notice" aria-controls="notice" role="tab" data-toggle="tab" >热词搜索</a></li>
+                    <li role="presentation"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab" >新媒体</a></li>
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane contact active" id="notice">
@@ -207,8 +219,8 @@
             <h3>精彩推荐</h3>
             <ul>
             <c:forEach items="${RANGE_LIST}" var="list" varStatus="vs">
-                <li><a title="${list.title}" href="//detail/${list.id}" ><span class="thumbnail">
-				<img class="thumb" data-original="/${list.picture}" src="/images/pc/201610181739277776.jpg"
+                <li><a title="${list.title}" href="${pageContext.request.contextPath}/detail/${list.id}" ><span class="thumbnail">
+				<img class="thumb" data-original="${pageContext.request.contextPath}/${list.picture}" src="${pageContext.request.contextPath}/${list.picture}"
                      alt="${list.title}"
                      style="display: block;">
 			</span><span class="text">${list.title}</span><span class="muted"><i class="glyphicon glyphicon-time"></i>
@@ -217,14 +229,14 @@
             </c:forEach>
             </ul>
         </div>
-        <div class="widget widget_sentence">
+        <%--<div class="widget widget_sentence">
             <a href="#" target="_blank" rel="nofollow" title="专业网站建设" >
                 <img style="width: 100%" src="/images/pc//201610241224221511.jpg" alt="专业网站建设" ></a>
         </div>
         <div class="widget widget_sentence">
             <a href="#" target="_blank" rel="nofollow" title="MZ-NetBlog主题" >
                 <img style="width: 100%" src="/images/pc/ad.jpg" alt="MZ-NetBlog主题" ></a>
-        </div>
+        </div>--%>
         <div class="widget widget_sentence">
             <h3>友情链接</h3>
             <div class="widget-sentence-link">
@@ -239,9 +251,7 @@
     </div>
     <div id="gotop"><a class="gotop"></a></div>
 </footer>
-<script src="/js/pc/bootstrap.min.js"></script>
-<script src="/js/pc/jquery.ias.js"></script>
-<script src="/js/pc/scripts.js"></script>
+
 
 <script type="text/javascript">
     /*3D标签云*/

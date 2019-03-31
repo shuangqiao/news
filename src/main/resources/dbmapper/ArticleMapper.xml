@@ -36,7 +36,7 @@
 	</select>
 
 	<select id="getLastArticleById" resultMap="ArticleManage">
-		select * FROM articles WHERE category_id=#{categoryId} AND id&lt;#{id} AND status='1' ORDER BY id DESC LIMIT 1
+		select * FROM qing_articles WHERE category_id=#{categoryId} AND id&lt;#{id} AND status='1' ORDER BY id DESC LIMIT 1
 	</select>
 
 	<select id="getNextArticleById" resultMap="ArticleManage">
@@ -57,7 +57,7 @@
 	</select>
 
 	<update id="updateHitsById">
-		update articles set hits = #{hits} where id = #{id}
+		update qing_articles set hits = #{hits} where id = #{id}
 	</update>
 	
 	<insert id="insertArticle">
@@ -97,7 +97,7 @@
 
 	<select id="findByTitle" resultMap="ArticleManage">
 		select a.*,b.name as
-		categoryName from articles a LEFT JOIN category_name b on
+		categoryName from qing_articles a LEFT JOIN category_name b on
 		a.category_id = b.category_id WHERE a.title LIKE CONCAT('%',#{title},'%')
 	</select>
 

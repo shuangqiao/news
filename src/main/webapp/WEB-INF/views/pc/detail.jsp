@@ -65,15 +65,13 @@
 		</span> </div>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a data-cont="木庄网络博客" title="木庄网络博客" href="index.html">首页</a></li>
-					<li><a data-cont="列表页" title="列表页" href="list.html">列表页</a></li>
-					<li><a data-cont="详细页" title="详细页" href="show.html">详细页</a></li>
-					<li><a data-cont="404" title="404" href="404.html">404</a></li>
-					<li><a data-cont="MZ-NetBolg主题" title="MZ-NetBolg主题" href="#" >MZ-NetBolg主题</a></li>
-					<li><a data-cont="IT技术笔记" title="IT技术笔记" href="#" >IT技术笔记</a></li>
-					<li><a data-cont="源码分享" title="源码分享" href="#" >源码分享</a></li>
-					<li><a data-cont="靠谱网赚" title="靠谱网赚" href="#" >靠谱网赚</a></li>
-					<li><a data-cont="资讯分享" title="资讯分享" href="#" >资讯分享</a></li>
+					<li><a data-cont="情感夜话" title="情感夜话" href="${pageContext.request.contextPath}/">首页</a></li>
+					<li><a data-cont="情感故事" title="女性健康" href="${pageContext.request.contextPath}/list/1/1">情感故事</a></li>
+					<li><a data-cont="亲密关系" title="亲密关系" href="${pageContext.request.contextPath}/list/3/1">亲密关系</a></li>
+					<li><a data-cont="青春期" title="青春期" href="${pageContext.request.contextPath}/list/6/1" >青春期</a></li>
+					<li><a data-cont="健康生活" title="健康生活" href="${pageContext.request.contextPath}/list/4/1" >健康生活</a></li>
+					<li><a data-cont="冷知识" title="冷知识" href="${pageContext.request.contextPath}/list/5/1" >冷知识</a></li>
+					<li><a data-cont="历史上的今天" title="历史上的今天" href="${pageContext.request.contextPath}/list/7/1" >历史上的今天</a></li>
 				</ul>
 			</div>
 		</div>
@@ -83,14 +81,14 @@
 	<div class="content-wrap">
 		<div class="content">
 			<header class="article-header">
-				<h1 class="article-title"><a href="#" title="用DTcms做一个独立博客网站（响应式模板）" >用DTcms做一个独立博客网站（响应式模板）</a></h1>
+				<h1 class="article-title"><a href="#" title="${article.title}" >${article.title}</a></h1>
 				<div class="article-meta"> <span class="item article-meta-time">
 	  <time class="time" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="发表时间：2016-10-14"><i class="glyphicon glyphicon-time"></i> 2016-10-14</time>
 	  </span> <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="来源：木庄网络博客"><i class="glyphicon glyphicon-globe"></i> 木庄网络博客</span> <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="MZ-NetBlog主题"><i class="glyphicon glyphicon-list"></i> <a href="#" title="MZ-NetBlog主题" >MZ-NetBlog主题</a></span> <span class="item article-meta-views" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="浏览量：219"><i class="glyphicon glyphicon-eye-open"></i> 219</span> <span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="评论量"><i class="glyphicon glyphicon-comment"></i> 4</span> </div>
 			</header>
 			<article class="article-content">
 				<p><img data-original="/images/pc/201610181557196870.jpg" src="/images/pc/201610181557196870.jpg" alt="" /></p>
-				<p>文章效果示例，文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字。</p>
+				<p>${article.words}</p>
 				<pre class="prettyprint lang-cs">代码示例：
 	public static double JieCheng(int number)
 	{

@@ -26,15 +26,6 @@ public class ArticleController {
 
 	@RequestMapping(value="/",method = {RequestMethod.POST,RequestMethod.GET})
 	public String getQing(Model model, HttpServletRequest request){
-	/*	model.addAttribute("WOMAN_LIST",WOMAN_LIST);
-		model.addAttribute("MAN_LIST",MAN_LIST);
-		model.addAttribute("SEX_LIST",SEX_LIST);
-		model.addAttribute("HEALTH_LIST",HEALTH_LIST);
-		model.addAttribute("COLD_LIST",COLD_LIST);
-		model.addAttribute("Physiology_LIST",Physiology_LIST);
-		model.addAttribute("WEEK_LIST",WEEK_LIST);
-		model.addAttribute("YOUNG_LIST",YOUNG_LIST);
-		model.addAttribute("HISTORY_LIST",HISTORY_LIST);*/
 		model.addAttribute("RANGE_LIST",RANGE_LIST);
 		model.addAttribute("RAND_LIST",RAND_LIST);
 		model.addAttribute("KEY_WORDS",KEY_WORDS);
@@ -52,7 +43,7 @@ public class ArticleController {
 		if (pageInfo.getList().size()>0){
 			model.addAttribute("categoryName",pageInfo.getList().get(0).getCategoryName());
 		}
-		model.addAttribute("range",RANGE_LIST);
+		model.addAttribute("RANGE_LIST",RANGE_LIST);
 		model.addAttribute("pageInfo", pageInfo);
 		if (request.getHeader("User-Agent").toLowerCase().contains("windows")) {
 			return "/pc/list";
@@ -64,19 +55,24 @@ public class ArticleController {
 	//文章详情页
 	@RequestMapping(value = "/detail/{id}",method = {RequestMethod.POST,RequestMethod.GET})
 	public String essayDetail(Model model, @PathVariable("id") Integer id,HttpServletRequest request){
-		Article article = iarticleService.findById(id);
-		model.addAttribute("article", article);
+		try {
+			Article article = iarticleService.findById(id);
+			model.addAttribute("article", article);
 
-		int categoryId = article.getCategoryId();
-		//获得上一篇和下一篇
-		Article lastInfo = iarticleService.getLastArticleById(id,categoryId);
-		model.addAttribute("lastTitle",lastInfo);
-		Article nextInfo = iarticleService.getNextArticleById(id,categoryId);
-		model.addAttribute("nextTitle",nextInfo);
-		if (request.getHeader("User-Agent").toLowerCase().contains("windows")) {
-			return "/pc/detail";
-		}else {
-			return "/app/detail";
+			int categoryId = article.getCategoryId();
+			//获得上一篇和下一篇
+			Article lastInfo = iarticleService.getLastArticleById(id, categoryId);
+			model.addAttribute("lastTitle", lastInfo);
+			Article nextInfo = iarticleService.getNextArticleById(id, categoryId);
+			model.addAttribute("nextTitle", nextInfo);
+			if (request.getHeader("User-Agent").toLowerCase().contains("windows")) {
+				return "/pc/detail";
+			} else {
+				return "/app/detail";
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+			return "0";
 		}
 	}
 }
