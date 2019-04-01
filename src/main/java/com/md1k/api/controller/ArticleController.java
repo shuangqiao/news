@@ -29,6 +29,7 @@ public class ArticleController {
 		model.addAttribute("RANGE_LIST",RANGE_LIST);
 		model.addAttribute("RAND_LIST",RAND_LIST);
 		model.addAttribute("KEY_WORDS",KEY_WORDS);
+		model.addAttribute("DAILY_RECOMMEND",DAILY_RECOMMEND);
 		if (request.getHeader("User-Agent").toLowerCase().contains("windows")) {
 			return "/pc/home";
 		}else {

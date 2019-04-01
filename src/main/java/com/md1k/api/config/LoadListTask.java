@@ -22,8 +22,7 @@ public class LoadListTask {
     public static List<Article> SEX_LIST = new ArrayList<>();
     public static List<Article> HEALTH_LIST = new ArrayList<>();
     public static List<Article> COLD_LIST = new ArrayList<>();
-    public static List<Article> Physiology_LIST = new ArrayList<>();
-    public static List<Article> WEEK_LIST = new ArrayList<>();
+    public static Article DAILY_RECOMMEND = new Article();
     public static List<Article> YOUNG_LIST = new ArrayList<>();
     public static List<Article> HISTORY_LIST = new ArrayList<>();
 
@@ -102,7 +101,8 @@ public class LoadListTask {
             }
             RAND_LIST = articleDao.getArticleByRand();
             KEY_WORDS = keyWordsDao.getList();
-
+            DAILY_RECOMMEND = articleDao.dailyRecommend();
+            DAILY_RECOMMEND.setWords(DAILY_RECOMMEND.getWords().substring(0,80)+"...");
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -122,5 +122,12 @@ public class LoadListTask {
         RAND_LIST = articleDao.getArticleByRand();
         KEY_WORDS.clear();
         KEY_WORDS = keyWordsDao.getList();
+    }
+
+    //每天早上6点更新一次
+    @Scheduled(cron = "0 0 6 * * ?")
+    public void dailyRecommend(){
+        DAILY_RECOMMEND = articleDao.dailyRecommend();
+        DAILY_RECOMMEND.setWords(DAILY_RECOMMEND.getWords().substring(0,80)+"...");
     }
 }

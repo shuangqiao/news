@@ -131,4 +131,8 @@
 	<select id="findByCategoryId" resultMap="ArticleManage">
 		select * from  qing_articles where category_id = #{categoryId} order by created_time DESC limit 10
 	</select>
+
+	<select id="dailyRecommend" resultMap="ArticleManage">
+		select * from  qing_articles where status = 1 order by hits ASC limit 1
+	</select>
 </mapper>

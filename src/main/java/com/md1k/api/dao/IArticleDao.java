@@ -97,4 +97,10 @@ public interface IArticleDao {
 	 */
 	List<Article> getArticleByRand();
 
+	/**
+	 * 每日推荐（访问量最小的）
+	 * @return
+	 */
+	Article dailyRecommend();
+
 }
