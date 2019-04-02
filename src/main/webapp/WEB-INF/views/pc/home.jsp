@@ -143,7 +143,11 @@
             </div>
             <c:forEach items="${RANGE_LIST}" var="list" varStatus="vs">
             <article class="excerpt excerpt-1" style="">
-                <a class="focus" href="${pageContext.request.contextPath}/detail/${list.id}" title="${list.title}" target="_blank" ><img class="thumb" data-original="${pageContext.request.contextPath}/${list.picture}" src="${pageContext.request.contextPath}/${list.picture}" alt="${list.title}"  style="display: inline;"></a>
+                <a class="focus" href="${pageContext.request.contextPath}/detail/${list.id}" title="${list.title}"
+                   target="_blank" ><img class="thumb" data-original="${pageContext.request.contextPath}/
+                   ${list.picture}" src="${pageContext.request.contextPath}/${list.picture}"
+                                         onerror="javascript:this.src='images/logoError.jpg';" alt="${list.title}"
+                                         style="display: inline;"></a>
                 <header><a class="cat" target="_blank" href="${pageContext.request.contextPath}/detail/${list.id}" title="${list.title}" >${list.categoryName}<i></i></a>
                     <h2><a href="${pageContext.request.contextPath}/detail/${list.id}" title="${list.title}" target="_blank" >${list.title}</a>
                     </h2>
@@ -221,7 +225,8 @@
             <ul>
             <c:forEach items="${RANGE_LIST}" var="list" varStatus="vs">
                 <li><a title="${list.title}" href="${pageContext.request.contextPath}/detail/${list.id}" ><span class="thumbnail">
-				<img class="thumb" data-original="${pageContext.request.contextPath}/${list.picture}" src="${pageContext.request.contextPath}/${list.picture}"
+				<img class="thumb" data-original="${pageContext.request.contextPath}/${list.picture}"
+                     src="${pageContext.request.contextPath}/${list.picture}" onerror="javascript:this.src='images/logoError.jpg';"
                      alt="${list.title}"
                      style="display: block;">
 			</span><span class="text">${list.title}</span><span class="muted"><i class="glyphicon glyphicon-time"></i>

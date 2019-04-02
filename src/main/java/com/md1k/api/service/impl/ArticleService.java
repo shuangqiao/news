@@ -12,20 +12,21 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import com.md1k.api.config.AsyncTask;
 
 @Service
 public class ArticleService implements IArticleService {
 
 	@Resource
 	private IArticleDao articleDao;
+	@Resource
+	private AsyncTask asyncTask;
+
 	@Override
 	public Article findById(int id){
 		Article article = articleDao.findById(id);
-		int add = article.getHits();
-		add = add + 1;
-		article.setId(id);
-		article.setHits(add);
-		articleDao.updateHitsById(id, add);
+		AsyncTask.List.offer(article);
+		asyncTask.taskService();
 		return article;
 	}
 	
