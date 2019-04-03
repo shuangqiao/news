@@ -3,6 +3,7 @@
 <mapper namespace="com.md1k.api.dao.IPRecordDao">
   <resultMap id="BaseResultMap" type="com.md1k.api.pojo.IPRecord">
     <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
     <result column="country" jdbcType="VARCHAR" property="country" />
     <result column="area" jdbcType="VARCHAR" property="area" />
     <result column="region" jdbcType="VARCHAR" property="region" />
@@ -13,7 +14,7 @@
   </resultMap>
 
   <sql id="Base_Column_List">
-    id, country, area, region, city, country_id, created_time, updated_time
+    id, ip,country, area, region, city, country_id, created_time, updated_time
   </sql>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -24,7 +25,7 @@
   </select>
 
   <insert id="insert">
-    	INSERT INTO qing_ip_record (id, country, area, region,city,country_id,created_time,updated_time)
-		VALUES (#{id}, #{country}, #{area}, #{region},city,country_id,now(),now())
+    	INSERT INTO qing_ip_record (id, ip,country, area, region,city,country_id,created_time,updated_time)
+		VALUES (#{id},#{ip}, #{country}, #{area}, #{region},city,country_id,now(),now())
   </insert>
 </mapper>

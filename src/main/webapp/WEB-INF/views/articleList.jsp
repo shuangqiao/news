@@ -15,8 +15,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="${getPageHost}/css/bootstrap.css" rel="stylesheet">
-    <script src="${getPageHost}/js/jquery-1.12.1.min.js"></script>
+    <link href="${getPageHost}/css/manage/bootstrap.min.css" rel="stylesheet">
+    <script src="${getPageHost}/js/pc/jquery-2.1.4.min.js"></script>
     <title>文章列表管理</title>
 
 </head>
@@ -47,7 +47,7 @@
        </tr>
        </c:forEach>
    </table>
-    <div class="page"><%@include file="../page.jsp"%></div>
+    <div class="page"><%@include file="page.jsp"%></div>
 </form>
 <div style="display:none"></div>
 </body>

@@ -10,6 +10,7 @@ import java.util.Date;
  */
 public class IPRecord {
     private String id;
+    private String ip;
     private String country;
     private String area;
     private String region;
@@ -24,6 +25,14 @@ public class IPRecord {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 
     public String getCountry() {

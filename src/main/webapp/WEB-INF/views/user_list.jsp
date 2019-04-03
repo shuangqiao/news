@@ -44,7 +44,7 @@
             </tbody>
         </table>
 
-        <div class="list-pager" ><%@include file="../page.jsp"%></div>
+        <div class="list-pager" ><%@include file="page.jsp"%></div>
     </div>
     </div>
 </body>

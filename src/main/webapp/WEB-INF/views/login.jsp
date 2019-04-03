@@ -10,7 +10,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>用户登录</title>
 	<link href="${getPageHost}/css/manage/login_css.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="${getPageHost}/js/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="/js/pc/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$("#login_sub").click(function(){

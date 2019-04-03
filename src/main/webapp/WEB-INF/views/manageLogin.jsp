@@ -12,7 +12,7 @@
   <meta name="keywords" content="">
   <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>桥帮主后台管理系统</title>
+  <title>后台管理系统</title>
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp"/>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/manage/amazeui.min.css">
@@ -47,15 +47,15 @@
 	</div>
 </div>
 <!--[if (gte IE 9)|!(IE)]><!-->
-<script src="js/jquery.min.js"></script>
+<script src="/js/pc/jquery-2.1.4.min.js"></script>
 <!--<![endif]-->
 <!--[if lte IE 8 ]>
 <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
 <script src="assets/js/amazeui.ie8polyfill.min.js"></script>
 <![endif]-->
-<script src="${pageContext.request.contextPath}/js/amazeui.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/app.js"></script>
+<%--<script src="${pageContext.request.contextPath}/js/amazeui.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/app.js"></script>--%>
 <script>
 function toLogin(){
     var password = $(".password").val();
@@ -72,9 +72,9 @@ function toLogin(){
         },
         success : function(data) {
             if(data=='1'){
-                window.location.href = '${getPageHost}/gustBook/list/1';
+                window.location.href = '${pageContext.request.contextPath}/manage/index';
             }else{
-           $("#gustWarning").html("留言为空！");
+           		alert("登录失败")
             }
         },
         error : function() {

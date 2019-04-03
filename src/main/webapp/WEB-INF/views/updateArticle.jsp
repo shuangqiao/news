@@ -90,6 +90,6 @@
         </tr>
     </table>
 </form>
-<%@include file="../foot.jsp"%>
+<%@include file="foot.jsp"%>
 </body>
 </html>

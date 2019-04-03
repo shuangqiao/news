@@ -5,6 +5,7 @@ import com.md1k.api.dao.IPRecordDao;
 import com.md1k.api.pojo.IPRecord;
 import com.md1k.api.util.ApplicationInitListener;
 import com.md1k.api.util.HttpGetPost;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -59,13 +60,18 @@ public class IPTask {
                         String ip = IPLIST.poll();
                         String json = HttpGetPost.Get(ApplicationInitListener.getProperty("ip_post") + ip, "");
                         JSONObject jsonObject = JSONObject.parseObject(json);
+                        JSONObject info = JSONObject.parseObject(jsonObject.getString("data"));
+                        if (StringUtils.isEmpty(info.getString("ip"))){
+                            return;
+                        }
                         IPRecord record = new IPRecord();
                         record.setId(UUID.randomUUID().toString().replaceAll("-", ""));
-                        record.setCountry(jsonObject.getString("country"));
-                        record.setArea(jsonObject.getString("area"));
-                        record.setCity(jsonObject.getString("city"));
-                        record.setRegion(jsonObject.getString("region"));
-                        record.setCountryId(jsonObject.getString("country_id"));
+                        record.setCountry(info.getString("country"));
+                        record.setArea(info.getString("area"));
+                        record.setCity(info.getString("city"));
+                        record.setRegion(info.getString("region"));
+                        record.setCountryId(info.getString("country_id"));
+                        record.setIp(info.getString("ip").replaceAll("\\?",""));
                         record.setCreatedTime(new Date());
                         record.setUpdatedTime(new Date());
                         ipRecordDao.insert(record);
