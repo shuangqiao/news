@@ -12,11 +12,14 @@ import org.springframework.scheduling.annotation.Scheduled;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Configuration
 public class LoadListTask {
-
+    public static String uuid = "";
+    public static String uuid_bak = "";
     public static List<Article> WOMAN_LIST = new ArrayList<>();
     public static List<Article> MAN_LIST = new ArrayList<>();
     public static List<Article> SEX_LIST = new ArrayList<>();
@@ -37,6 +40,14 @@ public class LoadListTask {
 
     @PostConstruct
     public void initList(){
+        uuid = UUID.randomUUID().toString().replaceAll("-","");
+        uuid_bak = uuid;
+        try {
+            Runtime.getRuntime().exec("mv /www/server/apache-tomcat-default/webapps/video"+" " +
+                    "/www/server/apache-tomcat-default/webapps/video"+uuid);
+        }catch (Exception e){
+
+        }
         try {
           /*  WOMAN_LIST = articleDao.findByCategoryId(Constants.WOMAN);
             for (Article article : WOMAN_LIST){
@@ -129,5 +140,22 @@ public class LoadListTask {
     public void dailyRecommend(){
         DAILY_RECOMMEND = articleDao.dailyRecommend();
         DAILY_RECOMMEND.setWords(DAILY_RECOMMEND.getWords().substring(0,80)+"...");
+    }
+
+    //每3分钟轮询,检查闹钟信息，更新过期闹钟
+    @Scheduled(cron = "0 */3 * * * ? ")
+    public void updateUUID(){
+        Date now = new Date();
+        int hour = now.getHours();
+        if ((hour & 1) == 1 && now.getMinutes() >= 55) {
+            uuid_bak = uuid;
+            uuid = UUID.randomUUID().toString().replaceAll("-", "");
+            try {
+                Runtime.getRuntime().exec("mv /www/server/apache-tomcat-default/webapps/video" + uuid_bak + " " +
+                        "/www/server/apache-tomcat-default/webapps/video" + uuid);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

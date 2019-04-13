@@ -83,13 +83,13 @@
 			<header class="article-header">
 				<h1 class="article-title"><a href="#" title="${article.title}" >${article.title}</a></h1>
 				<div class="article-meta"> <span class="item article-meta-time">
-	  <time class="time" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="发表时间：2016-10-14"><i class="glyphicon glyphicon-time"></i> 2016-10-14</time>
+	  <time class="time" data-toggle="tooltip" data-placement="bottom" title=""><i class="glyphicon glyphicon-time"></i> <fmt:formatDate pattern="yyyy-MM-dd" value="${article.createdTime }"></fmt:formatDate></time>
 	  </span> <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="来源：木庄网络博客"><i class="glyphicon glyphicon-globe"></i> 木庄网络博客</span> <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="MZ-NetBlog主题"><i class="glyphicon glyphicon-list"></i> <a href="#" title="MZ-NetBlog主题" >MZ-NetBlog主题</a></span> <span class="item article-meta-views" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="浏览量：219"><i class="glyphicon glyphicon-eye-open"></i> 219</span> <span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="评论量"><i class="glyphicon glyphicon-comment"></i> 4</span> </div>
 			</header>
 			<article class="article-content">
 				<p><img data-original="/images/pc/201610181557196870.jpg" src="/images/pc/201610181557196870.jpg" alt="" /></p>
 				<p>${article.words}</p>
-				<pre class="prettyprint lang-cs">代码示例：
+				<%--<pre class="prettyprint lang-cs">代码示例：
 	public static double JieCheng(int number)
 	{
 		if (number == 0)
@@ -105,7 +105,7 @@
 			result = result*i;
 		}
 		return result;
-	}</pre>
+	}</pre>--%>
 				<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a></div>
 
 				<script>                  window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "1", "bdSize": "32" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api//js/pc/share.js?v=0.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
@@ -117,14 +117,11 @@
 					<h3>相关推荐</h3>
 				</div>
 				<ul>
-					<li><a href="#" title="" >用DTcms做一个独立博客网站（响应式模板）-MZ-NetBlog主题</a></li>
-					<li><a href="#" title="" >用DTcms做一个独立博客网站（响应式模板）-MZ-NetBlog主题</a></li>
-					<li><a href="#" title="" >用DTcms做一个独立博客网站（响应式模板）-MZ-NetBlog主题</a></li>
-					<li><a href="#" title="" >用DTcms做一个独立博客网站（响应式模板）-MZ-NetBlog主题</a></li>
-					<li><a href="#" title="" >用DTcms做一个独立博客网站（响应式模板）-MZ-NetBlog主题</a></li>
-					<li><a href="#" title="" >用DTcms做一个独立博客网站（响应式模板）-MZ-NetBlog主题</a></li>
-					<li><a href="#" title="" >用DTcms做一个独立博客网站（响应式模板）-MZ-NetBlog主题</a></li>
-					<li><a href="#" title="" >用DTcms做一个独立博客网站（响应式模板）-MZ-NetBlog主题</a></li>
+				<c:forEach items="${RAND_LIST}" var="rand" varStatus="vs">
+					<li>
+						<a href="${pageContext.request.contextPath}/detail/${rand.id}/.html" title="${rand.title}" target="_blank">${rand.title}</a>
+					</li>
+				</c:forEach>
 				</ul>
 			</div>
 			<div class="title" id="comment">
@@ -163,11 +160,16 @@
 				</ul>
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane contact active" id="notice">
-						<h2>日志总数:
+						<div class="tagcloud fl">
+							<c:forEach items="${KEY_WORDS}" var="list" varStatus="vs">
+								<a href="#">${list.word}</a>
+							</c:forEach>
+						</div>
+					<%--	<h2>日志总数:
 							888篇
 						</h2>
 						<h2>网站运行:
-							<span id="sitetime">88天 </span></h2>
+							<span id="sitetime">88天 </span></h2>--%>
 					</div>
 					<div role="tabpanel" class="tab-pane contact" id="contact">
 						<h2>QQ:
@@ -191,48 +193,19 @@
 		<div class="widget widget_hot">
 			<h3>最新评论文章</h3>
 			<ul>
-
-				<li><a title="用DTcms做一个独立博客网站（响应式模板）" href="#" ><span class="thumbnail">
-<img class="thumb" data-original="/images/pc/201610181739277776.jpg" src="/images/pc/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"  style="display: block;">
-</span><span class="text">用DTcms做一个独立博客网站（响应式模板）</span><span class="muted"><i class="glyphicon glyphicon-time"></i>
-2016-11-01
-</span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i>88</span></a></li>
-				<li><a title="用DTcms做一个独立博客网站（响应式模板）" href="#" ><span class="thumbnail">
-<img class="thumb" data-original="/images/pc/201610181739277776.jpg" src="/images/pc/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"  style="display: block;">
-</span><span class="text">用DTcms做一个独立博客网站（响应式模板）</span><span class="muted"><i class="glyphicon glyphicon-time"></i>
-2016-11-01
-</span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i>88</span></a></li>
-				<li><a title="用DTcms做一个独立博客网站（响应式模板）" href="#" ><span class="thumbnail">
-<img class="thumb" data-original="/images/pc/201610181739277776.jpg" src="/images/pc/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"  style="display: block;">
-</span><span class="text">用DTcms做一个独立博客网站（响应式模板）</span><span class="muted"><i class="glyphicon glyphicon-time"></i>
-2016-11-01
-</span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i>88</span></a></li>
-				<li><a title="用DTcms做一个独立博客网站（响应式模板）" href="#" ><span class="thumbnail">
-<img class="thumb" data-original="/images/pc/201610181739277776.jpg" src="/images/pc/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"  style="display: block;">
-</span><span class="text">用DTcms做一个独立博客网站（响应式模板）</span><span class="muted"><i class="glyphicon glyphicon-time"></i>
-2016-11-01
-</span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i>88</span></a></li>
-				<li><a title="用DTcms做一个独立博客网站（响应式模板）" href="#" ><span class="thumbnail">
-<img class="thumb" data-original="/images/pc/201610181739277776.jpg" src="/images/pc/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"  style="display: block;">
-</span><span class="text">用DTcms做一个独立博客网站（响应式模板）</span><span class="muted"><i class="glyphicon glyphicon-time"></i>
-2016-11-01
-</span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i>88</span></a></li>
-				<li><a title="用DTcms做一个独立博客网站（响应式模板）" href="#" ><span class="thumbnail">
-<img class="thumb" data-original="/images/pc/201610181739277776.jpg" src="/images/pc/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"  style="display: block;">
-</span><span class="text">用DTcms做一个独立博客网站（响应式模板）</span><span class="muted"><i class="glyphicon glyphicon-time"></i>
-2016-11-01
-</span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i>88</span></a></li>
-				<li><a title="用DTcms做一个独立博客网站（响应式模板）" href="#" ><span class="thumbnail">
-<img class="thumb" data-original="/images/pc/201610181739277776.jpg" src="/images/pc/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"  style="display: block;">
-</span><span class="text">用DTcms做一个独立博客网站（响应式模板）</span><span class="muted"><i class="glyphicon glyphicon-time"></i>
-2016-11-01
-</span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i>88</span></a></li>
-				<li><a title="用DTcms做一个独立博客网站（响应式模板）" href="#" ><span class="thumbnail">
-<img class="thumb" data-original="/images/pc/201610181739277776.jpg" src="/images/pc/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"  style="display: block;">
-</span><span class="text">用DTcms做一个独立博客网站（响应式模板）</span><span class="muted"><i class="glyphicon glyphicon-time"></i>
-2016-11-01
-</span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i>88</span></a></li>
-
+				<c:forEach items="${RANGE_LIST}" var="list" varStatus="vs">
+					<li>
+						<a title="${list.title}" href="${pageContext.request.contextPath}/detail/${list.id}/.html" target="_blank">
+						<span class="thumbnail">
+							<img class="thumb" data-original="${list.picture}" src="${list.picture}" alt="${list.title}" style="display: block;">
+						</span>
+						<span class="text">${list.title}</span><span class="muted"><i class="glyphicon glyphicon-time"></i>
+								<fmt:formatDate pattern="yyyy-MM-dd" value="${article.createdTime }"></fmt:formatDate>
+						</span>
+						<span class="muted"><i class="glyphicon glyphicon-eye-open"></i>${list.hits}</span>
+						</a>
+					</li>
+				</c:forEach>
 			</ul>
 		</div>
 		<div class="widget widget_sentence">
@@ -251,13 +224,27 @@
 </section>
 <footer class="footer">
 	<div class="container">
-		<p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a> </p>
+		<p>Copyright © 2016-2019 .鄂ICP备15020852号-1<a href="http://www.cssmoban.com/" target="_blank" title="情感夜话">情感夜话
+		</a> </p>
 	</div>
 	<div id="gotop"><a class="gotop"></a></div>
 </footer>
 <script src="/js/pc/bootstrap.min.js"></script>
 <script src="/js/pc/jquery.ias.js"></script>
 <script src="/js/pc/scripts.js"></script>
+<script type="text/javascript" src="/js/pc/tagcloud.js"></script>
+<script type="text/javascript">
+    /*3D标签云*/
+    tagcloud({
+        selector: ".tagcloud",  //元素选择器
+        fontsize: 16,       //基本字体大小, 单位px
+        radius: 100,         //滚动半径, 单位px
+        mspeed: "normal",   //滚动最大速度, 取值: slow, normal(默认), fast
+        ispeed: "normal",   //滚动初速度, 取值: slow, normal(默认), fast
+        direction: 135,     //初始滚动方向, 取值角度(顺时针360): 0对应top, 90对应left, 135对应right-bottom(默认)...
+        keep: false          //鼠标移出组件后是否继续随鼠标滚动, 取值: false, true(默认) 对应 减速至初速度滚动, 随鼠标滚动
+    });
+</script>
 </body>
 </html>
 

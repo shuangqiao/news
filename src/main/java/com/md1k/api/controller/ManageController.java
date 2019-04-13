@@ -1,6 +1,7 @@
 package com.md1k.api.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.md1k.api.config.LoadListTask;
 import com.md1k.api.pojo.Article;
 import com.md1k.api.service.IArticleService;
 import com.md1k.api.util.BigDecimalUtil;
@@ -36,20 +37,26 @@ public class ManageController {
     public String manage(Model model){
         String getPageHost = environment.getProperty(PAGE_HOST);
         model.addAttribute("getPageHost",getPageHost);
-        return "/manageLogin";
+       // return "/manageLogin";
+        return "404";
     }
-    @RequestMapping("/index")
-    public String index(Model model){
-        String getPageHost = environment.getProperty(PAGE_HOST);
-        model.addAttribute("getPageHost",getPageHost);
-        return "/manage";
+    @RequestMapping("/index/{uuid}")
+    public String index(Model model,@PathVariable("uuid") String uuid){
+        if (uuid.equals(LoadListTask.uuid)) {
+            String getPageHost = environment.getProperty(PAGE_HOST);
+            model.addAttribute("getPageHost", getPageHost);
+             return "/manage";
+        }else {
+            return "404";
+        }
     }
 
     @RequestMapping(value = "/writeAdd", method = RequestMethod.POST)
     @ResponseBody
     public String writeAdd(Article article){
         articleService.insertArticle(article);
-        return "redirect:/list";
+       // return "redirect:/list";
+        return "404";
     }
 
     /**
@@ -60,7 +67,8 @@ public class ManageController {
     public String write(Model model){
         String getPageHost = environment.getProperty(PAGE_HOST);
         model.addAttribute("getPageHost",getPageHost);
-        return "/write";
+       // return "/write";
+        return "404";
     }
 
     @RequestMapping(value = "/checkPasswd", method = RequestMethod.POST)
@@ -97,7 +105,8 @@ public class ManageController {
         model.addAttribute("pageInfo",list);
         String getPageHost = environment.getProperty(PAGE_HOST);
         model.addAttribute("getPageHost",getPageHost);
-        return "/deleteList";
+       // return "/deleteList";
+        return "404";
     }
 
     @RequestMapping(value = "/articleList/{currentPage}", method = {RequestMethod.POST,RequestMethod.GET})
@@ -106,7 +115,8 @@ public class ManageController {
         model.addAttribute("pageInfo",list);
         String getPageHost = environment.getProperty(PAGE_HOST);
         model.addAttribute("getPageHost",getPageHost);
-        return "/articleList";
+       // return "/articleList";
+        return "404";
     }
 
     @RequestMapping(value = "/resolve", method = {RequestMethod.POST,RequestMethod.GET})

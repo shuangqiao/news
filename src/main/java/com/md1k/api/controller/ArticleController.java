@@ -30,15 +30,16 @@ public class ArticleController {
 		model.addAttribute("RAND_LIST",RAND_LIST);
 		model.addAttribute("KEY_WORDS",KEY_WORDS);
 		model.addAttribute("DAILY_RECOMMEND",DAILY_RECOMMEND);
-		if (request.getHeader("User-Agent").toLowerCase().contains("windows")) {
+		/*if (request.getHeader("User-Agent").toLowerCase().contains("windows")) {
 			return "/pc/home";
 		}else {
 			return "/app/home";
-		}
+		}*/
+		return "404";
 	}
 
 	//文章列表页
-	@RequestMapping(value = "/list/{categoryId}/{currentPage}",method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/list/{categoryId}/{currentPage}/.html",method = {RequestMethod.POST,RequestMethod.GET})
 	public String list(Model model, @PathVariable("categoryId") Integer categoryId,@PathVariable("currentPage") Integer currentPage, HttpServletRequest request){
 		PageInfo<Article> pageInfo = iarticleService.getAllArticle(categoryId,currentPage);
 		if (pageInfo.getList().size()>0){
@@ -46,15 +47,16 @@ public class ArticleController {
 		}
 		model.addAttribute("RANGE_LIST",RANGE_LIST);
 		model.addAttribute("pageInfo", pageInfo);
-		if (request.getHeader("User-Agent").toLowerCase().contains("windows")) {
+		/*if (request.getHeader("User-Agent").toLowerCase().contains("windows")) {
 			return "/pc/list";
 		}else {
 			return "/app/list";
-		}
+		}*/
+		return "404";
 	}
 
 	//文章详情页
-	@RequestMapping(value = "/detail/{id}",method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/detail/{id}/.html",method = {RequestMethod.POST,RequestMethod.GET})
 	public String essayDetail(Model model, @PathVariable("id") Integer id,HttpServletRequest request){
 		try {
 			Article article = iarticleService.findById(id);
@@ -66,14 +68,18 @@ public class ArticleController {
 			model.addAttribute("lastTitle", lastInfo);
 			Article nextInfo = iarticleService.getNextArticleById(id, categoryId);
 			model.addAttribute("nextTitle", nextInfo);
-			if (request.getHeader("User-Agent").toLowerCase().contains("windows")) {
+			model.addAttribute("RANGE_LIST",RANGE_LIST);
+			model.addAttribute("RAND_LIST",RAND_LIST);
+			model.addAttribute("KEY_WORDS",KEY_WORDS);
+			/*if (request.getHeader("User-Agent").toLowerCase().contains("windows")) {
 				return "/pc/detail";
 			} else {
 				return "/app/detail";
-			}
+			}*/
+			return "404";
 		}catch (Exception e){
 			e.printStackTrace();
-			return "0";
+			return "404";
 		}
 	}
 }
