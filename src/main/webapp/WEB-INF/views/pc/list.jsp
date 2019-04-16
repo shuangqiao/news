@@ -68,12 +68,12 @@
 				</form>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a data-cont="情感夜话" title="情感夜话" href="${pageContext.request.contextPath}/">首页</a></li>
-					<li><a data-cont="情感故事" title="女性健康" href="${pageContext.request.contextPath}/list/1/1">情感故事</a></li>
-					<li><a data-cont="亲密关系" title="亲密关系" href="${pageContext.request.contextPath}/list/3/1">亲密关系</a></li>
-					<li><a data-cont="青春期" title="青春期" href="${pageContext.request.contextPath}/list/6/1" >青春期</a></li>
-					<li><a data-cont="健康生活" title="健康生活" href="${pageContext.request.contextPath}/list/4/1" >健康生活</a></li>
-					<li><a data-cont="冷知识" title="冷知识" href="${pageContext.request.contextPath}/list/5/1" >冷知识</a></li>
-					<li><a data-cont="历史上的今天" title="历史上的今天" href="${pageContext.request.contextPath}/list/7/1" >历史上的今天</a></li>
+					<li><a data-cont="情感故事" title="女性健康" href="${pageContext.request.contextPath}/list/1/1.html">情感故事</a></li>
+					<li><a data-cont="亲密关系" title="亲密关系" href="${pageContext.request.contextPath}/list/3/1.html">亲密关系</a></li>
+					<li><a data-cont="青春期" title="青春期" href="${pageContext.request.contextPath}/list/6/1.html" >青春期</a></li>
+					<li><a data-cont="健康生活" title="健康生活" href="${pageContext.request.contextPath}/list/4/1.html" >健康生活</a></li>
+					<li><a data-cont="冷知识" title="冷知识" href="${pageContext.request.contextPath}/list/5/1.html" >冷知识</a></li>
+					<li><a data-cont="历史上的今天" title="历史上的今天" href="${pageContext.request.contextPath}/list/7/1.html" >历史上的今天</a></li>
 				</ul>
 			</div>
 		</div>
@@ -86,13 +86,16 @@
 				<h3 style="line-height: 1.3">MZ-NetBlog主题</h3>
 			</div>
 			<c:forEach items="${pageInfo.list}" var="list" varStatus="vs">
-			<article class="excerpt excerpt-1"><a class="focus" href="#" title="${list.title}" target="_blank" ><img class="thumb" data-original="/images/pc/201610181739277776.jpg" src="/images/pc/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"  style="display: inline;"></a>
-				<header><a class="cat" href="${pageContext.request.contextPath}/detail/${list.id}" title="${list.title}" >${list.title}<i></i></a>
-					<h2><a href="${pageContext.request.contextPath}/detail/${list.id}" title="${list.title}" target="_blank" >${list.title}</a></h2>
+			<article class="excerpt excerpt-1"><a class="focus" href="${pageContext.request.contextPath}/detail/${list.id}.html" title="${list.title}" target="_blank" ><img class="thumb" data-original="/images/pc/201610181739277776.jpg" src="${pageContext.request.contextPath}/${list.picture}" alt="${list.title}"  style="display: inline;"></a>
+				<header><a class="cat" href="${pageContext.request.contextPath}/detail/${list.id}.html"  target="_blank"
+						   title="${list.title}" >${list.title}<i></i></a>
+					<h2><a href="${pageContext.request.contextPath}/detail/${list.id}.html" title="${list.title}" target="_blank" >${list.title}</a></h2>
 				</header>
 				<p class="meta">
 					<time class="time"><i class="glyphicon glyphicon-time"></i> <fmt:formatDate pattern="yyyy-MM-dd" value="${list.createdTime }"></fmt:formatDate></time>
-					<span class="views"><i class="glyphicon glyphicon-eye-open"></i> 217</span> <a class="comment" href="##comment" title="评论" target="_blank" ><i class="glyphicon glyphicon-comment"></i> 4</a></p>
+					<span class="views"><i class="glyphicon glyphicon-eye-open"></i> ${list.hits}</span> <a
+						class="comment"
+																								 href="##comment" title="评论" target="_blank" ><i class="glyphicon glyphicon-comment"></i> 4</a></p>
 				<p class="note">${list.words}</p>
 			</article>
 			</c:forEach>
@@ -140,7 +143,8 @@
 			<ul>
 			<c:forEach items="${RANGE_LIST}" var="list" varStatus="vs">
 							<li><a title="${list.title}" href="${pageContext.request.contextPath}/detail/${list.id}" ><span class="thumbnail">
-			<img class="thumb" data-original="/images/pc/201610181739277776.jpg" src="/images/pc/201610181739277776.jpg" alt="${list.title}"  style="display: block;">
+			<img class="thumb" data-original="/images/pc/201610181739277776.jpg"
+				 src="${pageContext.request.contextPath}/${list.picture}" alt="${list.title}"  style="display: block;">
 			</span><span class="text">${list.title}</span><span class="muted"><i class="glyphicon glyphicon-time"></i>
 			<fmt:formatDate pattern="yyyy-MM-dd" value="${list.createdTime }"></fmt:formatDate>
 			</span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i>88</span></a></li>

@@ -28,6 +28,8 @@ public class Article implements Serializable{
 	//分类名称
 	private String categoryName;
 
+	private String class_name;
+
 	/**
 	 * @return the id
 	 */
@@ -179,6 +181,14 @@ public class Article implements Serializable{
 	 */
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
+	}
+
+	public String getClass_name() {
+		return class_name;
+	}
+
+	public void setClass_name(String class_name) {
+		this.class_name = class_name;
 	}
 
 	@Override

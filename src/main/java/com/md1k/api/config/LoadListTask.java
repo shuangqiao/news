@@ -106,8 +106,21 @@ public class LoadListTask {
 */
             RANGE_LIST = articleDao.getNewArticle();
             for (Article article : RANGE_LIST){
-                if (article.getWords().length()>41){
+                if (article.getWords().length()>81){
                     article.setWords(article.getWords().substring(0,80)+"...");
+                }
+                if (article.getCategoryId().equals(Constants.STORY)){
+                    article.setClass_name(Constants.STORY_CLASS);
+                }else  if (article.getCategoryId().equals(Constants.RELATION)){
+                    article.setClass_name(Constants.RELATION_CLASS);
+                } else  if (article.getCategoryId().equals(Constants.YOUNG)){
+                    article.setClass_name(Constants.YOUNG_CLASS);
+                }else  if (article.getCategoryId().equals(Constants.HEALTH)){
+                    article.setClass_name(Constants.HEALTH_CLASS);
+                }else  if (article.getCategoryId().equals(Constants.COLD)){
+                    article.setClass_name(Constants.COLD_CLASS);
+                }else  if (article.getCategoryId().equals(Constants.HISTORY)){
+                    article.setClass_name(Constants.HISTORY_CLASS);
                 }
             }
             RAND_LIST = articleDao.getArticleByRand();

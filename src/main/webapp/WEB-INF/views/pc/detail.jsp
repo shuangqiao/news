@@ -66,12 +66,12 @@
 				</form>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a data-cont="情感夜话" title="情感夜话" href="${pageContext.request.contextPath}/">首页</a></li>
-					<li><a data-cont="情感故事" title="女性健康" href="${pageContext.request.contextPath}/list/1/1">情感故事</a></li>
-					<li><a data-cont="亲密关系" title="亲密关系" href="${pageContext.request.contextPath}/list/3/1">亲密关系</a></li>
-					<li><a data-cont="青春期" title="青春期" href="${pageContext.request.contextPath}/list/6/1" >青春期</a></li>
-					<li><a data-cont="健康生活" title="健康生活" href="${pageContext.request.contextPath}/list/4/1" >健康生活</a></li>
-					<li><a data-cont="冷知识" title="冷知识" href="${pageContext.request.contextPath}/list/5/1" >冷知识</a></li>
-					<li><a data-cont="历史上的今天" title="历史上的今天" href="${pageContext.request.contextPath}/list/7/1" >历史上的今天</a></li>
+					<li><a data-cont="情感故事" title="女性健康" href="${pageContext.request.contextPath}/list/1/1.html">情感故事</a></li>
+					<li><a data-cont="亲密关系" title="亲密关系" href="${pageContext.request.contextPath}/list/3/1.html">亲密关系</a></li>
+					<li><a data-cont="青春期" title="青春期" href="${pageContext.request.contextPath}/list/6/1.html" >青春期</a></li>
+					<li><a data-cont="健康生活" title="健康生活" href="${pageContext.request.contextPath}/list/4/1.html" >健康生活</a></li>
+					<li><a data-cont="冷知识" title="冷知识" href="${pageContext.request.contextPath}/list/5/1.html" >冷知识</a></li>
+					<li><a data-cont="历史上的今天" title="历史上的今天" href="${pageContext.request.contextPath}/list/7/1.html" >历史上的今天</a></li>
 				</ul>
 			</div>
 		</div>
@@ -87,7 +87,7 @@
 	  </span> <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="来源：木庄网络博客"><i class="glyphicon glyphicon-globe"></i> 木庄网络博客</span> <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="MZ-NetBlog主题"><i class="glyphicon glyphicon-list"></i> <a href="#" title="MZ-NetBlog主题" >MZ-NetBlog主题</a></span> <span class="item article-meta-views" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="浏览量：219"><i class="glyphicon glyphicon-eye-open"></i> 219</span> <span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="评论量"><i class="glyphicon glyphicon-comment"></i> 4</span> </div>
 			</header>
 			<article class="article-content">
-				<p><img data-original="/images/pc/201610181557196870.jpg" src="/images/pc/201610181557196870.jpg" alt="" /></p>
+				<p><img data-original="${pageContext.request.contextPath}/${article.picture}" src="${pageContext.request.contextPath}/${article.picture}" alt="${article.title}" /></p>
 				<p>${article.words}</p>
 				<%--<pre class="prettyprint lang-cs">代码示例：
 	public static double JieCheng(int number)
@@ -197,7 +197,7 @@
 					<li>
 						<a title="${list.title}" href="${pageContext.request.contextPath}/detail/${list.id}/.html" target="_blank">
 						<span class="thumbnail">
-							<img class="thumb" data-original="${list.picture}" src="${list.picture}" alt="${list.title}" style="display: block;">
+							<img class="thumb" data-original="${list.picture}" src="${pageContext.request.contextPath}/${list.picture}" alt="${list.title}" style="display: block;">
 						</span>
 						<span class="text">${list.title}</span><span class="muted"><i class="glyphicon glyphicon-time"></i>
 								<fmt:formatDate pattern="yyyy-MM-dd" value="${article.createdTime }"></fmt:formatDate>

@@ -29,12 +29,18 @@ public class Constants {
 	public static final String MANAGE_PASSWD = "lsq&&lsq520";
 
 
-	public static final Integer WOMAN = 1;
-	public static final Integer MAN = 2;
-	public static final Integer SEX = 3;
+	public static final Integer STORY = 1;
+	public static final Integer RELATION = 2;
+	public static final Integer YOUNG = 3;
 	public static final Integer HEALTH = 4;
 	public static final Integer COLD = 5;
-	public static final Integer YOUNG = 6;
-	public static final Integer HISTORY = 7;
+	public static final Integer HISTORY = 6;
+
+	public static final String STORY_CLASS = "pet_list_tag_xxs";
+	public static final String RELATION_CLASS = "pet_video_tag";
+	public static final String YOUNG_CLASS = "pet_list_tag_zzs";
+	public static final String HEALTH_CLASS= "pet_list_tag_stj";
+	public static final String COLD_CLASS = "pet_list_tag_kty";
+	public static final String HISTORY_CLASS = "pet_list_tag_mzt";
 
 }

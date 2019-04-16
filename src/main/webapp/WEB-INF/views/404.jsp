@@ -16,7 +16,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta name="author" content="www.sqliu.cn">
 <meta name="copyright" content="桥帮主个人博客模板，优雅、稳重、大气,低调">
-<title>桥帮主博客|页面找不到</title>
+<title>页面找不到</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css" />
  <script src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.7.2.min.js"></script>
 <style>
@@ -66,9 +66,9 @@ body{
 
 	<div style="padding: 20px 0; margin-top: 30px;">
 
-		<div style="margin-bottom: 30px; text-align: center;">
+	<%--	<div style="margin-bottom: 30px; text-align: center;">
 			<a style="color:#EEEEEE;" href="${pageContext.request.contextPath}/">苦海无涯回头是岸，返回首页吧</a>
-		</div>
+		</div>--%>
 	</div>
 
 	<p>

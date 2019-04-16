@@ -143,7 +143,7 @@
             </div>
             <c:forEach items="${RANGE_LIST}" var="list" varStatus="vs">
             <article class="excerpt excerpt-1" style="">
-                <a class="focus" href="${pageContext.request.contextPath}/detail/${list.id}" title="${list.title}"
+                <a class="focus" href="${pageContext.request.contextPath}/detail/${list.id}.html" title="${list.title}"
                    target="_blank" ><img class="thumb" data-original="${pageContext.request.contextPath}/
                    ${list.picture}" src="${pageContext.request.contextPath}/${list.picture}"
                                          onerror="javascript:this.src='images/logoError.jpg';" alt="${list.title}"

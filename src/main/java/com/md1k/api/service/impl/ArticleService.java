@@ -143,19 +143,14 @@ public class ArticleService implements IArticleService {
 	}
 
 	private void reload(Article article){
-		if (article.getCategoryId().equals(Constants.WOMAN)){
-			LoadListTask.WOMAN_LIST = articleDao.findByCategoryId(Constants.WOMAN);
+		if (article.getCategoryId().equals(Constants.STORY)){
+			LoadListTask.WOMAN_LIST = articleDao.findByCategoryId(Constants.STORY);
 			for (Article a : LoadListTask.WOMAN_LIST){
 				a.setWords(article.getWords().substring(0,80)+"...");
 			}
-		}else if (article.getCategoryId().equals(Constants.SEX)){
-			LoadListTask.SEX_LIST = articleDao.findByCategoryId(Constants.SEX);
+		}else if (article.getCategoryId().equals(Constants.RELATION)){
+			LoadListTask.SEX_LIST = articleDao.findByCategoryId(Constants.RELATION);
 			for (Article a :  LoadListTask.SEX_LIST){
-				a.setWords(article.getWords().substring(0,80)+"...");
-			}
-		}else if (article.getCategoryId().equals(Constants.MAN)){
-			LoadListTask.MAN_LIST = articleDao.findByCategoryId(Constants.MAN);
-			for (Article a :  LoadListTask.MAN_LIST){
 				a.setWords(article.getWords().substring(0,80)+"...");
 			}
 		}else if (article.getCategoryId().equals(Constants.HEALTH)){
