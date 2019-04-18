@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.md1k.api.config.LoadListTask.*;
 
 
@@ -27,12 +30,17 @@ public class ArticleController {
 	@RequestMapping(value="/",method = {RequestMethod.POST,RequestMethod.GET})
 	public String getQing(Model model, HttpServletRequest request){
 		model.addAttribute("RANGE_LIST",RANGE_LIST);
-		model.addAttribute("RAND_LIST",RAND_LIST);
 		model.addAttribute("KEY_WORDS",KEY_WORDS);
 		model.addAttribute("DAILY_RECOMMEND",DAILY_RECOMMEND);
 		if (request.getHeader("User-Agent").toLowerCase().contains("windows")) {
+            model.addAttribute("RAND_LIST",RAND_LIST);
 			return "/pc/home";
 		}else {
+		    List<Article> RANDS = new ArrayList<>();
+		    for (int i=0;i<3;i++){
+		        RANDS.add(RAND_LIST.get(i));
+            }
+            model.addAttribute("RAND_LIST",RANDS);
 			return "/app/home";
 		}
 		//return "404";

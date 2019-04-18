@@ -48,7 +48,7 @@
 	</select>
 
 	<select id="getArticleByRand" resultMap="ArticleManage">
-		select id,title,created_time,hits from qing_articles
+		select id,title,created_time,hits,picture from qing_articles
 		WHERE status='1'  ORDER BY RAND() limit 10
 	</select>
 

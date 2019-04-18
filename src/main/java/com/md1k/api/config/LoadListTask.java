@@ -32,6 +32,7 @@ public class LoadListTask {
     public static List<Article> RANGE_LIST = new ArrayList<>();
     public static List<Article> RAND_LIST = new ArrayList<>();
     public static List<KeyWord> KEY_WORDS = new ArrayList<>();
+    public static List<Article> RECOMMEND_LIST = new ArrayList<>();
 
     @Resource
     private IArticleDao articleDao;
