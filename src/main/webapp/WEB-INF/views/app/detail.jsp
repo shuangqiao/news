@@ -39,97 +39,24 @@
                                 <div class="pet_article_user_info_tab_font_center"><a href="###">查看全部资料</a></div> -->
 					</div>
 				</div>
-				<span class="pet_article_user_ico"><img src="img/a1.png" alt="" class=""></span>
-				<span class="pet_article_user_name">EGOIST</span>
+				<span class="pet_article_user_ico"><img src="${pageContext.request.contextPath}/images/logo.png" alt="" class=""></span>
+				<span class="pet_article_user_name">情感夜话 - ${article.categoryName}</span>
 			</h1>
-			<div class="am-header-right am-header-nav">
-				<a href="javascript:;" class="iconfont pet_head_gd_ico">&#xe600;</a>
-			</div>
 		</header>
 	</div>
-
-	<div class="pet_more_list"><div class="pet_more_list_block">
-		<div class="iconfont pet_more_close">×</div>
-		<div class="pet_more_list_block">
-			<div class="pet_more_list_block_name">
-				<div class="pet_more_list_block_name_title">阅读 Read</div>
-				<a class="pet_more_list_block_line">
-					<i class="iconfont pet_nav_xinxianshi pet_more_list_block_line_ico">&#xe601;</i>
-					<div class="pet_more_list_block_line_font">新鲜事</div>
-				</a>
-				<a class="pet_more_list_block_line">
-					<i class="iconfont pet_nav_zhangzhishi pet_more_list_block_line_ico">&#xe606;</i>
-					<div class="pet_more_list_block_line_font">涨知识</div>
-				</a>
-				<a class="pet_more_list_block_line">
-					<i class="iconfont pet_nav_kantuya pet_more_list_block_line_ico">&#xe607;</i>
-					<div class="pet_more_list_block_line_font">看涂鸦</div>
-				</a>
-				<a class="pet_more_list_block_line">
-					<i class="iconfont pet_nav_mengzhuanti pet_more_list_block_line_ico">&#xe603;</i>
-					<div class="pet_more_list_block_line_font">萌专题</div>
-				</a>
-				<a class="pet_more_list_block_line">
-					<i class="iconfont pet_nav_bk pet_more_list_block_line_ico">&#xe611;</i>
-					<div class="pet_more_list_block_line_font">百科</div>
-				</a>
-				<a class="pet_more_list_block_line">
-					<i class="iconfont pet_nav_wd pet_more_list_block_line_ico">&#xe60c;</i>
-					<div class="pet_more_list_block_line_font">问答</div>
-				</a>
-				<div class="pet_more_list_block_name_title pet_more_list_block_line_height">服务 Service</div>
-				<a class="pet_more_list_block_line">
-					<i class="iconfont pet_nav_xinxianshi pet_more_list_block_line_ico">&#xe600;</i>
-					<div class="pet_more_list_block_line_font">美容</div>
-				</a>
-				<a class="pet_more_list_block_line">
-					<i class="iconfont pet_nav_zhangzhishi pet_more_list_block_line_ico">&#xe602;</i>
-					<div class="pet_more_list_block_line_font">医院</div>
-				</a>
-				<a class="pet_more_list_block_line">
-					<i class="iconfont pet_nav_kantuya pet_more_list_block_line_ico">&#xe604;</i>
-					<div class="pet_more_list_block_line_font">店铺</div>
-				</a>
-				<a class="pet_more_list_block_line">
-					<i class="iconfont pet_nav_sy pet_more_list_block_line_ico">&#xe610;</i>
-					<div class="pet_more_list_block_line_font">摄影</div>
-				</a>
-				<a class="pet_more_list_block_line">
-					<i class="iconfont pet_nav_xx pet_more_list_block_line_ico">&#xe612;</i>
-					<div class="pet_more_list_block_line_font">学校</div>
-				</a>
-				<a class="pet_more_list_block_line">
-					<i class="iconfont pet_nav_sz pet_more_list_block_line_ico">&#xe60f;</i>
-					<div class="pet_more_list_block_line_font">水族</div>
-				</a>
-				<a class="pet_more_list_block_line">
-					<i class="iconfont pet_nav_ms pet_more_list_block_line_ico">&#xe60e;</i>
-					<div class="pet_more_list_block_line_font">猫舍</div>
-				</a>
-				<a class="pet_more_list_block_line">
-					<i class="iconfont pet_nav_qs pet_more_list_block_line_ico">&#xe60b;</i>
-					<div class="pet_more_list_block_line_font">犬舍</div>
-				</a>
-				<a class="pet_more_list_block_line">
-					<i class="iconfont pet_nav_qt pet_more_list_block_line_ico">&#xe60d;</i>
-					<div class="pet_more_list_block_line_font">其它</div>
-				</a>
-			</div>
-		</div>
-	</div></div>
+</div>
 
 	<div class="pet_content">
 		<div class="pet_content_block">
 			<article data-am-widget="paragraph" class="am-paragraph am-paragraph-default pet_content_article" data-am-paragraph="{ tableScrollable: true, pureview: true }">
 				<h1 class="pet_article_title">${article.title}</h1>
-				<div class="pet_article_user_time">发表于：<fmt:formatDate pattern="yyyy-MM-dd" value="${list.createdTime }"></fmt:formatDate></div>
-				<img src="${article.picture}"><p class=paragraph-default-p>${article.words}</p>
-
+				<div class="pet_article_user_time">发表于：<fmt:formatDate pattern="yyyy-MM-dd" value="${article.createdTime }"></fmt:formatDate> &nbsp;&nbsp; 浏览（${article.hits}）</div>
+				<img src="${pageContext.request.contextPath}/${article.picture}"><p class=paragraph-default-p>${article.words}</p>
 			</article>
 			<ul class="like_share_block">
-				<li><a class="link_share_button" href="###"><i class="iconfont share_ico_link">&#xe62f;</i>1460</a></li>
-				<li><a class="link_share_button" href="###"><i class="iconfont share_ico_wx">&#xe630;</i>微信</a></li>
-				<li><a class="link_share_button" href="###"><i class="iconfont share_ico_pyq">&#xe62e;</i>朋友圈</a></li>
+				<li>分享到</li>
+				<li><a class="link_share_button" href="###"><i class="iconfont share_ico_wx"><img style="width: 26px;" src="${pageContext.request.contextPath}/images/wx.jpg" />微信</a></li>
+				<li><a class="link_share_button" href="###"><i class="iconfont share_ico_pyq"><img style="width: 26px;" src="${pageContext.request.contextPath}/images/pyq.jpg" /></i>朋友圈</a></li>
 			</ul>
 			<div class="pet_article_dowload">
 				<div class="pet_article_dowload_title">关于Amaze UI</div>
@@ -309,10 +236,10 @@
 							<c:forEach items="${RANGE_LIST}" var="list" varStatus="vs">
 							<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right pet_list_one_block">
 								<div class="pet_list_one_info">
-									<%--<div class="pet_list_one_info_l">
-										<div class="pet_list_one_info_ico"><img src="img/a1.png" alt=""></div>
-										<div class="pet_list_one_info_name">Super invincible 菁 </div>
-									</div>--%>
+									<div class="pet_list_one_info_l">
+										<div class="pet_list_one_info_ico"><img src="${pageContext.request.contextPath}/${list.headImg}" alt=""></div>
+										<div class="pet_list_one_info_name">${list.author} </div>
+									</div>
 									<div class="pet_list_one_info_r">
 										<div class="pet_list_tag ${list.class_name}">${list.categoryName}</div>
 									</div>
@@ -323,7 +250,7 @@
 								</div>
 								<div class="am-u-sm-4 am-list-thumb">
 									<a href="${pageContext.request.contextPath}/detail/${list.id}.html" class="">
-										<img src="${list.picture}" class="pet_list_one_img" alt=""/>
+										<img src="${pageContext.request.contextPath}/${list.picture}" class="pet_list_one_img" alt=""/>
 									</a>
 								</div>
 							</li>

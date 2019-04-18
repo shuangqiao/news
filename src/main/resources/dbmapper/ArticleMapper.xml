@@ -13,6 +13,7 @@
 		<result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
 		<result column="picture" jdbcType="VARCHAR" property="picture" />
 		<result column="category_id" jdbcType="INTEGER" property="categoryId" />
+		<result column="head_img" jdbcType="VARCHAR" property="headImg" />
 	</resultMap>
 
 	<select id="findById" resultMap="ArticleManage">

@@ -29,6 +29,7 @@ public class Article implements Serializable{
 	private String categoryName;
 
 	private String class_name;
+	private String headImg;
 
 	/**
 	 * @return the id
@@ -189,6 +190,14 @@ public class Article implements Serializable{
 
 	public void setClass_name(String class_name) {
 		this.class_name = class_name;
+	}
+
+	public String getHeadImg() {
+		return headImg;
+	}
+
+	public void setHeadImg(String headImg) {
+		this.headImg = headImg;
 	}
 
 	@Override

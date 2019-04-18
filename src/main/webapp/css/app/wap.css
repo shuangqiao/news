@@ -166,11 +166,11 @@ background-size: 100%; width: 100%; height: 100%; bottom: 0; left: 0; z-index: 1
 .like_share_block { width:100%; padding:25px 15px 10px; overflow: hidden;   margin-top: 15px;}
 .like_share_block li { width: 33.33%; padding:0 5px; float: left;}
 .link_share_button i { display: inline-block; margin-right: 5px;}
-.link_share_button { color: #979797;  font-size: 14px;height: 36px; line-height: 36px; text-align: center; display: block; border-radius: 20px; border: 1px solid #dcdcdc;}
+.link_share_button { color: #10d21c; background-color: #10d21c; font-size: 14px;height: 36px; line-height: 36px; text-align: center; display: block; border-radius: 20px; border: 1px solid #dcdcdc;}
 .link_share_button:hover { color: #e86060;  }
 .link_share_button .share_ico_link { color:#e86060; }
-.link_share_button .share_ico_wx { color:#6dc35e;}
-.link_share_button .share_ico_pyq { color:#6959f0;}
+.link_share_button .share_ico_wx { background-image: url("/images/wx.jpg");}
+.link_share_button .share_ico_pyq { background-image: url("/images/pyq.jpg");}
 .pet_content_list { padding-top: 29px;}
 
 /* 评论 */
