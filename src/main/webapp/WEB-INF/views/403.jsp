@@ -16,12 +16,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta name="author" content="www.sqliu.cn">
 <meta name="copyright" content="">
-<title>可能有错误</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/error_styles.css" />
+<title>访问被禁止</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css" />
  <script src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.7.2.min.js"></script>
 <style>
 body{
-	background:url('/images/errorpage/bg.png') no-repeat center center #1d1d1d;
+	background:url('${pageContext.request.contextPath}/images/errorpage/bg.png') no-repeat center center #1d1d1d;
 	color:#eee;
 	font-family:Corbel,Arial,Helvetica,sans-serif;
 	font-size:18px;
@@ -31,7 +31,7 @@ body{
 #rocket{
 	width:275px;
 	height:375px;
-	background:url('/images/errorpage/rocket.png') no-repeat;
+	background:url('${pageContext.request.contextPath}/images/errorpage/rocket.png') no-repeat;
 	margin:60px auto 10px;
 	position:relative;
 }
@@ -45,7 +45,7 @@ body{
 	left:50px;
 	width:80px;
 	height:80px;
-	background:url('/images/errorpage/steam.png') no-repeat;
+	background:url('${pageContext.request.contextPath}/images/errorpage/steam.png') no-repeat;
 	opacity:0.8;
 }
 </style>
@@ -56,29 +56,29 @@ body{
 	<div id="rocket"></div>
 
 	<hgroup>
-	<h1>500 &nbsp;&nbsp;&nbsp;&nbsp;Something Wrong</h1>
+	<h1>404 &nbsp;&nbsp;&nbsp;&nbsp;Page Not Found</h1>
 	<h2>We couldn't find what you were looking for.</h2>
 	</hgroup>
 
 	<script
 		src="http://www.16sucai.com/uploadfile/show/jQuerycss3muen1/js/jquery.min.js"></script>
-	<script src="js/script.js"></script>
+	<script src="${pageContext.request.contextPath}/js/script.js"></script>
 
 	<div style="padding: 20px 0; margin-top: 30px;">
 
-		<div style="margin-bottom: 30px; text-align: center;">
-			<a style="color:#EEEEEE;" href="/">苦海无涯回头是岸，返回首页吧</a>
-		</div>
+	<%--	<div style="margin-bottom: 30px; text-align: center;">
+			<a style="color:#EEEEEE;" href="${pageContext.request.contextPath}/">苦海无涯回头是岸，返回首页吧</a>
+		</div>--%>
 	</div>
 
 	<p>
-		<p>理想与现实，可能只差一个页面的距离！！</p>
+		<p style="color: red">访问过于频繁，你想干嘛？</p>
 	</p>
 	<p></p> 
 	<div id="bubbles" style="visibility:hidden">
-    <img src="images/errorpage/404_white.jpg">
-    <img src="images/errorpage/404_yellow.jpg">
-    <img src="images/errorpage/404_red.jpg">
+    <img src="${pageContext.request.contextPath}/images/errorpage/404_white.jpg">
+    <img src="${pageContext.request.contextPath}/images/errorpage/404_yellow.jpg">
+    <img src="${pageContext.request.contextPath}/images/errorpage/404_red.jpg">
     </div>
 </body>
 </html>

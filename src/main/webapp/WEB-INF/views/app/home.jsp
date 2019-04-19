@@ -91,7 +91,8 @@
         </div>
     </div>
     <div class="pet_article_dowload pet_dowload_more_top_off">
-        <div class="pet_article_dowload_title">关于Amaze UI</div>
+        <%--广告位--%>
+       <%-- <div class="pet_article_dowload_title">关于Amaze UI</div>
         <div class="pet_article_dowload_content pet_dowload_more_top_bg"><div class="pet_article_dowload_triangle pet_dowload_more_top_san"></div>
             <div class="pet_article_dowload_ico"><img src="img/footdon.png" alt=""></div>
             <div class="pet_article_dowload_content_font">
@@ -100,7 +101,7 @@
                 <a href="###" class="pet_article_dowload_Az am-icon-apple"> App store</a>
                 <a href="###" class="pet_article_dowload_Pg am-icon-android"> Android</a>
             </div>
-        </div>
+        </div>--%>
         <div class="pet_article_footer_info">Copyright(c)2015 Amaze UI All Rights Reserved.模板收集自 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> -  More Templates  <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></div>
     </div>
 </div>

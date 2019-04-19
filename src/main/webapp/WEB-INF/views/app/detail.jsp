@@ -51,14 +51,16 @@
 			<article data-am-widget="paragraph" class="am-paragraph am-paragraph-default pet_content_article" data-am-paragraph="{ tableScrollable: true, pureview: true }">
 				<h1 class="pet_article_title">${article.title}</h1>
 				<div class="pet_article_user_time">发表于：<fmt:formatDate pattern="yyyy-MM-dd" value="${article.createdTime }"></fmt:formatDate> &nbsp;&nbsp; 浏览（${article.hits}）</div>
-				<img src="${pageContext.request.contextPath}/${article.picture}"><p class=paragraph-default-p>${article.words}</p>
+				<%--广告位--%><img src="${pageContext.request.contextPath}/${article.picture}">
+				<p class=paragraph-default-p>${article.words}</p>
 			</article>
 			<ul class="like_share_block">
 				<li>分享到</li>
 				<li><a class="link_share_button" href="###"><i class="iconfont share_ico_wx"><img style="width: 26px;" src="${pageContext.request.contextPath}/images/wx.jpg" />微信</a></li>
 				<li><a class="link_share_button" href="###"><i class="iconfont share_ico_pyq"><img style="width: 26px;" src="${pageContext.request.contextPath}/images/pyq.jpg" /></i>朋友圈</a></li>
 			</ul>
-			<div class="pet_article_dowload">
+			<%--广告位--%>
+			<%--<div class="pet_article_dowload">
 				<div class="pet_article_dowload_title">关于Amaze UI</div>
 				<div class="pet_article_dowload_content"><div class="pet_article_dowload_triangle"></div>
 					<div class="pet_article_dowload_ico"><img src="img/footdon.png" alt=""></div>
@@ -70,7 +72,7 @@
 						<a href="###" class="pet_article_dowload_Pg am-icon-android"> Android</a>
 					</div>
 				</div>
-			</div>
+			</div>--%>
 		</div>
 		<div class="pet_comment_list">
 			<div class="pet_comment_list_wap"><div class="pet_comment_list_title">精彩评论</div>

@@ -1,26 +1,84 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
-<!DOCTYPE html>
-<html>
-
+<%--
+  Created by IntelliJ IDEA.
+  User: shuangqiao
+  Date: 2017/2/23
+  Time: 23:03
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta name="author" content="www.sqliu.cn">
+    <meta name="copyright" content="">
+    <title>可能有错误</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/error_styles.css" />
+    <script src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.7.2.min.js"></script>
+    <style>
+        body{
+            background:url('/images/errorpage/bg.png') no-repeat center center #1d1d1d;
+            color:#eee;
+            font-family:Corbel,Arial,Helvetica,sans-serif;
+            font-size:18px;
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        }
 
+        #rocket{
+            width:275px;
+            height:375px;
+            background:url('/images/errorpage/rocket.png') no-repeat;
+            margin:60px auto 10px;
+            position:relative;
+        }
 
-    <title>503</title>
+        /*	Two steam classes. */
 
+        .steam1,
+        .steam2{
+            position:absolute;
+            bottom:78px;
+            left:50px;
+            width:80px;
+            height:80px;
+            background:url('/images/errorpage/steam.png') no-repeat;
+            opacity:0.8;
+        }
+    </style>
 
 </head>
 
-<body class="gray-bg">
+<body style="text-align: center">
+<div id="rocket"></div>
 
+<hgroup>
+    <h1>500 &nbsp;&nbsp;&nbsp;&nbsp;Service Unavailable</h1>
+    <h2>We couldn't find what you were looking for.</h2>
+</hgroup>
 
-<div class="middle-box text-center animated fadeInDown">
-    <h2 style="font-size:80px;">503</h2>
-    <h3 class="font-bold">没有访问当前页面的权限！</h3>
+<script
+        src="http://www.16sucai.com/uploadfile/show/jQuerycss3muen1/js/jquery.min.js"></script>
+<script src="js/script.js"></script>
+
+<div style="padding: 20px 0; margin-top: 30px;">
+
+    <div style="margin-bottom: 30px; text-align: center;">
+        <a style="color:#EEEEEE;" href="/">苦海无涯回头是岸，返回首页吧</a>
+    </div>
 </div>
 
+<p>
+<p>理想与现实，可能只差一个页面的距离！！</p>
+</p>
+<p></p>
+<div id="bubbles" style="visibility:hidden">
+    <img src="images/errorpage/404_white.jpg">
+    <img src="images/errorpage/404_yellow.jpg">
+    <img src="images/errorpage/404_red.jpg">
+</div>
 </body>
-
 </html>

@@ -21,6 +21,10 @@
                 alert("还没有选择分类！")
             }else if ($(".title").val()==''||$(".title").val()== null){
                 alert("忘记写标题了！")
+            }else if ($(".headImg").val()==''||$(".headImg").val()== null){
+                alert("选择头像！")
+            }else if ($(".authorName").val()==''||$(".authorName").val()== null){
+                alert("选择作者！")
             }else {
             var category = document.getElementById("select").value;
             var textwords =  $(".words").val().replace(/\n/ig,'</p><p>');
@@ -30,8 +34,9 @@
                 data : {
                     title : $(".title").val(),
                     words : textwords,
-                    author : $(".author").val(),
+                    author : $(".authorName").val(),
                     categoryId: category,
+                    headImg:$(".headImg").val()
                 },
                 success : function(data) {
                     alert("提交成功");
@@ -71,15 +76,24 @@
         </tr>
         <tr>
             <td style="width: 30px;">&nbsp;</td>
-            <td rowspan="1">
-                <input type="text" name="author" class="author" placeholder="作者"style="height: 35px;"/>&nbsp;&nbsp;&nbsp;&nbsp;
-                <select id="select" class="categoryId">
-                    <option value="0">选择分类</option>
-                    <option value="1">随笔</option>
-                    <option value="2">Java笔记</option>
-                    <option value="3">慢生活</option>
-                    <option value="4">读书心得</option>
+            <td>
+                <select id="selectCategory" class="categoryId">
+                    <c:forEach items="${categoryList}" var="clist" varStatus="a">
+                        <option value=${clist.categoryId}>${clist.name}</option>
+                    </c:forEach>
                 </select>
+            </td>
+            <td >
+                <select id="selectAuthor" class="authorName">
+                    <c:forEach items="${authorList}" var="alist" varStatus="a">
+                        <option value=${alist.name}>${alist.name}</option>
+                    </c:forEach>
+                 </select>
+                <select id="selectHead" class="headImg">
+                     <c:forEach items="${authorList}" var="alist" varStatus="a">
+                        <option value=${alist.headImg}>${alist.headImg}</option>
+                     </c:forEach>
+                 </select>
             </td>
         </tr>
         <tr>

@@ -15,7 +15,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta name="author" content="www.sqliu.cn">
-<meta name="copyright" content="桥帮主个人博客模板，优雅、稳重、大气,低调">
+<meta name="copyright" content="">
 <title>页面找不到</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css" />
  <script src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.7.2.min.js"></script>

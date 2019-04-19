@@ -36,7 +36,7 @@
 		</header>
 	</div>
 
-	<div class="pet_more_list">
+	<%--<div class="pet_more_list">
 		<div class="pet_more_list_block">
 			<div class="iconfont pet_more_close">×</div>
 			<div class="pet_more_list_block">
@@ -93,7 +93,7 @@
 			</div>
 
 		</div>
-	</div>
+	</div>--%>
 
 	<div class="pet_content pet_content_list">
 		<div class="pet_article_like">
