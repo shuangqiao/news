@@ -47,13 +47,10 @@
         <ul class="pet_circle_nav_list">
             <li><a href="${pageContext.request.contextPath}/list/1/1.html" class="iconfont pet_nav_xinxianshi ">情
             </a><span>情感故事</span></li>
-            <li><a href="${pageContext.request.contextPath}/list/3/1.html" class="iconfont pet_nav_zhangzhishi ">亲</a><span>亲密关系</span></li>
-            <li><a href="${pageContext.request.contextPath}/list/6/1.html" class="iconfont pet_nav_kantuya ">青</a><span>青春期</span></li>
+            <li><a href="${pageContext.request.contextPath}/list/2/1.html" class="iconfont pet_nav_kantuya ">青</a><span>青春期</span></li>
+            <li><a href="${pageContext.request.contextPath}/list/3/1.html" class="iconfont pet_nav_zhangzhishi ">奇</a><span>天下奇闻</span></li>
             <li><a href="${pageContext.request.contextPath}/list/4/1.html" class="iconfont pet_nav_mengzhuanti ">冷</a><span>冷知识</span></li>
-            <li><a href="${pageContext.request.contextPath}/list/5/1.html" class="iconfont pet_nav_meirong ">健</a><span>健康生活</span></li>
-            <li><a href="${pageContext.request.contextPath}/list/7/1.html" class="iconfont pet_nav_yiyuan ">史</a><span>历史上的今天</span></li>
-            <li><a href="" class="iconfont pet_nav_dianpu ">论</a><span>讨论</span></li>
-            <li><a href="javascript:;" class="iconfont pet_nav_gengduo ">MORE</a><span>更多</span></li>
+            <li><a href="${pageContext.request.contextPath}/list/5/1.html" class="iconfont pet_nav_yiyuan ">史</a><span>史上今天</span></li>
         </ul>
     </div>
     <div class="pet_content_main">
@@ -69,13 +66,14 @@
                                 <div class="pet_list_one_info_name">${list.author} </div>
                             </div>
                             <div class="pet_list_one_info_r">
-                                <div class="pet_list_tag ${list.class_name}">${list.categoryName}</div>
+                                <div class="pet_list_tag ${list.class_name}"><a target="_blank" href="${pageContext.request.contextPath}/list/${list.categoryId}/1.html">${list.categoryName}</a></div>
                             </div>
                         </div>
-                        <div class="am-u-sm-8 am-list-main pet_list_one_nr">
+                        <div class="am-u-sm-8 am-list-main pet_list_one_nr" style="height: 80px;">
                             <h3 class="am-list-item-hd pet_list_one_bt"><a
                                     href="${pageContext.request.contextPath}/detail/${list.id}.html"
                                     class="">${list.title}</a></h3>
+                          <%--  <h3 style="color: white;">.</h3>--%>
                             <div class="am-list-item-text pet_list_one_text">${list.words}…</div>
                         </div>
                         <div class="am-u-sm-4 am-list-thumb">

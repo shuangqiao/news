@@ -26,21 +26,15 @@
 	<div class="pet_head">
 		<header data-am-widget="header"
 				class="am-header am-header-default pet_head_block">
-			<div class="am-header-left am-header-nav ">
-				<a href="#left-link" class="iconfont pet_head_jt_ico">&#xe601;</a>
-			</div>
+			<%--<div class="am-header-left am-header-nav ">
+				<a href="${pageContext.request.contextPath}/" class="iconfont pet_head_jt_ico">首页</a>
+			</div>--%>
+        <%--    <div class="am-header-right am-header-nav">
+                <a href="${pageContext.request.contextPath}/" class="iconfont pet_head_gd_ico" style="margin-top: 7px; ">返回首页</a>
+            </div>--%>
 			<h1 class="am-header-title pet_article_user">
-				<div class="pet_article_user_info_tab">
-					<div class="pet_article_user_info_tab_font">
-						<div class="pet_article_user_info_tab_font_triangle"></div>
-						<div class="pet_article_user_info_tab_font_center"><i>文章</i><span>16篇</span></div>
-						<!--         <div class="pet_article_user_info_tab_font_center"><i>涂鸦</i><span>89张</span></div>
-                                <div class="pet_article_user_info_tab_font_center_line"></div>
-                                <div class="pet_article_user_info_tab_font_center"><a href="###">查看全部资料</a></div> -->
-					</div>
-				</div>
 				<span class="pet_article_user_ico"><img src="${pageContext.request.contextPath}/images/logo.png" alt="" class=""></span>
-				<span class="pet_article_user_name">情感夜话 - ${article.categoryName}</span>
+				<span class="pet_article_user_name">情感夜话 - ${article.title}</span>
 			</h1>
 		</header>
 	</div>
@@ -52,182 +46,29 @@
 				<h1 class="pet_article_title">${article.title}</h1>
 				<div class="pet_article_user_time">发表于：<fmt:formatDate pattern="yyyy-MM-dd" value="${article.createdTime }"></fmt:formatDate> &nbsp;&nbsp; 浏览（${article.hits}）</div>
 				<%--广告位--%><img src="${pageContext.request.contextPath}/${article.picture}">
-				<p class=paragraph-default-p>${article.words}</p>
+				<p class=paragraph-default-p>&nbsp;&nbsp;&nbsp;&nbsp;${article.words}</p>
 			</article>
+			<hr>
 			<ul class="like_share_block">
 				<li>分享到</li>
-				<li><a class="link_share_button" href="###"><i class="iconfont share_ico_wx"><img style="width: 26px;" src="${pageContext.request.contextPath}/images/wx.jpg" />微信</a></li>
-				<li><a class="link_share_button" href="###"><i class="iconfont share_ico_pyq"><img style="width: 26px;" src="${pageContext.request.contextPath}/images/pyq.jpg" /></i>朋友圈</a></li>
+				<li><a class="link_share_button" href="###"><i class="iconfont share_ico_wx"><img style="width: 30px;" src="${pageContext.request.contextPath}/images/wx.png" /></i>微信</a></li>
+				<li><a class="link_share_button" href="###"><i class="iconfont share_ico_pyq"><img style="width: 30px;" src="${pageContext.request.contextPath}/images/pyq.png" /></i>朋友圈</a></li>
 			</ul>
-			<%--广告位--%>
-			<%--<div class="pet_article_dowload">
-				<div class="pet_article_dowload_title">关于Amaze UI</div>
-				<div class="pet_article_dowload_content"><div class="pet_article_dowload_triangle"></div>
-					<div class="pet_article_dowload_ico"><img src="img/footdon.png" alt=""></div>
-					<div class="pet_article_dowload_content_font">
-						Amaze UI 以移动优先（Mobile first）为理念，从小屏逐步扩展到大屏，最终实现所有屏幕适配，适应移动互联潮流。
-					</div>
-					<div class="pet_article_dowload_all">
-						<a href="###" class="pet_article_dowload_Az am-icon-apple"> App store</a>
-						<a href="###" class="pet_article_dowload_Pg am-icon-android"> Android</a>
-					</div>
-				</div>
-			</div>--%>
-		</div>
-		<div class="pet_comment_list">
-			<div class="pet_comment_list_wap"><div class="pet_comment_list_title">精彩评论</div>
-
-				<div data-am-widget="tabs" class="am-tabs am-tabs-default pet_comment_list_tab" >
-					<ul class="am-tabs-nav am-cf pet_comment_list_title_tab">
-						<li class="am-active"><a href="[data-tab-panel-0]">人气</a></li>
-						<li class=""><a href="[data-tab-panel-1]">最新</a></li>
-						<li class=""><a href="[data-tab-panel-2]">最早</a></li>
-					</ul>
-					<div class="am-tabs-bd pet_pl_list">
-						<div data-tab-panel-0 class="am-tab-panel am-active">
-							<div class="pet_comment_list_block">
-								<div class="pet_comment_list_block_l"><img src="img/a1.png" alt=""></div>
-								<div class="pet_comment_list_block_r">
-									<div class="pet_comment_list_block_r_info">Amaze</div>
-									<div class="pet_comment_list_block_r_text">那时候有多好，任雨打湿裙角。忍不住哼起，心爱的旋律。绿油油的树叶，自由地在说笑。燕子忙归巢，风铃在舞蹈。</div>
-									<div class="pet_comment_list_block_r_bottom">
-										<div class="pet_comment_list_bottom_info_l">10分钟前</div>
-										<div class="pet_comment_list_bottom_info_r">
-											<span><i class="iconfont">&#xe631;</i>5 </span>
-											<span> 回复</span></div>
-									</div>
-								</div>
-							</div>
-							<div class="pet_comment_list_block">
-								<div class="pet_comment_list_block_l"><img src="img/a2.png" alt=""></div>
-								<div class="pet_comment_list_block_r">
-									<div class="pet_comment_list_block_r_info">一如既往</div>
-									<div class="pet_comment_list_block_r_text"><span>@Drary</span>没有老友你的陪伴，日子真是漫长与你重逢之时，我会敞开心扉倾诉所有。</div>
-									<div class="pet_comment_list_block_r_bottom">
-										<div class="pet_comment_list_bottom_info_l">15分钟前</div>
-										<div class="pet_comment_list_bottom_info_r">
-											<span><i class="iconfont">&#xe631;</i>5 </span>
-											<span> 回复</span></div>
-									</div>
-								</div>
-							</div>
-							<div class="pet_comment_list_block">
-								<div class="pet_comment_list_block_l"><img src="img/a3.png" alt=""></div>
-								<div class="pet_comment_list_block_r">
-									<div class="pet_comment_list_block_r_info">AllThe</div>
-									<div class="pet_comment_list_block_r_text">表紙の裏に移らないよに あけた一枚目のページの裏に透けた文字めくろうとして 指がとまって</div>
-									<div class="pet_comment_list_block_r_bottom">
-										<div class="pet_comment_list_bottom_info_l">30分钟前</div>
-										<div class="pet_comment_list_bottom_info_r">
-											<span><i class="iconfont">&#xe631;</i>5 </span>
-											<span> 回复</span></div>
-									</div>
-								</div>
-							</div>
-							<div class="pet_comment_list_block">
-								<div class="pet_comment_list_block_l"><img src="img/a4.png" alt=""></div>
-								<div class="pet_comment_list_block_r">
-									<div class="pet_comment_list_block_r_info">Drary</div>
-									<div class="pet_comment_list_block_r_text">无论历经怎样的艰难坎坷，总有你相伴陪我度过。</div>
-									<div class="pet_comment_list_block_r_bottom">
-										<div class="pet_comment_list_bottom_info_l">1小时前</div>
-										<div class="pet_comment_list_bottom_info_r">
-											<span><i class="iconfont">&#xe631;</i>5 </span>
-											<span> 回复</span></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div data-tab-panel-1 class="am-tab-panel ">
-							<div class="pet_comment_list_block">
-								<div class="pet_comment_list_block_l"><img src="img/a2.png" alt=""></div>
-								<div class="pet_comment_list_block_r">
-									<div class="pet_comment_list_block_r_info">一如既往</div>
-									<div class="pet_comment_list_block_r_text"><span>@Drary</span>没有老友你的陪伴，日子真是漫长与你重逢之时，我会敞开心扉倾诉所有。</div>
-									<div class="pet_comment_list_block_r_bottom">
-										<div class="pet_comment_list_bottom_info_l">15分钟前</div>
-										<div class="pet_comment_list_bottom_info_r">
-											<span><i class="iconfont">&#xe631;</i>5 </span>
-											<span> 回复</span></div>
-									</div>
-								</div>
-							</div>
-							<div class="pet_comment_list_block">
-								<div class="pet_comment_list_block_l"><img src="img/a3.png" alt=""></div>
-								<div class="pet_comment_list_block_r">
-									<div class="pet_comment_list_block_r_info">AllThe</div>
-									<div class="pet_comment_list_block_r_text">表紙の裏に移らないよに あけた一枚目のページの裏に透けた文字めくろうとして 指がとまって</div>
-									<div class="pet_comment_list_block_r_bottom">
-										<div class="pet_comment_list_bottom_info_l">30分钟前</div>
-										<div class="pet_comment_list_bottom_info_r">
-											<span><i class="iconfont">&#xe631;</i>5 </span>
-											<span> 回复</span></div>
-									</div>
-								</div>
-							</div>
-							<div class="pet_comment_list_block">
-								<div class="pet_comment_list_block_l"><img src="img/a1.png" alt=""></div>
-								<div class="pet_comment_list_block_r">
-									<div class="pet_comment_list_block_r_info">Amaze</div>
-									<div class="pet_comment_list_block_r_text">那时候有多好，任雨打湿裙角。忍不住哼起，心爱的旋律。绿油油的树叶，自由地在说笑。燕子忙归巢，风铃在舞蹈。</div>
-									<div class="pet_comment_list_block_r_bottom">
-										<div class="pet_comment_list_bottom_info_l">10分钟前</div>
-										<div class="pet_comment_list_bottom_info_r">
-											<span><i class="iconfont">&#xe631;</i>5 </span>
-											<span> 回复</span></div>
-									</div>
-								</div>
-							</div>
-
-
-							<div class="pet_comment_list_block">
-								<div class="pet_comment_list_block_l"><img src="img/a4.png" alt=""></div>
-								<div class="pet_comment_list_block_r">
-									<div class="pet_comment_list_block_r_info">Drary</div>
-									<div class="pet_comment_list_block_r_text">无论历经怎样的艰难坎坷，总有你相伴陪我度过。</div>
-									<div class="pet_comment_list_block_r_bottom">
-										<div class="pet_comment_list_bottom_info_l">1小时前</div>
-										<div class="pet_comment_list_bottom_info_r">
-											<span><i class="iconfont">&#xe631;</i>5 </span>
-											<span> 回复</span></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div data-tab-panel-2 class="am-tab-panel ">
-							<div class="pet_comment_list_block">
-								<div class="pet_comment_list_block_l"><img src="img/a1.png" alt=""></div>
-								<div class="pet_comment_list_block_r">
-									<div class="pet_comment_list_block_r_info">Amaze</div>
-									<div class="pet_comment_list_block_r_text">那时候有多好，任雨打湿裙角。忍不住哼起，心爱的旋律。绿油油的树叶，自由地在说笑。燕子忙归巢，风铃在舞蹈。</div>
-									<div class="pet_comment_list_block_r_bottom">
-										<div class="pet_comment_list_bottom_info_l">10分钟前</div>
-										<div class="pet_comment_list_bottom_info_r">
-											<span><i class="iconfont">&#xe631;</i>5 </span>
-											<span> 回复</span></div>
-									</div>
-								</div>
-							</div>
-
-
-							<div class="pet_comment_list_block">
-								<div class="pet_comment_list_block_l"><img src="img/a4.png" alt=""></div>
-								<div class="pet_comment_list_block_r">
-									<div class="pet_comment_list_block_r_info">Drary</div>
-									<div class="pet_comment_list_block_r_text">无论历经怎样的艰难坎坷，总有你相伴陪我度过。</div>
-									<div class="pet_comment_list_block_r_bottom">
-										<div class="pet_comment_list_bottom_info_l">1小时前</div>
-										<div class="pet_comment_list_bottom_info_r">
-											<span><i class="iconfont">&#xe631;</i>5 </span>
-											<span> 回复</span></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+				<table style="width: 95%;">
+					<tr style="width: 100%;">
+						<td style="width: 30%;text-align: center;"></td>
+						<td style="width: 65%;">
+							<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><a class="bds_qzone"></a><a class="bds_tqq"></a><a class="bds_renren"></a><span class="bds_more"></span><a class="shareCount"></a></div>
+							<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6574585" ></script>
+							<script type="text/javascript" id="bdshell_js"></script>
+							<script type="text/javascript">
+                                document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+							</script>
+						</td>
+					</tr>
+				</table>
+			<hr>
+		<%--广告位--%>
 		<div class="pet_article_like">
 			<div class="pet_article_like_title">猜你喜欢</div>
 			<div class="pet_content_main pet_article_like_delete">
@@ -243,12 +84,12 @@
 										<div class="pet_list_one_info_name">${list.author} </div>
 									</div>
 									<div class="pet_list_one_info_r">
-										<div class="pet_list_tag ${list.class_name}">${list.categoryName}</div>
+										<div class="pet_list_tag ${list.class_name}"><a target="_blank" href="${pageContext.request.contextPath}/list/${list.categoryId}/1.html">${list.categoryName}</a></div>
 									</div>
 								</div>
 								<div class=" am-u-sm-8 am-list-main pet_list_one_nr">
 									<h3 class="am-list-item-hd pet_list_one_bt"><a href="${pageContext.request.contextPath}/detail/${list.id}.html" class="">${list.title}</a></h3>
-									<div class="am-list-item-text pet_list_one_text">${list.words}</div>
+									<div class="am-list-item-text pet_list_one_text">${list.words}...</div>
 								</div>
 								<div class="am-u-sm-4 am-list-thumb">
 									<a href="${pageContext.request.contextPath}/detail/${list.id}.html" class="">

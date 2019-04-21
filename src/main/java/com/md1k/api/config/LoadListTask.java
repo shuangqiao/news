@@ -20,14 +20,13 @@ import java.util.UUID;
 public class LoadListTask {
     public static String uuid = "";
     public static String uuid_bak = "";
-    public static List<Article> WOMAN_LIST = new ArrayList<>();
-    public static List<Article> MAN_LIST = new ArrayList<>();
-    public static List<Article> SEX_LIST = new ArrayList<>();
-    public static List<Article> HEALTH_LIST = new ArrayList<>();
-    public static List<Article> COLD_LIST = new ArrayList<>();
-    public static Article DAILY_RECOMMEND = new Article();
+    public static List<Article> LOVE_LIST = new ArrayList<>();
     public static List<Article> YOUNG_LIST = new ArrayList<>();
+    public static List<Article> SPECIAL_LIST = new ArrayList<>();
+    public static List<Article> COLD_LIST = new ArrayList<>();
     public static List<Article> HISTORY_LIST = new ArrayList<>();
+
+    public static Article DAILY_RECOMMEND = new Article();
 
     public static List<Article> RANGE_LIST = new ArrayList<>();
     public static List<Article> RAND_LIST = new ArrayList<>();
@@ -43,47 +42,15 @@ public class LoadListTask {
     public void initList(){
         uuid = UUID.randomUUID().toString().replaceAll("-","");
         uuid_bak = uuid;
-        try {
+       /* try {
             Runtime.getRuntime().exec("mv /www/server/apache-tomcat-default/webapps/video"+" " +
                     "/www/server/apache-tomcat-default/webapps/video"+uuid);
         }catch (Exception e){
 
-        }
+        }*/
         try {
-          /*  WOMAN_LIST = articleDao.findByCategoryId(Constants.WOMAN);
-            for (Article article : WOMAN_LIST){
-                if (article.getWords().length()>41){
-                    article.setWords(article.getWords().substring(0,80)+"...");
-                }
-            }
-            Thread.sleep(50);
-
-            SEX_LIST = articleDao.findByCategoryId(Constants.SEX);
-            for (Article article : SEX_LIST){
-                if (article.getWords().length()>41){
-                    article.setWords(article.getWords().substring(0,80)+"...");
-                }
-            }
-            Thread.sleep(50);
-
-            MAN_LIST = articleDao.findByCategoryId(Constants.MAN);
-            for (Article article : MAN_LIST){
-                if (article.getWords().length()>41){
-                    article.setWords(article.getWords().substring(0,80)+"...");
-                }
-            }
-            Thread.sleep(50);
-
-            HEALTH_LIST = articleDao.findByCategoryId(Constants.HEALTH);
-            for (Article article : HEALTH_LIST){
-                if (article.getWords().length()>41){
-                    article.setWords(article.getWords().substring(0,80)+"...");
-                }
-            }
-            Thread.sleep(50);
-
-            COLD_LIST = articleDao.findByCategoryId(Constants.COLD);
-            for (Article article : COLD_LIST){
+            LOVE_LIST = articleDao.findByCategoryId(Constants.LOVE);
+            for (Article article : LOVE_LIST){
                 if (article.getWords().length()>41){
                     article.setWords(article.getWords().substring(0,80)+"...");
                 }
@@ -98,26 +65,42 @@ public class LoadListTask {
             }
             Thread.sleep(50);
 
+            SPECIAL_LIST = articleDao.findByCategoryId(Constants.SPECIAL);
+            for (Article article : SPECIAL_LIST){
+                if (article.getWords().length()>41){
+                    article.setWords(article.getWords().substring(0,80)+"...");
+                }
+            }
+            Thread.sleep(50);
+
+            COLD_LIST = articleDao.findByCategoryId(Constants.COLD);
+            for (Article article : COLD_LIST){
+                if (article.getWords().length()>41){
+                    article.setWords(article.getWords().substring(0,80)+"...");
+                }
+            }
+            Thread.sleep(50);
+
             HISTORY_LIST = articleDao.findByCategoryId(Constants.HISTORY);
             for (Article article : HISTORY_LIST){
                 if (article.getWords().length()>41){
                     article.setWords(article.getWords().substring(0,80)+"...");
                 }
             }
-*/
+
             RANGE_LIST = articleDao.getNewArticle();
             for (Article article : RANGE_LIST){
-                if (article.getWords().length()>81){
-                    article.setWords(article.getWords().substring(0,80)+"...");
+                if (article.getTitle().length()>13){
+                    article.setWords(article.getWords().trim().replaceAll("<p>","").replaceAll("</p>","").substring(0,15));
+                }else if (article.getWords().length()>40){
+                    article.setWords(article.getWords().trim().replaceAll("<p>","").replaceAll("</p>","").substring(0,40));
                 }
-                if (article.getCategoryId().equals(Constants.STORY)){
-                    article.setClass_name(Constants.STORY_CLASS);
-                }else  if (article.getCategoryId().equals(Constants.RELATION)){
-                    article.setClass_name(Constants.RELATION_CLASS);
+                if (article.getCategoryId().equals(Constants.LOVE)){
+                    article.setClass_name(Constants.LOVE_CLASS);
+                }else  if (article.getCategoryId().equals(Constants.SPECIAL)){
+                    article.setClass_name(Constants.SPECIAL_CLASS);
                 } else  if (article.getCategoryId().equals(Constants.YOUNG)){
                     article.setClass_name(Constants.YOUNG_CLASS);
-                }else  if (article.getCategoryId().equals(Constants.HEALTH)){
-                    article.setClass_name(Constants.HEALTH_CLASS);
                 }else  if (article.getCategoryId().equals(Constants.COLD)){
                     article.setClass_name(Constants.COLD_CLASS);
                 }else  if (article.getCategoryId().equals(Constants.HISTORY)){
@@ -157,8 +140,8 @@ public class LoadListTask {
     }
 
     //每3分钟轮询,检查闹钟信息，更新过期闹钟
-    @Scheduled(cron = "0 */3 * * * ? ")
-    public void updateUUID(){
+        //@Scheduled(cron = "0 */3 * * * ? ")
+    /* public void updateUUID(){
         Date now = new Date();
         int hour = now.getHours();
         if ((hour & 1) == 1 && now.getMinutes() >= 55) {
@@ -171,5 +154,5 @@ public class LoadListTask {
                 e.printStackTrace();
             }
         }
-    }
+    }*/
 }

@@ -24,7 +24,7 @@ public interface IArticleService {
 	 * @param categoryId
 	 * @return
 	 */
-	 PageInfo<Article> getAllArticle(Integer categoryId, Integer currentPage);
+	 PageInfo<Article> selectCategory(Integer categoryId, Integer currentPage);
 	
 	/**
 	 * 根据id找到上一篇文章

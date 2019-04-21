@@ -26,74 +26,20 @@
 	<div class="pet_head">
 		<header data-am-widget="header"
 				class="am-header am-header-default pet_head_block">
-			<div class="am-header-left am-header-nav ">
-				<a href="#left-link" class="iconfont pet_head_jt_ico">&#xe601;</a>
-			</div>
+		<%--	<div class="am-header-left am-header-nav " style="height: 100%;">
+				<a href="${pageContext.request.contextPath}/" class="iconfont pet_head_jt_ico" style="margin-top: 6px; ">首页</a>
+			</div>--%>
 
-			<div class="am-header-right am-header-nav">
-				<a href="javascript:;" class="iconfont pet_head_gd_ico">&#xe600;</a>
-			</div>
+		<%--	<div class="am-header-right am-header-nav">
+				<a href="${pageContext.request.contextPath}/" class="iconfont pet_head_gd_ico" style="margin-top: 7px; ">返回首页</a>
+			</div>--%>
+			<h1 class="am-header-title pet_article_user">
+				<span class="pet_article_user_ico"><img src="${pageContext.request.contextPath}/images/logo.png" alt="" class=""></span>
+				<span class="pet_article_user_name">情感夜话 - ${categoryName}</span>
+			</h1>
 		</header>
 	</div>
 
-	<%--<div class="pet_more_list">
-		<div class="pet_more_list_block">
-			<div class="iconfont pet_more_close">×</div>
-			<div class="pet_more_list_block">
-				<div class="pet_more_list_block_name">
-					<div class="pet_more_list_block_name_title">阅读 Read</div>
-					<a class="pet_more_list_block_line"> <i class="iconfont pet_nav_xinxianshi pet_more_list_block_line_ico">&#xe61e;</i>
-						<div class="pet_more_list_block_line_font">新鲜事</div>
-					</a>
-					<a class="pet_more_list_block_line"> <i class="iconfont pet_nav_zhangzhishi pet_more_list_block_line_ico">&#xe607;</i>
-						<div class="pet_more_list_block_line_font">趣闻</div>
-					</a>
-					<a class="pet_more_list_block_line">
-						<i class="iconfont pet_nav_kantuya pet_more_list_block_line_ico">&#xe62c;</i>
-						<div class="pet_more_list_block_line_font">阅读</div>
-					</a>
-					<a class="pet_more_list_block_line">
-						<i class="iconfont pet_nav_mengzhuanti pet_more_list_block_line_ico">&#xe622;</i>
-						<div class="pet_more_list_block_line_font">专题</div>
-					</a>
-					<a class="pet_more_list_block_line">
-						<i class="iconfont pet_nav_bk pet_more_list_block_line_ico">&#xe629;</i>
-						<div class="pet_more_list_block_line_font">订阅</div>
-					</a>
-					<a class="pet_more_list_block_line">
-						<i class="iconfont pet_nav_wd pet_more_list_block_line_ico">&#xe602;</i>
-						<div class="pet_more_list_block_line_font">专栏</div>
-					</a>
-					<div class="pet_more_list_block_name_title pet_more_list_block_line_height">服务 Service</div>
-					<a class="pet_more_list_block_line">
-						<i class="iconfont pet_nav_xinxianshi pet_more_list_block_line_ico">&#xe61e;</i>
-						<div class="pet_more_list_block_line_font">新鲜事</div>
-					</a>
-					<a class="pet_more_list_block_line">
-						<i class="iconfont pet_nav_zhangzhishi pet_more_list_block_line_ico">&#xe607;</i>
-						<div class="pet_more_list_block_line_font">趣闻</div>
-					</a>
-					<a class="pet_more_list_block_line">
-						<i class="iconfont pet_nav_kantuya pet_more_list_block_line_ico">&#xe62c;</i>
-						<div class="pet_more_list_block_line_font">阅读</div>
-					</a>
-					<a class="pet_more_list_block_line">
-						<i class="iconfont pet_nav_mengzhuanti pet_more_list_block_line_ico">&#xe622;</i>
-						<div class="pet_more_list_block_line_font">专题</div>
-					</a>
-					<a class="pet_more_list_block_line">
-						<i class="iconfont pet_nav_bk pet_more_list_block_line_ico">&#xe629;</i>
-						<div class="pet_more_list_block_line_font">订阅</div>
-					</a>
-					<a class="pet_more_list_block_line">
-						<i class="iconfont pet_nav_wd pet_more_list_block_line_ico">&#xe602;</i>
-						<div class="pet_more_list_block_line_font">专栏</div>
-					</a>
-				</div>
-			</div>
-
-		</div>
-	</div>--%>
 
 	<div class="pet_content pet_content_list">
 		<div class="pet_article_like">
@@ -102,24 +48,24 @@
 					<div class="am-list-news-bd">
 						<ul class="am-list">
 							<!--缩略图在标题右边-->
-							<c:forEach items="${RANGE_LIST}" var="list" varStatus="vs">
+							<c:forEach items="${pageInfo}" var="list" varStatus="vs">
 							<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right pet_list_one_block">
 								<div class="pet_list_one_info">
-									<%--<div class="pet_list_one_info_l">
-										<div class="pet_list_one_info_ico"><img src="${list.picture}" alt=""></div>
+									<div class="pet_list_one_info_l">
+										<div class="pet_list_one_info_ico"><img src="${pageContext.request.contextPath}/${list.headImg}" alt=""></div>
 										<div class="pet_list_one_info_name">${list.author}</div>
-									</div>--%>
+									</div>
 									<div class="pet_list_one_info_r">
-										<div class="pet_list_tag ${list.class_name}">${list.categoryName}</div>
+
 									</div>
 								</div>
 								<div class=" am-u-sm-8 am-list-main pet_list_one_nr">
 									<h3 class="am-list-item-hd pet_list_one_bt"><a href="${pageContext.request.contextPath}/detail/${list.id}.html" class="">${list.title}</a></h3>
-									<div class="am-list-item-text pet_list_one_text">${list.words}</div>
+									<div class="am-list-item-text pet_list_one_text">${list.words}...</div>
 								</div>
 								<div class="am-u-sm-4 am-list-thumb">
 									<a href="${pageContext.request.contextPath}/detail/${list.id}.html" class="">
-										<img src="${list.picture}" class="pet_list_one_img" alt=""/>
+										<img src="${pageContext.request.contextPath}/${list.picture}" class="pet_list_one_img" alt=""/>
 									</a>
 								</div>
 							</li>

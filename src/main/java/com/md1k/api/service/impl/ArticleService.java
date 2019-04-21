@@ -37,10 +37,32 @@ public class ArticleService implements IArticleService {
 	}
 
 	@Override
-	public PageInfo<Article> getAllArticle(Integer categoryId, Integer currentPage) {
-		currentPage = currentPage == null ? 1 : currentPage;
-		PageHelper.startPage(currentPage, 10);
-		List<Article> list = articleDao.getAllArticle(categoryId);
+	public PageInfo<Article> selectCategory(Integer categoryId, Integer currentPage) {
+        List<Article> list = new ArrayList<>();
+        if (currentPage == 1){
+            if (categoryId.equals(Constants.LOVE)){
+                list = LoadListTask.LOVE_LIST;
+            }else if (categoryId.equals(Constants.YOUNG)){
+                list = LoadListTask.YOUNG_LIST;
+            }else if (categoryId.equals(Constants.SPECIAL)){
+                list = LoadListTask.SPECIAL_LIST;
+            }else if (categoryId.equals(Constants.COLD)){
+                list = LoadListTask.COLD_LIST;
+            }else if (categoryId.equals(Constants.HISTORY)){
+                list = LoadListTask.HISTORY_LIST;
+            }
+        }else {
+            currentPage = currentPage == null ? 1 : currentPage;
+            PageHelper.startPage(currentPage, 10);
+            list = articleDao.getAllArticle(categoryId);
+        }
+        for (Article article:list){
+            if (article.getTitle().length()>13){
+                article.setWords(article.getWords().trim().replaceAll("<p>","").replaceAll("</p>","").substring(0,15));
+            }else if (article.getWords().length()>40){
+                article.setWords(article.getWords().trim().replaceAll("<p>","").replaceAll("</p>","").substring(0,40));
+            }
+        }
 		PageInfo<Article> pageInfo = new PageInfo<>(list);
 		return pageInfo;
 	}
@@ -143,19 +165,14 @@ public class ArticleService implements IArticleService {
 	}
 
 	private void reload(Article article){
-		if (article.getCategoryId().equals(Constants.STORY)){
-			LoadListTask.WOMAN_LIST = articleDao.findByCategoryId(Constants.STORY);
-			for (Article a : LoadListTask.WOMAN_LIST){
+		if (article.getCategoryId().equals(Constants.LOVE)){
+			LoadListTask.LOVE_LIST = articleDao.findByCategoryId(Constants.LOVE);
+			for (Article a : LoadListTask.LOVE_LIST){
 				a.setWords(article.getWords().substring(0,80)+"...");
 			}
-		}else if (article.getCategoryId().equals(Constants.RELATION)){
-			LoadListTask.SEX_LIST = articleDao.findByCategoryId(Constants.RELATION);
-			for (Article a :  LoadListTask.SEX_LIST){
-				a.setWords(article.getWords().substring(0,80)+"...");
-			}
-		}else if (article.getCategoryId().equals(Constants.HEALTH)){
-			LoadListTask.HEALTH_LIST = articleDao.findByCategoryId(Constants.HEALTH);
-			for (Article a :  LoadListTask.HEALTH_LIST){
+		}else if (article.getCategoryId().equals(Constants.SPECIAL)){
+			LoadListTask.SPECIAL_LIST = articleDao.findByCategoryId(Constants.SPECIAL);
+			for (Article a :  LoadListTask.SPECIAL_LIST){
 				a.setWords(article.getWords().substring(0,80)+"...");
 			}
 		}else if (article.getCategoryId().equals(Constants.COLD)){

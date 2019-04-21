@@ -87,12 +87,11 @@
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a data-cont="情感夜话" target="_blank" title="情感夜话" href="${pageContext.request.contextPath}/">首页</a></li>
-                    <li><a data-cont="情感故事" target="_blank" title="女性健康" href="${pageContext.request.contextPath}/list/1/1">情感故事</a></li>
-                    <li><a data-cont="亲密关系" target="_blank" title="亲密关系" href="${pageContext.request.contextPath}/list/3/1">亲密关系</a></li>
-                    <li><a data-cont="青春期" target="_blank" title="青春期" href="${pageContext.request.contextPath}/list/6/1" >青春期</a></li>
-                    <li><a data-cont="健康生活" target="_blank" title="健康生活" href="${pageContext.request.contextPath}/list/4/1" >健康生活</a></li>
-                    <li><a data-cont="冷知识" target="_blank" title="冷知识" href="${pageContext.request.contextPath}/list/5/1" >冷知识</a></li>
-                    <li><a data-cont="历史上的今天" target="_blank" title="历史上的今天" href="${pageContext.request.contextPath}/list/7/1" >历史上的今天</a></li>
+                    <li><a data-cont="情感故事" target="_blank" title="女性健康" href="${pageContext.request.contextPath}/list/1/1.html">情感故事</a></li>
+                    <li><a data-cont="青春期" target="_blank" title="亲密关系" href="${pageContext.request.contextPath}/list/2/1.html">青春期</a></li>
+                    <li><a data-cont="天下奇闻" target="_blank" title="青春期" href="${pageContext.request.contextPath}/list/3/1.html" >天下奇闻</a></li>
+                    <li><a data-cont="冷知识" target="_blank" title="冷知识" href="${pageContext.request.contextPath}/list/4/1.html" >冷知识</a></li>
+                    <li><a data-cont="历史上的今天" target="_blank" title="历史上的今天" href="${pageContext.request.contextPath}/list/5/1.html" >历史上的今天</a></li>
                 </ul>
             </div>
         </div>
@@ -126,7 +125,7 @@
             </div>
             <article class="excerpt-minic excerpt-minic-index">
                 <h2><span class="red">【每日推荐】</span><a target="_blank" href="${pageContext.request.contextPath}/detail
-                /${DAILY_RECOMMEND.id}" title="${DAILY_RECOMMEND.title}" >${DAILY_RECOMMEND.title}</a>
+                /${DAILY_RECOMMEND.id}.html" title="${DAILY_RECOMMEND.title}" >${DAILY_RECOMMEND.title}</a>
                 </h2>
                 <p class="note">${DAILY_RECOMMEND.words}</p>
             </article>
@@ -136,7 +135,7 @@
                     <%--<a href="#" title="欢迎您" >情感夜话，情感与心灵的港湾</a>--%>
                         <marquee direction=left  scrollamount=4  onmouseover="this.stop();" onmouseout="this.start();" width=80% height=100>
                             <c:forEach items="${RANGE_LIST}" var="list" varStatus="vs">
-                                <a href="${pageContext.request.contextPath}/detail/${list.id}" title="${list.title}" target="_blank" >${list.title}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="${pageContext.request.contextPath}/detail/${list.id}.html" title="${list.title}" target="_blank" >${list.title}</a>&nbsp;&nbsp;&nbsp;&nbsp;
                             </c:forEach>
                         </marquee>
                 </div>
@@ -148,8 +147,8 @@
                    ${list.picture}" src="${pageContext.request.contextPath}/${list.picture}"
                                          onerror="javascript:this.src='images/logoError.jpg';" alt="${list.title}"
                                          style="display: inline;"></a>
-                <header><a class="cat" target="_blank" href="${pageContext.request.contextPath}/detail/${list.id}" title="${list.title}" >${list.categoryName}<i></i></a>
-                    <h2><a href="${pageContext.request.contextPath}/detail/${list.id}" title="${list.title}" target="_blank" >${list.title}</a>
+                <header><a class="cat" target="_blank" href="${pageContext.request.contextPath}/detail/${list.id}.html" title="${list.title}" >${list.categoryName}<i></i></a>
+                    <h2><a href="${pageContext.request.contextPath}/detail/${list.id}.html" title="${list.title}" target="_blank" >${list.title}</a>
                     </h2>
                 </header>
                 <p class="meta">
@@ -224,7 +223,7 @@
             <h3>精彩推荐</h3>
             <ul>
             <c:forEach items="${RANGE_LIST}" var="list" varStatus="vs">
-                <li><a title="${list.title}" href="${pageContext.request.contextPath}/detail/${list.id}" ><span class="thumbnail">
+                <li><a title="${list.title}" href="${pageContext.request.contextPath}/detail/${list.id}.html" ><span class="thumbnail">
 				<img class="thumb" data-original="${pageContext.request.contextPath}/${list.picture}"
                      src="${pageContext.request.contextPath}/${list.picture}" onerror="javascript:this.src='images/logoError.jpg';"
                      alt="${list.title}"

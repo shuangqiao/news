@@ -43,24 +43,22 @@ public class ArticleController {
             model.addAttribute("RAND_LIST",RANDS);
 			return "/app/home";
 		}
-		//return "404";
 	}
 
 	//文章列表页
 	@RequestMapping(value = "/list/{categoryId}/{currentPage}.html",method = {RequestMethod.POST,RequestMethod.GET})
 	public String list(Model model, @PathVariable("categoryId") Integer categoryId,@PathVariable("currentPage") Integer currentPage, HttpServletRequest request){
-		PageInfo<Article> pageInfo = iarticleService.getAllArticle(categoryId,currentPage);
+		PageInfo<Article> pageInfo = iarticleService.selectCategory(categoryId,currentPage);
 		if (pageInfo.getList().size()>0){
 			model.addAttribute("categoryName",pageInfo.getList().get(0).getCategoryName());
 		}
 		model.addAttribute("RANGE_LIST",RANGE_LIST);
-		model.addAttribute("pageInfo", pageInfo);
+		model.addAttribute("pageInfo", pageInfo.getList());
 		if (request.getHeader("User-Agent").toLowerCase().contains("windows")) {
 			return "/pc/list";
 		}else {
 			return "/app/list";
 		}
-		//return "404";
 	}
 
 	//文章详情页
@@ -84,7 +82,6 @@ public class ArticleController {
 			} else {
 				return "/app/detail";
 			}
-			//return "404";
 		}catch (Exception e){
 			e.printStackTrace();
 			return "404";

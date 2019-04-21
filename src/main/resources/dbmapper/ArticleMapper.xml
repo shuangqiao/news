@@ -130,7 +130,10 @@
 	</select>
 
 	<select id="findByCategoryId" resultMap="ArticleManage">
-		select * from  qing_articles where category_id = #{categoryId} order by created_time DESC limit 10
+		select a.*,b.name as categoryName from qing_articles a
+		LEFT JOIN category_name b on a.category_id = b.category_id
+		where a.category_id = #{categoryId} AND a.status='1'
+		ORDER BY created_time DESC limit 10
 	</select>
 
 	<select id="dailyRecommend" resultMap="ArticleManage">
