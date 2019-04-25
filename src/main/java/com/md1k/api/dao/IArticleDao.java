@@ -10,11 +10,11 @@ import java.util.List;
 public interface IArticleDao {
 
 	/**
-	 * 根据文章id查找文章详情
-	 * @param id
+	 * 根据文章uuid查找文章详情
+	 * @param uuid
 	 * @return
 	 */
-	Article findById(@Param("id") int id);
+	Article findById(@Param("uuid") String uuid);
 
 	/**
 	 * 根据创建时间获取最新的文章

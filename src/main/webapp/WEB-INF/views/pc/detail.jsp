@@ -119,7 +119,8 @@
 				<ul>
 				<c:forEach items="${RAND_LIST}" var="rand" varStatus="vs">
 					<li>
-						<a href="${pageContext.request.contextPath}/detail/${rand.id}/.html" title="${rand.title}" target="_blank">${rand.title}</a>
+						<a href="${pageContext.request.contextPath}/detail/${rand.uuid}/.html" title="${rand.title}"
+						   target="_blank">${rand.title}</a>
 					</li>
 				</c:forEach>
 				</ul>
@@ -195,7 +196,8 @@
 			<ul>
 				<c:forEach items="${RANGE_LIST}" var="list" varStatus="vs">
 					<li>
-						<a title="${list.title}" href="${pageContext.request.contextPath}/detail/${list.id}/.html" target="_blank">
+						<a title="${list.title}" href="${pageContext.request.contextPath}/detail/${list.uuid}/.html"
+						   target="_blank">
 						<span class="thumbnail">
 							<img class="thumb" data-original="${list.picture}" src="${pageContext.request.contextPath}/${list.picture}" alt="${list.title}" style="display: block;">
 						</span>

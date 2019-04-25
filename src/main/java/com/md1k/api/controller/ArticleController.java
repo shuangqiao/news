@@ -62,17 +62,17 @@ public class ArticleController {
 	}
 
 	//文章详情页
-	@RequestMapping(value = "/detail/{id}.html",method = {RequestMethod.POST,RequestMethod.GET})
-	public String essayDetail(Model model, @PathVariable("id") Integer id,HttpServletRequest request){
+	@RequestMapping(value = "/detail/{uuid}.html",method = {RequestMethod.POST,RequestMethod.GET})
+	public String essayDetail(Model model, @PathVariable("uuid") String uuid,HttpServletRequest request){
 		try {
-			Article article = iarticleService.findById(id);
+			Article article = iarticleService.findById(uuid);
 			model.addAttribute("article", article);
 
 			int categoryId = article.getCategoryId();
 			//获得上一篇和下一篇
-			Article lastInfo = iarticleService.getLastArticleById(id, categoryId);
+			Article lastInfo = iarticleService.getLastArticleById(article.getId(), categoryId);
 			model.addAttribute("lastTitle", lastInfo);
-			Article nextInfo = iarticleService.getNextArticleById(id, categoryId);
+			Article nextInfo = iarticleService.getNextArticleById(article.getId(), categoryId);
 			model.addAttribute("nextTitle", nextInfo);
 			model.addAttribute("RANGE_LIST",RANGE_LIST);
 			model.addAttribute("RAND_LIST",RAND_LIST);

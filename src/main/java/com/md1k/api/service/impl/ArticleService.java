@@ -23,7 +23,7 @@ public class ArticleService implements IArticleService {
 	private AsyncTask asyncTask;
 
 	@Override
-	public Article findById(int id){
+	public Article findById(String id){
 		Article article = articleDao.findById(id);
 		AsyncTask.List.offer(article);
 		asyncTask.taskService();

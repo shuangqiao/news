@@ -88,11 +88,13 @@
 									</div>
 								</div>
 								<div class=" am-u-sm-8 am-list-main pet_list_one_nr">
-									<h3 class="am-list-item-hd pet_list_one_bt"><a href="${pageContext.request.contextPath}/detail/${list.id}.html" class="">${list.title}</a></h3>
+									<h3 class="am-list-item-hd pet_list_one_bt"><a
+											href="${pageContext.request.contextPath}/detail/${list.uuid}.html"
+											class="">${list.title}</a></h3>
 									<div class="am-list-item-text pet_list_one_text">${list.words}...</div>
 								</div>
 								<div class="am-u-sm-4 am-list-thumb">
-									<a href="${pageContext.request.contextPath}/detail/${list.id}.html" class="">
+									<a href="${pageContext.request.contextPath}/detail/${list.uuid}.html" class="">
 										<img src="${pageContext.request.contextPath}/${list.picture}" class="pet_list_one_img" alt=""/>
 									</a>
 								</div>

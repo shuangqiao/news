@@ -5,6 +5,7 @@ import java.util.Date;
 public class Article implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	private String uuid;
 	//id
 	private int id;
 	private String title;
@@ -30,6 +31,14 @@ public class Article implements Serializable{
 
 	private String class_name;
 	private String headImg;
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
 
 	/**
 	 * @return the id

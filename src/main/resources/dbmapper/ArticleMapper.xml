@@ -4,6 +4,7 @@
 
 	<resultMap id="ArticleManage" type="com.md1k.api.pojo.Article">
 		<result column="id" jdbcType="INTEGER" property="id" />
+		<result column="uuid" jdbcType="VARCHAR" property="uuid" />
 		<result column="title" jdbcType="VARCHAR" property="title" />
 		<result column="hits" jdbcType="INTEGER" property="hits" />
 		<result column="words" jdbcType="VARCHAR" property="words" />
@@ -19,7 +20,7 @@
 	<select id="findById" resultMap="ArticleManage">
 		select a.*,b.name as
 		categoryName from qing_articles a LEFT JOIN category_name b on
-		a.category_id = b.category_id where a.id=#{id} AND a.status='1'
+		a.category_id = b.category_id where a.uuid=#{uuid} AND a.status='1'
 	</select>
 
 	<select id="getNewArticle" resultMap="ArticleManage">
@@ -49,7 +50,7 @@
 	</select>
 
 	<select id="getArticleByRand" resultMap="ArticleManage">
-		select id,title,created_time,hits,picture from qing_articles
+		select uuid,title,created_time,hits,picture from qing_articles
 		WHERE status='1'  ORDER BY RAND() limit 10
 	</select>
 
@@ -62,8 +63,8 @@
 	</update>
 	
 	<insert id="insertArticle">
-		INSERT INTO qing_articles (title, words, author, category_id,created_time)
-		VALUES (#{title}, #{words}, #{author}, #{categoryId},now())
+		INSERT INTO qing_articles (uuid,title, words, author, category_id,created_time)
+		VALUES (#{uuid},#{title}, #{words}, #{author}, #{categoryId},now())
 	</insert>
 	
 	<update id="updateArticle">

@@ -11,7 +11,7 @@ public interface IArticleService {
 	 * @param id
 	 * @return
 	 */
-	 Article findById(int id);
+	 Article findById(String id);
 	
 	/**
 	 * 根据创建时间获取最新的文章

@@ -135,20 +135,25 @@
                     <%--<a href="#" title="欢迎您" >情感夜话，情感与心灵的港湾</a>--%>
                         <marquee direction=left  scrollamount=4  onmouseover="this.stop();" onmouseout="this.start();" width=80% height=100>
                             <c:forEach items="${RANGE_LIST}" var="list" varStatus="vs">
-                                <a href="${pageContext.request.contextPath}/detail/${list.id}.html" title="${list.title}" target="_blank" >${list.title}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="${pageContext.request.contextPath}/detail/${list.uuid}.html"
+                                   title="${list.title}" target="_blank" >${list.title}</a>&nbsp;&nbsp;&nbsp;&nbsp;
                             </c:forEach>
                         </marquee>
                 </div>
             </div>
             <c:forEach items="${RANGE_LIST}" var="list" varStatus="vs">
             <article class="excerpt excerpt-1" style="">
-                <a class="focus" href="${pageContext.request.contextPath}/detail/${list.id}.html" title="${list.title}"
+                <a class="focus" href="${pageContext.request.contextPath}/detail/${list.uuid}.html"
+                   title="${list.title}"
                    target="_blank" ><img class="thumb" data-original="${pageContext.request.contextPath}/
                    ${list.picture}" src="${pageContext.request.contextPath}/${list.picture}"
                                          onerror="javascript:this.src='images/logoError.jpg';" alt="${list.title}"
                                          style="display: inline;"></a>
-                <header><a class="cat" target="_blank" href="${pageContext.request.contextPath}/detail/${list.id}.html" title="${list.title}" >${list.categoryName}<i></i></a>
-                    <h2><a href="${pageContext.request.contextPath}/detail/${list.id}.html" title="${list.title}" target="_blank" >${list.title}</a>
+                <header><a class="cat" target="_blank"
+                           href="${pageContext.request.contextPath}/detail/${list.uuid}.html" title="${list.title}"
+                >${list.categoryName}<i></i></a>
+                    <h2><a href="${pageContext.request.contextPath}/detail/${list.uuid}.html" title="${list.title}"
+                           target="_blank" >${list.title}</a>
                     </h2>
                 </header>
                 <p class="meta">
@@ -223,7 +228,8 @@
             <h3>精彩推荐</h3>
             <ul>
             <c:forEach items="${RANGE_LIST}" var="list" varStatus="vs">
-                <li><a title="${list.title}" href="${pageContext.request.contextPath}/detail/${list.id}.html" ><span class="thumbnail">
+                <li><a title="${list.title}" href="${pageContext.request.contextPath}/detail/${list.uuid}.html" ><span
+                        class="thumbnail">
 				<img class="thumb" data-original="${pageContext.request.contextPath}/${list.picture}"
                      src="${pageContext.request.contextPath}/${list.picture}" onerror="javascript:this.src='images/logoError.jpg';"
                      alt="${list.title}"

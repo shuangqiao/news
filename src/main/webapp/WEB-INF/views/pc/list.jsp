@@ -86,10 +86,14 @@
 				<h3 style="line-height: 1.3">${categoryName}</h3>
 			</div>
 			<c:forEach items="${pageInfo}" var="list" varStatus="vs">
-			<article class="excerpt excerpt-1"><a class="focus" href="${pageContext.request.contextPath}/detail/${list.id}.html" title="${list.title}" target="_blank" ><img class="thumb" data-original="${pageContext.request.contextPath}/${list.picture}" src="${pageContext.request.contextPath}/${list.picture}" alt="${list.title}"  style="display: inline;"></a>
-				<header><a class="cat" href="${pageContext.request.contextPath}/detail/${list.id}.html"  target="_blank"
+			<article class="excerpt excerpt-1"><a class="focus" href="${pageContext.request.contextPath}/detail
+			/${list.uuid}.html" title="${list.title}" target="_blank" ><img class="thumb"
+																			data-original="${pageContext.request.contextPath}/${list.picture}" src="${pageContext.request.contextPath}/${list.picture}" alt="${list.title}"  style="display: inline;"></a>
+				<header><a class="cat" href="${pageContext.request.contextPath}/detail/${list.uuid}.html"
+						   target="_blank"
 						   title="${list.title}" >${list.title}<i></i></a>
-					<h2><a href="${pageContext.request.contextPath}/detail/${list.id}.html" title="${list.title}" target="_blank" >${list.title}</a></h2>
+					<h2><a href="${pageContext.request.contextPath}/detail/${list.uuid}.html" title="${list.title}"
+						   target="_blank" >${list.title}</a></h2>
 				</header>
 				<p class="meta">
 					<time class="time"><i class="glyphicon glyphicon-time"></i> <fmt:formatDate pattern="yyyy-MM-dd" value="${list.createdTime }"></fmt:formatDate></time>
@@ -142,7 +146,9 @@
 			<h3>热点文章</h3>
 			<ul>
 			<c:forEach items="${RANGE_LIST}" var="list" varStatus="vs">
-							<li><a title="${list.title}" href="${pageContext.request.contextPath}/detail/${list.id}.html" ><span class="thumbnail">
+							<li><a title="${list.title}"
+								   href="${pageContext.request.contextPath}/detail/${list.uuid}.html" ><span
+									class="thumbnail">
 			<img class="thumb" data-original="${pageContext.request.contextPath}/${list.picture}"
 				 src="${pageContext.request.contextPath}/${list.picture}" alt="${list.title}"  style="display: block;">
 			</span><span class="text">${list.title}</span><span class="muted"><i class="glyphicon glyphicon-time"></i>
