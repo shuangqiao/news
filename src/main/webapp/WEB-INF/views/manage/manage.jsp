@@ -18,7 +18,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="${getPageHost}/css/newManage/bootstrap.min.css">
-    <script type="text/javascript" src="${getPageHost}/js/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript" src="${getPageHost}/js/pc/jquery-2.1.4.min.js"></script>
     <script src="${getPageHost}/js/bootstrap/bootstrap-treeview.js"></script>
 
     <!--[if lt IE 9]>

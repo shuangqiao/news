@@ -71,7 +71,7 @@ public interface IArticleService {
 	 * 查找所有文章
 	 * @return
 	 */
-	 PageInfo<Article> findArticleList(char status, Integer currentPage);
+	 PageInfo<Article> findArticleList(Byte status, Integer currentPage);
 
 	 PageInfo<Article> find(Article article, Integer currentPage);
 

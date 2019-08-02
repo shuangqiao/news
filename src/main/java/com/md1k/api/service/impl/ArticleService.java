@@ -113,7 +113,7 @@ public class ArticleService implements IArticleService {
 	}
 
 	@Override
-	public PageInfo<Article> findArticleList(char status, Integer currentPage) {
+	public PageInfo<Article> findArticleList(Byte status, Integer currentPage) {
 		currentPage = currentPage == null ? 1 : currentPage;
 		PageHelper.startPage(currentPage, 10);
 		List<Article> list = articleDao.findArticleList(status);

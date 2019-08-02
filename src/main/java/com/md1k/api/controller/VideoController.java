@@ -41,7 +41,7 @@ public class VideoController {
         }
     }
 
-    @RequestMapping(value = "/getnewuuid/lsq/")
+    @RequestMapping(value = "/getnewuuid/lsq/{num}",method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
     public String getUuid(@PathVariable("num") Integer num){
         Date date = new Date();

@@ -16,7 +16,7 @@ public class Article implements Serializable{
 	//作者
 	private String author;
 	//状态
-	private char status;
+	private Byte status;
 	private String picture;
 	//文章分类id
 	private Integer categoryId;
@@ -156,13 +156,13 @@ public class Article implements Serializable{
 	/**
 	 * @return the status
 	 */
-	public char getStatus() {
+	public Byte getStatus() {
 		return status;
 	}
 	/**
 	 * @param status the status to set
 	 */
-	public void setStatus(char status) {
+	public void setStatus(Byte status) {
 		this.status = status;
 	}
 	

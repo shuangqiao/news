@@ -61,7 +61,7 @@ public class ReadTxtTask {
                 article.setCategoryId(Integer.valueOf(file.getName().replaceAll(".txt","").replaceAll(dateStr,"")
                         .replaceAll("-","")));
                 article.setTitle(title.trim());
-                article.setStatus((char)1);
+                article.setStatus((byte)1);
                 article.setCreatedTime(now);
                 article.setHits(0);
                 articleDao.insertArticle(article);

@@ -110,7 +110,7 @@ public class ManageController {
 
     @RequestMapping(value = "/deleteList/{currentPage}", method = {RequestMethod.POST,RequestMethod.GET})
     public String deleteList(Model model,@PathVariable("currentPage") Integer currentPage){
-        PageInfo<Article> list = articleService.findArticleList((char)0,currentPage);
+        PageInfo<Article> list = articleService.findArticleList((byte)0,currentPage);
         model.addAttribute("pageInfo",list);
         String getPageHost = environment.getProperty(PAGE_HOST);
         model.addAttribute("getPageHost",getPageHost);
@@ -119,7 +119,7 @@ public class ManageController {
 
     @RequestMapping(value = "/articleList/{currentPage}", method = {RequestMethod.POST,RequestMethod.GET})
     public String articleList(Model model,@PathVariable("currentPage") Integer currentPage){
-        PageInfo<Article> list = articleService.findArticleList((char)0,currentPage);
+        PageInfo<Article> list = articleService.findArticleList((byte)1,currentPage);
         model.addAttribute("pageInfo",list);
         String getPageHost = environment.getProperty(PAGE_HOST);
         model.addAttribute("getPageHost",getPageHost);

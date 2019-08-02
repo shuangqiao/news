@@ -81,7 +81,7 @@ public interface IArticleDao {
 	 * 查找所有文章
 	 * @return
      */
-	List<Article> findArticleList(char status);
+	List<Article> findArticleList(Byte status);
 
 	List<Article> findByTitle(@Param("title") String title);
 
