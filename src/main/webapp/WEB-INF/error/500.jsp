@@ -13,40 +13,40 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
     <meta name="author" content="www.sqliu.cn">
     <meta name="copyright" content="">
     <title>可能有错误</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/error_styles.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/error_styles.css"/>
     <script src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.7.2.min.js"></script>
     <style>
-        body{
-            background:url('/images/errorpage/bg.png') no-repeat center center #1d1d1d;
-            color:#eee;
-            font-family:Corbel,Arial,Helvetica,sans-serif;
-            font-size:18px;
+        body {
+            background: url('/images/errorpage/bg.png') no-repeat center center #1d1d1d;
+            color: #eee;
+            font-family: Corbel, Arial, Helvetica, sans-serif;
+            font-size: 18px;
 
         }
 
-        #rocket{
-            width:275px;
-            height:375px;
-            background:url('/images/errorpage/rocket.png') no-repeat;
-            margin:60px auto 10px;
-            position:relative;
+        #rocket {
+            width: 275px;
+            height: 375px;
+            background: url('/images/errorpage/rocket.png') no-repeat;
+            margin: 60px auto 10px;
+            position: relative;
         }
 
         /*	Two steam classes. */
 
         .steam1,
-        .steam2{
-            position:absolute;
-            bottom:78px;
-            left:50px;
-            width:80px;
-            height:80px;
-            background:url('/images/errorpage/steam.png') no-repeat;
-            opacity:0.8;
+        .steam2 {
+            position: absolute;
+            bottom: 78px;
+            left: 50px;
+            width: 80px;
+            height: 80px;
+            background: url('/images/errorpage/steam.png') no-repeat;
+            opacity: 0.8;
         }
     </style>
 

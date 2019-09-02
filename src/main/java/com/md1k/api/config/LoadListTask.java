@@ -39,8 +39,8 @@ public class LoadListTask {
     private IKeyWordsDao keyWordsDao;
 
     @PostConstruct
-    public void initList(){
-        uuid = UUID.randomUUID().toString().replaceAll("-","");
+    public void initList() {
+        uuid = UUID.randomUUID().toString().replaceAll("-", "");
         uuid_bak = uuid;
        /* try {
             Runtime.getRuntime().exec("mv /www/server/apache-tomcat-default/webapps/video"+" " +
@@ -50,80 +50,80 @@ public class LoadListTask {
         }*/
         try {
             LOVE_LIST = articleDao.findByCategoryId(Constants.LOVE);
-            for (Article article : LOVE_LIST){
-                if (article.getWords().length()>41){
-                    article.setWords(article.getWords().substring(0,80)+"...");
+            for (Article article : LOVE_LIST) {
+                if (article.getWords().length() > 41) {
+                    article.setWords(article.getWords().substring(0, 80) + "...");
                 }
             }
             Thread.sleep(50);
 
             YOUNG_LIST = articleDao.findByCategoryId(Constants.YOUNG);
-            for (Article article : YOUNG_LIST){
-                if (article.getWords().length()>41){
-                    article.setWords(article.getWords().substring(0,80)+"...");
+            for (Article article : YOUNG_LIST) {
+                if (article.getWords().length() > 41) {
+                    article.setWords(article.getWords().substring(0, 80) + "...");
                 }
             }
             Thread.sleep(50);
 
             SPECIAL_LIST = articleDao.findByCategoryId(Constants.SPECIAL);
-            for (Article article : SPECIAL_LIST){
-                if (article.getWords().length()>41){
-                    article.setWords(article.getWords().substring(0,80)+"...");
+            for (Article article : SPECIAL_LIST) {
+                if (article.getWords().length() > 41) {
+                    article.setWords(article.getWords().substring(0, 80) + "...");
                 }
             }
             Thread.sleep(50);
 
             COLD_LIST = articleDao.findByCategoryId(Constants.COLD);
-            for (Article article : COLD_LIST){
-                if (article.getWords().length()>41){
-                    article.setWords(article.getWords().substring(0,80)+"...");
+            for (Article article : COLD_LIST) {
+                if (article.getWords().length() > 41) {
+                    article.setWords(article.getWords().substring(0, 80) + "...");
                 }
             }
             Thread.sleep(50);
 
             HISTORY_LIST = articleDao.findByCategoryId(Constants.HISTORY);
-            for (Article article : HISTORY_LIST){
-                if (article.getWords().length()>41){
-                    article.setWords(article.getWords().substring(0,80)+"...");
+            for (Article article : HISTORY_LIST) {
+                if (article.getWords().length() > 41) {
+                    article.setWords(article.getWords().substring(0, 80) + "...");
                 }
             }
 
             RANGE_LIST = articleDao.getNewArticle();
-            for (Article article : RANGE_LIST){
-                if (article.getTitle().length()>13){
-                    article.setWords(article.getWords().trim().replaceAll("<p>","").replaceAll("</p>","").substring(0,15));
-                }else if (article.getWords().length()>40){
-                    article.setWords(article.getWords().trim().replaceAll("<p>","").replaceAll("</p>","").substring(0,40));
+            for (Article article : RANGE_LIST) {
+                if (article.getTitle().length() > 13) {
+                    article.setWords(article.getWords().trim().replaceAll("<p>", "").replaceAll("</p>", "").substring(0, 15));
+                } else if (article.getWords().length() > 40) {
+                    article.setWords(article.getWords().trim().replaceAll("<p>", "").replaceAll("</p>", "").substring(0, 40));
                 }
-                if (article.getCategoryId().equals(Constants.LOVE)){
+                if (article.getCategoryId().equals(Constants.LOVE)) {
                     article.setClass_name(Constants.LOVE_CLASS);
-                }else  if (article.getCategoryId().equals(Constants.SPECIAL)){
+                } else if (article.getCategoryId().equals(Constants.SPECIAL)) {
                     article.setClass_name(Constants.SPECIAL_CLASS);
-                } else  if (article.getCategoryId().equals(Constants.YOUNG)){
+                } else if (article.getCategoryId().equals(Constants.YOUNG)) {
                     article.setClass_name(Constants.YOUNG_CLASS);
-                }else  if (article.getCategoryId().equals(Constants.COLD)){
+                } else if (article.getCategoryId().equals(Constants.COLD)) {
                     article.setClass_name(Constants.COLD_CLASS);
-                }else  if (article.getCategoryId().equals(Constants.HISTORY)){
+                } else if (article.getCategoryId().equals(Constants.HISTORY)) {
                     article.setClass_name(Constants.HISTORY_CLASS);
                 }
             }
             RAND_LIST = articleDao.getArticleByRand();
             KEY_WORDS = keyWordsDao.getList();
             DAILY_RECOMMEND = articleDao.dailyRecommend();
-            DAILY_RECOMMEND.setWords(DAILY_RECOMMEND.getWords().substring(0,80)+"...");
-        }catch (Exception e){
+            DAILY_RECOMMEND.setWords(DAILY_RECOMMEND.getWords().substring(0, 80) + "...");
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     //每20分钟更新一次
     @Scheduled(cron = "0 */20 * * * ?")
-    public void updateList(){
+    public void updateList() {
         RANGE_LIST.clear();
         RANGE_LIST = articleDao.getNewArticle();
-        for (Article article : RANGE_LIST){
-            if (article.getWords().length()>41){
-                article.setWords(article.getWords().substring(0,80)+"...");
+        for (Article article : RANGE_LIST) {
+            if (article.getWords().length() > 41) {
+                article.setWords(article.getWords().substring(0, 80) + "...");
             }
         }
         RAND_LIST.clear();
@@ -134,13 +134,13 @@ public class LoadListTask {
 
     //每天早上6点更新一次
     @Scheduled(cron = "0 0 6 * * ?")
-    public void dailyRecommend(){
+    public void dailyRecommend() {
         DAILY_RECOMMEND = articleDao.dailyRecommend();
-        DAILY_RECOMMEND.setWords(DAILY_RECOMMEND.getWords().substring(0,80)+"...");
+        DAILY_RECOMMEND.setWords(DAILY_RECOMMEND.getWords().substring(0, 80) + "...");
     }
 
     //每3分钟轮询,检查闹钟信息，更新过期闹钟
-        //@Scheduled(cron = "0 */3 * * * ? ")
+    //@Scheduled(cron = "0 */3 * * * ? ")
     /* public void updateUUID(){
         Date now = new Date();
         int hour = now.getHours();

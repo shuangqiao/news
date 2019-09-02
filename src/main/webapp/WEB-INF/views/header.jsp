@@ -10,9 +10,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-    <link rel="stylesheet" type="text/css" href="/css/global.css" />
-    <link rel="stylesheet" type="text/css" href="/css/header.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+    <link rel="stylesheet" type="text/css" href="/css/global.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/header.css"/>
     <title>情感夜话</title>
     <script type="text/javascript" src="/js/settab.js"></script>
 </head>
@@ -29,9 +29,10 @@
 <!--header begin-->
 <div class="header">
     <div class="wrap">
-        <a href="#" title="" target="_blank"><img src="/images/ad1.jpg" width="1004" height="40" /></a>
+        <a href="#" title="" target="_blank"><img src="/images/ad1.jpg" width="1004" height="40"/></a>
         <div class="search_box">
-            <a href="#" title="" target="_blank"><img src="/images/logo1.jpg" width="389" height="105"  alt="" class="fl"/></a>
+            <a href="#" title="" target="_blank"><img src="/images/logo1.jpg" width="389" height="105" alt=""
+                                                      class="fl"/></a>
             <div class="search">
                 <div id="lenu1">
                     <ul>
@@ -40,7 +41,8 @@
                 </div>
                 <div class="lain1_box" id="lain1">
                     <ul class="block">
-                        <li><input type="text"  value="请输入关键词" class="sertxt" /><input type="button" value="搜 索" class="serbtn"/></li>
+                        <li><input type="text" value="请输入关键词" class="sertxt"/><input type="button" value="搜 索"
+                                                                                     class="serbtn"/></li>
                         <li>健康&nbsp;&nbsp;&nbsp;&nbsp;青春</li>
                     </ul>
                 </div>

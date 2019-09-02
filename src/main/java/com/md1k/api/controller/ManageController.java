@@ -39,97 +39,99 @@ public class ManageController {
 
     /**
      * 响应后台写文章表单的请求.
+     *
      * @return
      */
     @RequestMapping("/")
-    public String manage(Model model){
+    public String manage(Model model) {
         String getPageHost = environment.getProperty(PAGE_HOST);
-        model.addAttribute("getPageHost",getPageHost);
+        model.addAttribute("getPageHost", getPageHost);
         return "/manage/login";
     }
+
     @RequestMapping("/index/{uuid}")
-    public String index(Model model,@PathVariable("uuid") String uuid){
+    public String index(Model model, @PathVariable("uuid") String uuid) {
         if (uuid.equals(LoadListTask.uuid)) {
             String getPageHost = environment.getProperty(PAGE_HOST);
             model.addAttribute("getPageHost", getPageHost);
-             return "/manage/manage";
-        }else {
+            return "/manage/manage";
+        } else {
             return "404";
         }
     }
 
     @RequestMapping(value = "/writeAdd", method = RequestMethod.POST)
     @ResponseBody
-    public String writeAdd(Article article){
+    public String writeAdd(Article article) {
         articleService.insertArticle(article);
         return "redirect:/list";
     }
 
     /**
      * 响应后台写文章表单的请求.
+     *
      * @return
      */
-    @RequestMapping(value = "/write",method = {RequestMethod.POST,RequestMethod.GET})
-    public String write(Model model){
+    @RequestMapping(value = "/write", method = {RequestMethod.POST, RequestMethod.GET})
+    public String write(Model model) {
         String getPageHost = environment.getProperty(PAGE_HOST);
-        model.addAttribute("getPageHost",getPageHost);
+        model.addAttribute("getPageHost", getPageHost);
         //查询作者列表和头像
         List<QingAuthor> authorList = qingAuthorService.selectAll();
-        model.addAttribute("authorList",authorList);
+        model.addAttribute("authorList", authorList);
         //查询分类
         List<CategoryName> categoryList = categoryService.selectAll();
-        model.addAttribute("categoryList",categoryList);
+        model.addAttribute("categoryList", categoryList);
         return "/manage/write";
     }
 
     @RequestMapping(value = "/checkPasswd", method = RequestMethod.POST)
-    public Object checkPasswd(String username,String password)
-    {
+    public Object checkPasswd(String username, String password) {
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHH");
         String dateStr = sdf.format(date);
-        String d =  dateStr.substring(dateStr.length()-2);
-        if(!Constants.MANAGE_PASSWD.equals(password)) {
+        String d = dateStr.substring(dateStr.length() - 2);
+        if (!Constants.MANAGE_PASSWD.equals(password)) {
             String pwd = dateStr + BigDecimalUtil.mul(new BigDecimal(d), new BigDecimal(2)).intValue()
                     + "lsq" + (Integer.valueOf(d) + 1);
             if (!password.equals(pwd)) {
                 return "404";
             }
-        }else if(!(Constants.MANAGE_USERNAME+Integer.valueOf(d)+1).equals(username)) {
+        } else if (!(Constants.MANAGE_USERNAME + Integer.valueOf(d) + 1).equals(username)) {
             return "404";
         }
         return "redirect:/manage";
     }
 
-    @RequestMapping(value = "/del", method = {RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value = "/del", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
-    public String delById(Integer id){
-        articleService.changeStatusById('0',id);
+    public String delById(Integer id) {
+        articleService.changeStatusById('0', id);
         return "1";
     }
 
-    @RequestMapping(value = "/deleteList/{currentPage}", method = {RequestMethod.POST,RequestMethod.GET})
-    public String deleteList(Model model,@PathVariable("currentPage") Integer currentPage){
-        PageInfo<Article> list = articleService.findArticleList((byte)0,currentPage);
-        model.addAttribute("pageInfo",list);
+    @RequestMapping(value = "/deleteList/{currentPage}", method = {RequestMethod.POST, RequestMethod.GET})
+    public String deleteList(Model model, @PathVariable("currentPage") Integer currentPage) {
+        PageInfo<Article> list = articleService.findArticleList((byte) 0, currentPage);
+        model.addAttribute("pageInfo", list);
         String getPageHost = environment.getProperty(PAGE_HOST);
-        model.addAttribute("getPageHost",getPageHost);
+        model.addAttribute("getPageHost", getPageHost);
         return "/deleteList";
     }
 
-    @RequestMapping(value = "/articleList/{currentPage}", method = {RequestMethod.POST,RequestMethod.GET})
-    public String articleList(Model model,@PathVariable("currentPage") Integer currentPage){
-        PageInfo<Article> list = articleService.findArticleList((byte)1,currentPage);
-        model.addAttribute("pageInfo",list);
+    @RequestMapping(value = "/articleList/{currentPage}", method = {RequestMethod.POST, RequestMethod.GET})
+    public String articleList(Model model, @PathVariable("currentPage") Integer currentPage) {
+        PageInfo<Article> list = articleService.findArticleList((byte) 1, currentPage);
+        model.addAttribute("pageInfo", list);
         String getPageHost = environment.getProperty(PAGE_HOST);
-        model.addAttribute("getPageHost",getPageHost);
+        model.addAttribute("getPageHost", getPageHost);
         return "/articleList";
     }
 
-    @RequestMapping(value = "/resolve", method = {RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value = "/resolve", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
-    public String resolve(Integer id){
-        articleService.changeStatusById('1',id);
+    public String resolve(Integer id) {
+        articleService.changeStatusById('1', id);
         return "1";
     }
 }

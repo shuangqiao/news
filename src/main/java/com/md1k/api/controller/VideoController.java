@@ -28,41 +28,41 @@ import java.util.UUID;
 @RequestMapping(value = "/video")
 public class VideoController {
 
-    @RequestMapping(value = "/uuid/{uuid}/{name}",method = {RequestMethod.POST,RequestMethod.GET})
-    public String video(Model model, @PathVariable("uuid") String uuid,@PathVariable("name") String name){
-        if (StringUtils.isEmpty(uuid)){
+    @RequestMapping(value = "/uuid/{uuid}/{name}", method = {RequestMethod.POST, RequestMethod.GET})
+    public String video(Model model, @PathVariable("uuid") String uuid, @PathVariable("name") String name) {
+        if (StringUtils.isEmpty(uuid)) {
             return "404";
-        }else if (uuid.equals(LoadListTask.uuid)){
-            model.addAttribute("name",name);
-            model.addAttribute("uuid",uuid);
+        } else if (uuid.equals(LoadListTask.uuid)) {
+            model.addAttribute("name", name);
+            model.addAttribute("uuid", uuid);
             return "/pc/video";
-        }else {
+        } else {
             return "404";
         }
     }
 
-    @RequestMapping(value = "/getnewuuid/lsq/{num}",method = {RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value = "/getnewuuid/lsq/{num}", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
-    public String getUuid(@PathVariable("num") Integer num){
+    public String getUuid(@PathVariable("num") Integer num) {
         Date date = new Date();
         if (num == date.getHours()) {
             return LoadListTask.uuid;
-        }else {
+        } else {
             return "error";
         }
     }
 
-    @RequestMapping(value = "/list/{uuid}",method = {RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value = "/list/{uuid}", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
-    public String getVideoList( @PathVariable("uuid") String uuid){
-        if (!uuid.equals(LoadListTask.uuid)){
+    public String getVideoList(@PathVariable("uuid") String uuid) {
+        if (!uuid.equals(LoadListTask.uuid)) {
             return "404";
         }
-        String url = "/www/server/apache-tomcat-default/webapps/video"+uuid+"/video_list.txt";
+        String url = "/www/server/apache-tomcat-default/webapps/video" + uuid + "/video_list.txt";
         List<String> nameList = new ArrayList<>();
         File file = new File(url);
         try {
-            InputStreamReader inputReader = new InputStreamReader(new FileInputStream(file),"UTF-8");
+            InputStreamReader inputReader = new InputStreamReader(new FileInputStream(file), "UTF-8");
             BufferedReader bf = new BufferedReader(inputReader);
             // 按行读取字符串
             String str;
