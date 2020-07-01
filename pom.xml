@@ -22,7 +22,7 @@
     <mybatis.pagehelper.version>5.1.2</mybatis.pagehelper.version>
 
     <!-- 数据库版本 -->
-    <mysql.version>5.1.41</mysql.version>
+    <mysql.version>8.0.16</mysql.version>
     <mchange.version>0.9.5.2</mchange.version>
 
     <!-- log4j日志文件管理包版本 -->
