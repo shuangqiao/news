@@ -14,7 +14,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
     <!-- spring版本 -->
-    <spring.version>4.3.5.RELEASE</spring.version>
+    <spring.version>5.3.19</spring.version>
 
     <!-- Mybatis 相关的版本 -->
     <mybatis.version>3.4.1</mybatis.version>
