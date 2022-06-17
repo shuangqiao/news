@@ -42,7 +42,7 @@
     <!-- google gson 版本 -->
     <google.gson.version>2.3</google.gson.version>
     <!-- alibaba 系列 -->
-    <alibaba.fastjson>1.2.35</alibaba.fastjson>
+    <alibaba.fastjson>1.2.83</alibaba.fastjson>
     <alibaba.druid>1.1.9</alibaba.druid>
 
   </properties>
@@ -121,7 +121,7 @@
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>fastjson</artifactId>
-      <version>1.2.35</version>
+      <version>1.2.83</version>
     </dependency>
     <dependency>
       <groupId>net.sf.json-lib</groupId>
